@@ -1,9 +1,10 @@
 import styled from "styled-components";
-import banner from "./../img/banner.png";
 
 const Banner = styled.div`
-  height: 350px;
-  background-image: url(${banner});
+  height: 380px;
+  background-image: url(${"/img/banner.png"});
+  background-repeat: no-repeat;
+  background-size: cover;
 `;
 
 export default Banner;

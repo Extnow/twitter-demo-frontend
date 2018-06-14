@@ -8,7 +8,6 @@ import messagesLogo from "./../img/Icon_Messages.svg";
 
 const Links = styled.ul`
   display: flex;
-  height: 45px;
   align-items: center;
   list-style-type: none;
   padding: 0;
@@ -17,15 +16,19 @@ const Links = styled.ul`
 
 const Link = styled.a`
   display: flex;
+  padding: 13px 25px 13px 5px;
   align-items: center;
-  margin-right: 25px;
   font-size: 13px;
   color: #667580;
   text-decoration: none;
 
-  last-child {
-    margin-right: 0px;
+  &:hover {
+    color: #1da1f2;
   }
+`;
+
+const Icon = styled.img`
+  margin-right: 5px;
 `;
 
 const Navigation = function() {
@@ -33,26 +36,26 @@ const Navigation = function() {
     <Links>
       <li>
         <Link href="">
-          <img src={homeLogo} alt="home" />
-          Home
+          <Icon src={homeLogo} alt="home" />
+          <span>Home</span>
         </Link>
       </li>
       <li>
         <Link href="">
-          <img src={momentsLogo} alt="moments" />
-          Moments
+          <Icon src={momentsLogo} alt="moments" />
+          <span>Moments</span>
         </Link>
       </li>
       <li>
         <Link href="">
-          <img src={notificationsLogo} alt="notifications" />
-          Notifications
+          <Icon src={notificationsLogo} alt="notifications" />
+          <span>Notifications</span>
         </Link>
       </li>
       <li>
         <Link href="">
-          <img src={messagesLogo} alt="messages" />
-          Messages
+          <Icon src={messagesLogo} alt="messages" />
+          <span>Messages</span>
         </Link>
       </li>
     </Links>
