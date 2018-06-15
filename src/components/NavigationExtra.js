@@ -24,7 +24,7 @@ const TweetButton = styled.button`
   font-size: 14px;
   font-weight: bold;
   text-align: center;
-  padding: 8px 16px;
+  padding: 9px 16px;
   cursor: pointer;
   margin-left: 15px;
 `;
@@ -34,12 +34,18 @@ const NavExtra = styled.div`
   align-items: center;
 `;
 
+const AvatarIcon = styled.img`
+  display: block;
+  width: 28px;
+  height: 28px;
+`;
+
 const NavigationExtra = function() {
   return (
     <NavExtra>
       <SearchInput placeholder="Search Twitter" type="text" />
       <a href="">
-        <img
+        <AvatarIcon
           src={process.env.PUBLIC_URL + "/img/Avatar.png"}
           srcSet={process.env.PUBLIC_URL + `${"/img/AvatarRetina.png"} 2x`}
           alt="avatar"

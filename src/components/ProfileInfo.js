@@ -2,6 +2,9 @@ import React from "react";
 import styled from "styled-components";
 // img
 import tickLogo from "./../img/Tick.svg";
+import locationIcon from "./../img/Icon_Location.svg";
+import linkIcon from "./../img/Icon_Link.svg";
+import joinedIcon from "./../img/Icon_Joined.svg";
 
 const Title = styled.h1`
   padding-top: 41px;
@@ -15,11 +18,15 @@ const AvatarBig = styled.div`
   align-items: center;
   top: -179px;
   background-color: #fff;
-  width: 208px;
-  height: 208px;
+  padding: 18px;
   border-radius: 100px;
   border: 1px solid #e7ecf0;
   overflow: hidden;
+`;
+
+const AvatarBigIcon = styled.img`
+  width: 174px;
+  height: 174px;
 `;
 
 const ProfileLink = styled.a`
@@ -55,11 +62,67 @@ const Bio = styled.p`
   margin: 0;
 `;
 
+const Info = styled.ul`
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
+
+const InfoItem = styled.li`
+  display: flex;
+  align-items: center;
+`;
+
+const InfoLink = styled.a`
+  margin-left: 13px;
+  font-size: 14px
+  line-height: 28px
+  color: #1DA1F2;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const InfoText = styled.span`
+  margin-left: 13px;
+  font-size: 14px
+  line-height: 28px
+  color: #697787;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  margin-top: 17px;
+  justify-content: space-between;
+`;
+
+const ButtonTweet = styled.button`
+  background: #1da1f2;
+  border-radius: 100px;
+  padding: 11px 34px 11px 34px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+`;
+
+const ButtonMessage = styled.button`
+  background: #1da1f2;
+  border-radius: 100px;
+  padding: 11px 34px 11px 34px;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+`;
+
 const ProfileInfo = function() {
   return (
     <div>
       <AvatarBig>
-        <img
+        <AvatarBigIcon
           src={process.env.PUBLIC_URL + "/img/AvatarBig.png"}
           srcSet={process.env.PUBLIC_URL + `${"/img/AvatarBigRetina.png"} 2x`}
           alt="avatar"
@@ -77,6 +140,24 @@ const ProfileInfo = function() {
         UX Design studio focussed problem solving creativity. Design to us is how can
         we make things *work* amazing.
       </Bio>
+      <Info>
+        <InfoItem>
+          <img src={locationIcon} alt="" />
+          <InfoText>London, UK</InfoText>
+        </InfoItem>
+        <InfoItem>
+          <img src={linkIcon} alt="" />
+          <InfoLink href="">everyinteraction.com</InfoLink>
+        </InfoItem>
+        <InfoItem>
+          <img src={joinedIcon} alt="" />
+          <InfoText>Joined May 2008</InfoText>
+        </InfoItem>
+      </Info>
+      <Buttons>
+        <ButtonTweet>Tweet to</ButtonTweet>
+        <ButtonMessage>Message</ButtonMessage>
+      </Buttons>
     </div>
   );
 };

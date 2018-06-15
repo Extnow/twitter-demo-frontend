@@ -18,8 +18,8 @@ import {
   ActionButton
 } from "./components/Statistics";
 import ProfileInfo from "./components/ProfileInfo";
-// // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// // import { render } from "react-dom";
+import Content from "./components/Content";
+// router
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -80,7 +80,10 @@ class App extends Component {
               <div className="col-xs-3">
                 <ProfileInfo />
               </div>
-              <div className="col-xs-9" />
+              <div className="col-xs-6">
+                <Content />
+              </div>
+              <div className="col-xs-3" />
             </div>
           </div>
         </Profile>
