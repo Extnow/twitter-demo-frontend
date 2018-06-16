@@ -11,7 +11,7 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const AvatarBig = styled.div`
+const Avatar = styled.div`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -25,7 +25,7 @@ const AvatarBig = styled.div`
   z-index: 2;
 `;
 
-const AvatarBigIcon = styled.img`
+const AvatarImage = styled.img`
   width: 174px;
   height: 174px;
 `;
@@ -117,25 +117,7 @@ const Buttons = styled.div`
   justify-content: space-between;
 `;
 
-const ButtonTweet = styled.button`
-  background-color: #4ab3f4;
-  border-radius: 100px;
-  padding: 11px 34px 11px 34px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: #1da1f2;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
-const ButtonMessage = styled.button`
+const Button = styled.button`
   background-color: #4ab3f4;
   border-radius: 100px;
   padding: 11px 34px 11px 34px;
@@ -156,13 +138,13 @@ const ButtonMessage = styled.button`
 export default function() {
   return (
     <div>
-      <AvatarBig>
-        <AvatarBigIcon
+      <Avatar>
+        <AvatarImage
           src={process.env.PUBLIC_URL + "/img/avatar-large.png"}
           srcSet={process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`}
           alt="avatar"
         />
-      </AvatarBig>
+      </Avatar>
       <Title>
         <ProfileLink href="#">Every Interaction</ProfileLink>
         <img src={iconTick} alt="tick" />
@@ -189,8 +171,8 @@ export default function() {
         </Element>
       </Info>
       <Buttons>
-        <ButtonTweet>Tweet to</ButtonTweet>
-        <ButtonMessage>Message</ButtonMessage>
+        <Button>Tweet to</Button>
+        <Button>Message</Button>
       </Buttons>
     </div>
   );

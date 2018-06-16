@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
-const ButtonsList = styled.ul`
+const Navigation = styled.ul`
   display: flex;
   align-items: center;
   list-style-type: none;
@@ -58,7 +58,7 @@ const Actions = styled.div`
   display: flex;
 `;
 
-const FollowButton = styled.button`
+const Follow = styled.button`
   background-color: #fff;
   border-radius: 100px;
   border: 1px solid #1da1f2;
@@ -85,7 +85,7 @@ const FollowButton = styled.button`
   }
 `;
 
-const ActionButton = styled.button`
+const ExtraActions = styled.button`
   border: none;
   background: transparent;
   background-image: url(${iconMore});
@@ -101,7 +101,7 @@ export default function() {
         <div className="row">
           <div className="col-xs-offset-3 col-xs-9">
             <Wrapper>
-              <ButtonsList>
+              <Navigation>
                 <li>
                   <Button>
                     <span>Tweets</span>
@@ -132,10 +132,10 @@ export default function() {
                     <Value>2</Value>
                   </Button>
                 </li>
-              </ButtonsList>
+              </Navigation>
               <Actions>
-                <FollowButton>Follow</FollowButton>
-                <ActionButton />
+                <Follow>Follow</Follow>
+                <ExtraActions />
               </Actions>
             </Wrapper>
           </div>

@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   background-color: #fff;
 `;
 
-const Header = styled.ul`
+const Navigation = styled.ul`
   border-bottom: 1px solid #eee;
   list-style-type: none;
   display: flex;
@@ -40,11 +40,6 @@ const NavigationButton = styled.button`
   }
 `;
 
-const Pinned = styled.div`
-  padding-left: 48px;
-  margin-bottom: 4px;
-`;
-
 const Tweet = styled.div`
   padding: 9px 12px;
   cursor: pointer;
@@ -54,10 +49,23 @@ const Tweet = styled.div`
   }
 `;
 
-const PinnedText = styled.span`
+const Pinned = styled.div`
+  padding-left: 17px;
+  margin-bottom: 4px;
   margin-left: 12px;
   font-size: 12px;
   color: #707e88;
+
+  &:before {
+    content: "";
+    margin-right: 12px;
+    display: inline-block;
+    background-image: url(${iconPinned});
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 11px;
+    height: 12px;
+  }
 `;
 
 const Main = styled.div`
@@ -76,12 +84,12 @@ const Content = styled.div`
   margin-left: 10px;
 `;
 
-const TweetHeader = styled.header`
+const Header = styled.header`
   line-height: 30px;
   font-size: 15px;
 `;
 
-const TweetHeaderFullName = styled.a`
+const FullName = styled.a`
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
@@ -93,7 +101,7 @@ const TweetHeaderFullName = styled.a`
   }
 `;
 
-const TweetHeaderUserName = styled.span`
+const UserName = styled.span`
   color: #657786;
   padding: 0 5px;
 `;
@@ -150,16 +158,16 @@ const HashTag = styled.a`
   }
 `;
 
-const TweetPictureContainer = styled.div`
+const PictureContainer = styled.div`
   margin-top: 17px;
 `;
 
-const TweetPicture = styled.img`
+const Picture = styled.img`
   max-width: 100%;
   display: block;
 `;
 
-const TweetLink = styled.a`
+const TweetLinkContent = styled.a`
   display: flex;
   margin-top: 6px;
   background-color: #ffffff;
@@ -179,32 +187,32 @@ const TweetLinkImage = styled.img`
   height: 126px;
 `;
 
-const TweetLinkContent = styled.div`
+const TweetLink = styled.div`
   display: flex;
   flex-direction: column;
   padding: 11px 9px;
 `;
 
-const TweetLinkTitle = styled.h2`
+const LinkTitle = styled.h2`
   font-weight: bold;
   font-size: 14px;
   margin: 0 0 5px 0;
 `;
 
-const TweetLinkText = styled.p`
+const LinkText = styled.p`
   font-size: 14px;
   line-height: 18px;
   margin: 0 0 5px 0;
   padding: 0;
 `;
 
-const TweetLinkUrl = styled.span`
+const LinkUrl = styled.span`
   font-size: 14px;
   line-height: 18px;
   color: #8899a6;
 `;
 
-const ActionList = styled.ul`
+const Actions = styled.ul`
   list-style-type: none;
   display: flex;
   margin: 0;
@@ -232,7 +240,7 @@ const Button = styled.button`
 export default function() {
   return (
     <Wrapper>
-      <Header>
+      <Navigation>
         <li>
           <NavigationButton>Tweets</NavigationButton>
         </li>
@@ -242,30 +250,23 @@ export default function() {
         <li>
           <NavigationButton>Media</NavigationButton>
         </li>
-      </Header>
+      </Navigation>
       <Tweet>
-        <Pinned>
-          <img src={iconPinned} alt="pinned" />
-          <PinnedText>Pinned Tweet</PinnedText>
-        </Pinned>
+        <Pinned>Pinned Tweet</Pinned>
         <Main>
-          <div>
-            <Avatar
-              src={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
-              srcSet={
-                process.env.PUBLIC_URL + `${"/img/avatar-medium-retina.png"} 2x`
-              }
-              alt="avatar"
-            />
-          </div>
+          <Avatar
+            src={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
+            srcSet={process.env.PUBLIC_URL + `${"/img/avatar-medium-retina.png"} 2x`}
+            alt="avatar"
+          />
           <Content>
-            <TweetHeader>
-              <TweetHeaderFullName href="#">Every Interaction</TweetHeaderFullName>
-              <TweetHeaderUserName>@EveryInteract</TweetHeaderUserName>
+            <Header>
+              <FullName href="#">Every Interaction</FullName>
+              <UserName>@EveryInteract</UserName>
               <Time>
                 <TimeLink href="#">2 Mar 2015</TimeLink>
               </Time>
-            </TweetHeader>
+            </Header>
             <Text>
               We’ve made some more resources for all you wonderful{" "}
               <HashTag>#design</HashTag> folk
@@ -273,14 +274,14 @@ export default function() {
               <HashTag>#webdesign</HashTag>
               <HashTag>#UI</HashTag>
             </Text>
-            <TweetPictureContainer>
-              <TweetPicture
+            <PictureContainer>
+              <Picture
                 src={process.env.PUBLIC_URL + "/img/img1.png"}
                 srcSet={process.env.PUBLIC_URL + `${"/img/img1-retina.png"} 2x`}
                 alt=""
               />
-            </TweetPictureContainer>
-            <ActionList>
+            </PictureContainer>
+            <Actions>
               <li>
                 <Button img={iconComments} color={"#1da1f2"} />
               </li>
@@ -297,7 +298,7 @@ export default function() {
               <li>
                 <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
-            </ActionList>
+            </Actions>
           </Content>
         </Main>
       </Tweet>
@@ -314,18 +315,18 @@ export default function() {
             />
           </div>
           <Content>
-            <TweetHeader>
-              <TweetHeaderFullName href="">Every Interaction</TweetHeaderFullName>
-              <TweetHeaderUserName>@EveryInteract</TweetHeaderUserName>
+            <Header>
+              <FullName href="">Every Interaction</FullName>
+              <UserName>@EveryInteract</UserName>
               <Time>
                 <TimeLink href="">23h</TimeLink>
               </Time>
-            </TweetHeader>
+            </Header>
             <Text>
               Our new website concept; Taking you from… @ Every Interaction{" "}
               <Url>instagram.com/p/BNFGrfhBP3M/</Url>
             </Text>
-            <ActionList>
+            <Actions>
               <li>
                 <Button img={iconComments} color={"#1da1f2"} />
               </li>
@@ -342,7 +343,7 @@ export default function() {
               <li>
                 <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
-            </ActionList>
+            </Actions>
           </Content>
         </Main>
       </Tweet>
@@ -359,18 +360,18 @@ export default function() {
             />
           </div>
           <Content>
-            <TweetHeader>
-              <TweetHeaderFullName href="">Every Interaction</TweetHeaderFullName>
-              <TweetHeaderUserName>@EveryInteract</TweetHeaderUserName>
+            <Header>
+              <FullName href="">Every Interaction</FullName>
+              <UserName>@EveryInteract</UserName>
               <Time>
                 <TimeLink href="">Nov 18</TimeLink>
               </Time>
-            </TweetHeader>
+            </Header>
             <TextSmall>
               Variable web fonts are coming, and will open a world of opportunities
               for weight use online
             </TextSmall>
-            <TweetLink>
+            <TweetLinkContent>
               <div>
                 <TweetLinkImage
                   src={process.env.PUBLIC_URL + "/img/img2.png"}
@@ -378,17 +379,17 @@ export default function() {
                   alt=""
                 />
               </div>
-              <TweetLinkContent>
-                <TweetLinkTitle>The Future of Web Fonts</TweetLinkTitle>
-                <TweetLinkText>
+              <TweetLink>
+                <LinkTitle>The Future of Web Fonts</LinkTitle>
+                <LinkText>
                   We love typefaces. They give our sites and applications
                   personalized feel. They convey the information and tell a story.
                   They establish information hierarchy. But they’re…
-                </TweetLinkText>
-                <TweetLinkUrl>viliamis.com</TweetLinkUrl>
-              </TweetLinkContent>
-            </TweetLink>
-            <ActionList>
+                </LinkText>
+                <LinkUrl>viliamis.com</LinkUrl>
+              </TweetLink>
+            </TweetLinkContent>
+            <Actions>
               <li>
                 <Button img={iconComments} color={"#1da1f2"} />
               </li>
@@ -405,7 +406,7 @@ export default function() {
               <li>
                 <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
-            </ActionList>
+            </Actions>
           </Content>
         </Main>
       </Tweet>
