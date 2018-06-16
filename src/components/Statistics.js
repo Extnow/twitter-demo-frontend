@@ -8,6 +8,7 @@ const Statistics = styled.div`
   background: #fff;
   box-shadow: 0px 2px 2px #b0b8be;
   font-family: Helvetica;
+  z-index: 1;
 `;
 
 const Links = styled.ul`

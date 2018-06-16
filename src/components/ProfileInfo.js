@@ -22,6 +22,7 @@ const AvatarBig = styled.div`
   border-radius: 100px;
   border: 1px solid #e7ecf0;
   overflow: hidden;
+  z-index: 2;
 `;
 
 const AvatarBigIcon = styled.img`

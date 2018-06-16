@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 // images
-import twitterLogo from "./img/Icon_Twitter Logo.svg";
+import iconTwitterLogo from "./img/icon-twitter-logo.svg";
 // css
 import "normalize.css";
 import "flexboxgrid2/flexboxgrid2.css";
@@ -18,7 +18,7 @@ import {
   ActionButton
 } from "./components/Statistics";
 import ProfileInfo from "./components/ProfileInfo";
-import Content from "./components/Content";
+import Tweets from "./components/Tweets";
 // router
 
 const HeaderWrapper = styled.div`
@@ -41,7 +41,7 @@ const StatisticsWrapper = styled.div`
 const Profile = styled.div`
   background-color: #e6ecf0;
   position: relative;
-  font-family: Helvetica;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
 `;
 
 class App extends Component {
@@ -52,7 +52,7 @@ class App extends Component {
           <div className="container">
             <HeaderWrapper>
               <Navigation />
-              <TwitterLogo src={twitterLogo} alt="twitterLogo" />
+              <TwitterLogo src={iconTwitterLogo} alt="twitterLogo" />
               <NavigationExtra />
             </HeaderWrapper>
           </div>
@@ -61,8 +61,7 @@ class App extends Component {
         <Statistics>
           <div className="container">
             <div className="row">
-              <div className="col-xs-3" />
-              <div className="col-xs-9">
+              <div className="col-xs-offset-3 col-xs-9">
                 <StatisticsWrapper>
                   <Numbers />
                   <Actions>
@@ -81,9 +80,8 @@ class App extends Component {
                 <ProfileInfo />
               </div>
               <div className="col-xs-6">
-                <Content />
+                <Tweets />
               </div>
-              <div className="col-xs-3" />
             </div>
           </div>
         </Profile>
