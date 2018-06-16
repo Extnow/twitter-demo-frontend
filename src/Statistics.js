@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconMore from "./../img/Icon_More.png";
+import iconMore from "./img/icon-more.png";
 
 const Statistics = styled.div`
   position: relative;
@@ -19,24 +19,27 @@ const Links = styled.ul`
   margin: 0;
 `;
 
-const Link = styled.a`
+const Button = styled.button`
   color: #707e88;
+  background-color: transparent;
+  border: none;
   text-align: center;
-  text-decoration: none;
   padding: 0 10px;
   font-size: 12px;
-  display: flex;
-  flex-direction: column;
   padding: 11px 15px;
+  cursor: pointer;
+
+  &:hover {
+    color: #1da1f2;
+  }
 `;
 
 const Actions = styled.div`
   display: flex;
 `;
 
-const Value = styled.span`
+const Value = styled.div`
   padding-top: 5px;
-  color: #1da1f2;
   font-size: 18px;
 `;
 
@@ -45,34 +48,34 @@ const Numbers = function() {
     <div>
       <Links>
         <li>
-          <Link href="">
+          <Button>
             <span>Tweets</span>
             <Value>8,058</Value>
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href="">
+          <Button>
             <span>Following</span>
             <Value>721</Value>
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href="">
+          <Button>
             <span>Followers</span>
             <Value>1,815</Value>
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href="">
+          <Button>
             <span>Likes</span>
             <Value>460</Value>
-          </Link>
+          </Button>
         </li>
         <li>
-          <Link href="">
+          <Button>
             <span>Lists</span>
             <Value>2</Value>
-          </Link>
+          </Button>
         </li>
       </Links>
     </div>

@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconPinned from "./../img/Icon_Pinned.svg";
-import iconComments from "./../img/Icon_Comments.svg";
-import iconRetweet from "./../img/Icon_Retweet.svg";
-import iconLoves from "./../img/Icon_Loves.svg";
-import iconEnvelope from "./../img/Icon_Envelope.svg";
+import iconPinned from "./img/icon-pinned.svg";
+import iconComments from "./img/icon-comments.svg";
+import iconRetweet from "./img/icon-retweet.svg";
+import iconLoves from "./img/icon-loves.svg";
+import iconEnvelope from "./img/icon-envelope.svg";
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -31,6 +31,10 @@ const Link = styled.a`
 
   &:hover {
     text-decoration: underline;
+  }
+
+  &.active {
+    color: #14171a;
   }
 `;
 
@@ -114,7 +118,6 @@ const Text = styled.p`
   padding: 0px;
   line-height: 30px;
   font-size: 25px;
-  letter-spacing: 0.38px;
   color: #292f33;
 `;
 
@@ -278,13 +281,13 @@ const Tweets = function() {
     <Wrapper>
       <Header>
         <li>
-          <Link href="">Tweets</Link>
+          <Link href="#">Tweets</Link>
         </li>
         <li>
-          <Link href="">Tweets & replies</Link>
+          <Link href="#">Tweets & replies</Link>
         </li>
         <li>
-          <Link href="">Media</Link>
+          <Link href="#">Media</Link>
         </li>
       </Header>
       <Tweet>
@@ -295,8 +298,10 @@ const Tweets = function() {
         <Main>
           <div>
             <Avatar
-              src={process.env.PUBLIC_URL + "/img/AvatarMedium.png"}
-              srcSet={process.env.PUBLIC_URL + `${"/img/AvatarMediumRetina.png"} 2x`}
+              src={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
+              srcSet={
+                process.env.PUBLIC_URL + `${"/img/avatar-medium-retina.png"} 2x`
+              }
               alt="avatar"
             />
           </div>
@@ -316,8 +321,8 @@ const Tweets = function() {
             </Text>
             <TweetPictureContainer>
               <TweetPicture
-                src={process.env.PUBLIC_URL + "/img/Picture.png"}
-                srcSet={process.env.PUBLIC_URL + `${"/img/PictureRetina.png"} 2x`}
+                src={process.env.PUBLIC_URL + "/img/img1.png"}
+                srcSet={process.env.PUBLIC_URL + `${"/img/img1-retina.png"} 2x`}
                 alt=""
               />
             </TweetPictureContainer>
@@ -343,8 +348,10 @@ const Tweets = function() {
         <Main>
           <div>
             <Avatar
-              src={process.env.PUBLIC_URL + "/img/AvatarMedium.png"}
-              srcSet={process.env.PUBLIC_URL + `${"/img/AvatarMediumRetina.png"} 2x`}
+              src={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
+              srcSet={
+                process.env.PUBLIC_URL + `${"/img/avatar-medium-retina.png"} 2x`
+              }
               alt="avatar"
             />
           </div>
@@ -382,8 +389,10 @@ const Tweets = function() {
         <Main>
           <div>
             <Avatar
-              src={process.env.PUBLIC_URL + "/img/AvatarMedium.png"}
-              srcSet={process.env.PUBLIC_URL + `${"/img/AvatarMediumRetina.png"} 2x`}
+              src={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
+              srcSet={
+                process.env.PUBLIC_URL + `${"/img/avatar-medium-retina.png"} 2x`
+              }
               alt="avatar"
             />
           </div>
@@ -402,8 +411,8 @@ const Tweets = function() {
             <TweetLink>
               <div>
                 <TweetLinkImage
-                  src={process.env.PUBLIC_URL + "/img/TweetLinkImage.png"}
-                  srcSet={process.env.PUBLIC_URL + `${"/img/TweetLinkImage.png"} 2x`}
+                  src={process.env.PUBLIC_URL + "/img/img2.png"}
+                  srcSet={process.env.PUBLIC_URL + `${"/img/img2-retina.png"} 2x`}
                   alt=""
                 />
               </div>

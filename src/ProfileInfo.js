@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import tickLogo from "./../img/Tick.svg";
-import locationIcon from "./../img/Icon_Location.svg";
-import linkIcon from "./../img/Icon_Link.svg";
-import joinedIcon from "./../img/Icon_Joined.svg";
+import iconTick from "./img/icon-tick.svg";
+import iconLocation from "./img/icon-location.svg";
+import iconLink from "./img/icon-link.svg";
+import iconJoined from "./img/icon-joined.svg";
 
 const Title = styled.h1`
   padding-top: 41px;
@@ -51,9 +51,15 @@ const Header = styled.h2`
   font-weight: normal;
 `;
 
-const Username = styled.span`
+const Username = styled.a`
+  text-decoration: none;
   font-size: 14px;
   margin-right: 8px;
+  color: #697787;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `;
 
 const Bio = styled.p`
@@ -71,7 +77,17 @@ const Info = styled.ul`
   list-style-type: none;
 `;
 
-const InfoItem = styled.li`
+const Location = styled.li`
+  display: flex;
+  align-items: center;
+`;
+
+const Url = styled.li`
+  display: flex;
+  align-items: center;
+`;
+
+const Joined = styled.li`
   display: flex;
   align-items: center;
 `;
@@ -102,21 +118,29 @@ const Buttons = styled.div`
 `;
 
 const ButtonTweet = styled.button`
-  background: #1da1f2;
+  background-color: #4ab3f4;
   border-radius: 100px;
   padding: 11px 34px 11px 34px;
   color: #fff;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: #1da1f2;
+  }
 `;
 
 const ButtonMessage = styled.button`
-  background: #1da1f2;
+  background-color: #4ab3f4;
   border-radius: 100px;
   padding: 11px 34px 11px 34px;
   color: #fff;
   border: none;
   cursor: pointer;
+
+  &:hover {
+    background-color: #1da1f2;
+  }
 `;
 
 const ProfileInfo = function() {
@@ -124,17 +148,19 @@ const ProfileInfo = function() {
     <div>
       <AvatarBig>
         <AvatarBigIcon
-          src={process.env.PUBLIC_URL + "/img/AvatarBig.png"}
-          srcSet={process.env.PUBLIC_URL + `${"/img/AvatarBigRetina.png"} 2x`}
+          src={process.env.PUBLIC_URL + "/img/avatar-large.png"}
+          srcSet={process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`}
           alt="avatar"
         />
       </AvatarBig>
       <Title>
         <ProfileLink href="">Every Interaction</ProfileLink>
-        <img src={tickLogo} alt="tick" />
+        <img src={iconTick} alt="tick" />
       </Title>
       <Header>
-        <Username>@EveryInteract</Username>
+        <Username a href="#">
+          @EveryInteract
+        </Username>
         <span>Follows you</span>
       </Header>
       <Bio>
@@ -142,18 +168,18 @@ const ProfileInfo = function() {
         we make things *work* amazing.
       </Bio>
       <Info>
-        <InfoItem>
-          <img src={locationIcon} alt="" />
+        <Location>
+          <img src={iconLocation} alt="" />
           <InfoText>London, UK</InfoText>
-        </InfoItem>
-        <InfoItem>
-          <img src={linkIcon} alt="" />
+        </Location>
+        <Url>
+          <img src={iconLink} alt="" />
           <InfoLink href="">everyinteraction.com</InfoLink>
-        </InfoItem>
-        <InfoItem>
-          <img src={joinedIcon} alt="" />
+        </Url>
+        <Joined>
+          <img src={iconJoined} alt="" />
           <InfoText>Joined May 2008</InfoText>
-        </InfoItem>
+        </Joined>
       </Info>
       <Buttons>
         <ButtonTweet>Tweet to</ButtonTweet>

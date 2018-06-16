@@ -6,20 +6,19 @@ import iconTwitterLogo from "./img/icon-twitter-logo.svg";
 import "normalize.css";
 import "flexboxgrid2/flexboxgrid2.css";
 // components
-import Header from "./components/Header";
-import Navigation from "./components/Navigation";
-import NavigationExtra from "./components/NavigationExtra";
-import Banner from "./components/Banner";
+import Header from "./Header";
+import Navigation from "./Navigation";
+import NavigationExtra from "./NavigationExtra";
+import Banner from "./Banner";
 import {
   Statistics,
   Numbers,
   Actions,
   FollowButton,
   ActionButton
-} from "./components/Statistics";
-import ProfileInfo from "./components/ProfileInfo";
-import Tweets from "./components/Tweets";
-// router
+} from "./Statistics";
+import ProfileInfo from "./ProfileInfo";
+import Tweets from "./Tweets";
 
 const HeaderWrapper = styled.div`
   display: flex;

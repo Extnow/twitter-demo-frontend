@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import magnifierLogo from "./../img/Icon_Magnifier.svg";
+import iconMagnifier from "./img/icon-magnifier.svg";
 
 const SearchInput = styled.input`
   background-color: #f5f8fa;
@@ -9,14 +9,19 @@ const SearchInput = styled.input`
   border-radius: 100px;
   padding: 9px 61px 8px 11px;
   font-size: 12px;
-  background-image: url(${magnifierLogo});
+  background-image: url(${iconMagnifier});
   background-repeat: no-repeat;
   background-position: 193px 50%;
   margin-right: 15px;
+
+  &:focus {
+    border: 1px solid #1da1f2;
+    background-color: #fff;
+  }
 `;
 
 const TweetButton = styled.button`
-  background: #1da1f2;
+  background-color: #4ab3f4;
   border-radius: 100px;
   border: none;
   color: #fff;
@@ -27,11 +32,21 @@ const TweetButton = styled.button`
   padding: 9px 16px;
   cursor: pointer;
   margin-left: 15px;
+
+  &:hover {
+    background-color: #1da1f2;
+  }
 `;
 
 const NavExtra = styled.div`
   display: flex;
   align-items: center;
+`;
+
+const AvatarButton = styled.button`
+  background: none;
+  border: none;
+  cursor: pointer;
 `;
 
 const AvatarIcon = styled.img`
@@ -44,13 +59,13 @@ const NavigationExtra = function() {
   return (
     <NavExtra>
       <SearchInput placeholder="Search Twitter" type="text" />
-      <a href="">
+      <AvatarButton>
         <AvatarIcon
-          src={process.env.PUBLIC_URL + "/img/Avatar.png"}
-          srcSet={process.env.PUBLIC_URL + `${"/img/AvatarRetina.png"} 2x`}
+          src={process.env.PUBLIC_URL + "/img/avatar-small.png"}
+          srcSet={process.env.PUBLIC_URL + `${"/img/avatar-small-retina.png"} 2x`}
           alt="avatar"
         />
-      </a>
+      </AvatarButton>
       <TweetButton>Tweet</TweetButton>
     </NavExtra>
   );

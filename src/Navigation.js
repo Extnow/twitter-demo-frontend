@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 // import icons
-import homeLogo from "./../img/Icon_Home.svg";
-import momentsLogo from "./../img/Icon_Moments.svg";
-import notificationsLogo from "./../img/Icon_Notifications.svg";
-import messagesLogo from "./../img/Icon_Messages.svg";
+import iconHome from "./img/icon-home.svg";
+import iconMoments from "./img/icon-moments.svg";
+import iconNotifications from "./img/icon-notifications.svg";
+import iconMessages from "./img/icon-messages.svg";
 // router
 import { BrowserRouter, Route, Link, Switch, Redirect } from "react-router-dom";
 
@@ -16,11 +16,12 @@ const Links = styled.ul`
   margin: 0;
 `;
 
-const Lik = styled(Link)`
+const LinkStyled = styled(Link)`
   display: flex;
   padding: 13px 25px 13px 5px;
   align-items: center;
   font-size: 13px;
+  font-weight: bold;
   color: #667580;
   text-decoration: none;
 
@@ -38,28 +39,28 @@ const Navigation = function() {
     <BrowserRouter>
       <Links>
         <li>
-          <Lik to="/">
-            <Icon src={homeLogo} alt="home" />
+          <LinkStyled to="/">
+            <Icon src={iconHome} alt="home" />
             <span>Home</span>
-          </Lik>
+          </LinkStyled>
         </li>
         <li>
-          <Lik to="/moments">
-            <Icon src={momentsLogo} alt="moments" />
+          <LinkStyled to="/moments">
+            <Icon src={iconMoments} alt="moments" />
             <span>Moments</span>
-          </Lik>
+          </LinkStyled>
         </li>
         <li>
-          <Lik to="/notifications">
-            <Icon src={notificationsLogo} alt="notifications" />
+          <LinkStyled to="/notifications">
+            <Icon src={iconNotifications} alt="notifications" />
             <span>Notifications</span>
-          </Lik>
+          </LinkStyled>
         </li>
         <li>
-          <Lik to="/messages">
-            <Icon src={messagesLogo} alt="messages" />
+          <LinkStyled to="/messages">
+            <Icon src={iconMessages} alt="messages" />
             <span>Messages</span>
-          </Lik>
+          </LinkStyled>
         </li>
 
         <Switch>
