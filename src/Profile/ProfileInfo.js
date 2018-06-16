@@ -5,14 +5,6 @@ import iconTick from "./../img/icon-tick.svg";
 import iconLocation from "./../img/icon-location.svg";
 import iconLink from "./../img/icon-link.svg";
 import iconJoined from "./../img/icon-joined.svg";
-// components
-import Tweets from "./Tweets";
-
-const Profile = styled.div`
-  background-color: #e6ecf0;
-  position: relative;
-  font-family: Helvetica Neue, Helvetica, sans-serif;
-`;
 
 const Title = styled.h1`
   padding-top: 41px;
@@ -85,19 +77,19 @@ const Info = styled.ul`
   list-style-type: none;
 `;
 
-const Location = styled.li`
+const Element = styled.li`
   display: flex;
   align-items: center;
-`;
 
-const Url = styled.li`
-  display: flex;
-  align-items: center;
-`;
-
-const Joined = styled.li`
-  display: flex;
-  align-items: center;
+  &:before {
+    content: "";
+    background-image: url(${props => props.img});
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
 `;
 
 const InfoLink = styled.a`
@@ -163,57 +155,43 @@ const ButtonMessage = styled.button`
 
 export default function() {
   return (
-    <Profile>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-3">
-            <AvatarBig>
-              <AvatarBigIcon
-                src={process.env.PUBLIC_URL + "/img/avatar-large.png"}
-                srcSet={
-                  process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`
-                }
-                alt="avatar"
-              />
-            </AvatarBig>
-            <Title>
-              <ProfileLink href="">Every Interaction</ProfileLink>
-              <img src={iconTick} alt="tick" />
-            </Title>
-            <Header>
-              <Username a href="#">
-                @EveryInteract
-              </Username>
-              <span>Follows you</span>
-            </Header>
-            <Bio>
-              UX Design studio focussed problem solving creativity. Design to us is
-              how can we make things *work* amazing.
-            </Bio>
-            <Info>
-              <Location>
-                <img src={iconLocation} alt="" />
-                <InfoText>London, UK</InfoText>
-              </Location>
-              <Url>
-                <img src={iconLink} alt="" />
-                <InfoLink href="">everyinteraction.com</InfoLink>
-              </Url>
-              <Joined>
-                <img src={iconJoined} alt="" />
-                <InfoText>Joined May 2008</InfoText>
-              </Joined>
-            </Info>
-            <Buttons>
-              <ButtonTweet>Tweet to</ButtonTweet>
-              <ButtonMessage>Message</ButtonMessage>
-            </Buttons>
-          </div>
-          <div className="col-xs-6">
-            <Tweets />
-          </div>
-        </div>
-      </div>
-    </Profile>
+    <div>
+      <AvatarBig>
+        <AvatarBigIcon
+          src={process.env.PUBLIC_URL + "/img/avatar-large.png"}
+          srcSet={process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`}
+          alt="avatar"
+        />
+      </AvatarBig>
+      <Title>
+        <ProfileLink href="#">Every Interaction</ProfileLink>
+        <img src={iconTick} alt="tick" />
+      </Title>
+      <Header>
+        <Username a href="#">
+          @EveryInteract
+        </Username>
+        <span>Follows you</span>
+      </Header>
+      <Bio>
+        UX Design studio focussed problem solving creativity. Design to us is how can
+        we make things *work* amazing.
+      </Bio>
+      <Info>
+        <Element img={iconLocation}>
+          <InfoText>London, UK</InfoText>
+        </Element>
+        <Element img={iconLink}>
+          <InfoLink href="#">everyinteraction.com</InfoLink>
+        </Element>
+        <Element img={iconJoined}>
+          <InfoText>Joined May 2008</InfoText>
+        </Element>
+      </Info>
+      <Buttons>
+        <ButtonTweet>Tweet to</ButtonTweet>
+        <ButtonMessage>Message</ButtonMessage>
+      </Buttons>
+    </div>
   );
 }

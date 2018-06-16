@@ -20,21 +20,23 @@ const Header = styled.ul`
   padding: 0;
 `;
 
-const Link = styled.a`
-  display: block;
+const NavigationButton = styled.button`
+  border: none;
+  background-color: #fff;
   font-size: 18px;
   line-height: 18px;
   color: #1da1f2;
   font-weight: bold;
-  text-decoration: none;
   padding: 15px 15px 12px;
+  cursor: pointer;
 
   &:hover {
     text-decoration: underline;
   }
 
-  &.active {
-    color: #14171a;
+  &:focus {
+    outline: none;
+    text-decoration: underline;
   }
 `;
 
@@ -210,12 +212,12 @@ const ActionList = styled.ul`
   margin-top: 14px;
 `;
 
-const ButtonComments = styled.button`
+const Button = styled.button`
   border: none;
   height: 18px;
   padding: 1px 25px;
   background: none;
-  background-image: url(${iconComments});
+  background-image: url(${props => props.img});
   background-position: 0% 50%;
   background-repeat: no-repeat;
   cursor: pointer;
@@ -223,71 +225,22 @@ const ButtonComments = styled.button`
   color: #667580;
 
   &:hover {
-    color: #1da1f2;
+    color: ${props => props.color};
   }
 `;
 
-const ButtonRetweet = styled.button`
-  border: none;
-  height: 18px;
-  padding: 1px 25px;
-  background: none;
-  background-image: url(${iconRetweet});
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-size: 13px;
-  color: #667580;
-
-  &:hover {
-    color: #17bf63;
-  }
-`;
-
-const ButtonLoves = styled.button`
-  border: none;
-  height: 18px;
-  padding: 1px 25px;
-  background: none;
-  background-image: url(${iconLoves});
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-  font-size: 13px;
-  color: #667580;
-
-  &:hover {
-    color: #e0245e;
-  }
-`;
-
-const ButtonEnvelope = styled.button`
-  border: none;
-  height: 18px;
-  padding: 1px 25px;
-  background: none;
-  background-image: url(${iconEnvelope});
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  cursor: pointer;
-
-  &:hover {
-    color: #17bf63;
-  }
-`;
-
-const Tweets = function() {
+export default function() {
   return (
     <Wrapper>
       <Header>
         <li>
-          <Link href="#">Tweets</Link>
+          <NavigationButton>Tweets</NavigationButton>
         </li>
         <li>
-          <Link href="#">Tweets & replies</Link>
+          <NavigationButton>Tweets & replies</NavigationButton>
         </li>
         <li>
-          <Link href="#">Media</Link>
+          <NavigationButton>Media</NavigationButton>
         </li>
       </Header>
       <Tweet>
@@ -307,17 +260,18 @@ const Tweets = function() {
           </div>
           <Content>
             <TweetHeader>
-              <TweetHeaderFullName href="">Every Interaction</TweetHeaderFullName>
+              <TweetHeaderFullName href="#">Every Interaction</TweetHeaderFullName>
               <TweetHeaderUserName>@EveryInteract</TweetHeaderUserName>
               <Time>
-                <TimeLink href="">2 Mar 2015</TimeLink>
+                <TimeLink href="#">2 Mar 2015</TimeLink>
               </Time>
             </TweetHeader>
             <Text>
               We’ve made some more resources for all you wonderful{" "}
               <HashTag>#design</HashTag> folk
               <Url>everyinteraction.com/resources/</Url>{" "}
-              <HashTag>#webdesign</HashTag> <HashTag>#UI</HashTag>
+              <HashTag>#webdesign</HashTag>
+              <HashTag>#UI</HashTag>
             </Text>
             <TweetPictureContainer>
               <TweetPicture
@@ -328,16 +282,20 @@ const Tweets = function() {
             </TweetPictureContainer>
             <ActionList>
               <li>
-                <ButtonComments />
+                <Button img={iconComments} color={"#1da1f2"} />
               </li>
               <li>
-                <ButtonRetweet>17</ButtonRetweet>
+                <Button img={iconRetweet} color={"#17bf63"}>
+                  17
+                </Button>
               </li>
               <li>
-                <ButtonLoves>47</ButtonLoves>
+                <Button img={iconLoves} color={"#e0245e"}>
+                  47
+                </Button>
               </li>
               <li>
-                <ButtonEnvelope />
+                <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
             </ActionList>
           </Content>
@@ -369,16 +327,20 @@ const Tweets = function() {
             </Text>
             <ActionList>
               <li>
-                <ButtonComments>1</ButtonComments>
+                <Button img={iconComments} color={"#1da1f2"} />
               </li>
               <li>
-                <ButtonRetweet>4</ButtonRetweet>
+                <Button img={iconRetweet} color={"#17bf63"}>
+                  17
+                </Button>
               </li>
               <li>
-                <ButtonLoves>2</ButtonLoves>
+                <Button img={iconLoves} color={"#e0245e"}>
+                  47
+                </Button>
               </li>
               <li>
-                <ButtonEnvelope />
+                <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
             </ActionList>
           </Content>
@@ -428,16 +390,20 @@ const Tweets = function() {
             </TweetLink>
             <ActionList>
               <li>
-                <ButtonComments />
+                <Button img={iconComments} color={"#1da1f2"} />
               </li>
               <li>
-                <ButtonRetweet />
+                <Button img={iconRetweet} color={"#17bf63"}>
+                  17
+                </Button>
               </li>
               <li>
-                <ButtonLoves />
+                <Button img={iconLoves} color={"#e0245e"}>
+                  47
+                </Button>
               </li>
               <li>
-                <ButtonEnvelope />
+                <Button img={iconEnvelope} color={"#1da1f2"} />
               </li>
             </ActionList>
           </Content>
@@ -445,6 +411,4 @@ const Tweets = function() {
       </Tweet>
     </Wrapper>
   );
-};
-
-export default Tweets;
+}
