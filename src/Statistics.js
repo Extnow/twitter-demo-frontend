@@ -11,7 +11,13 @@ const Statistics = styled.div`
   z-index: 1;
 `;
 
-const Links = styled.ul`
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+const ButtonsList = styled.ul`
   display: flex;
   align-items: center;
   list-style-type: none;
@@ -26,16 +32,21 @@ const Button = styled.button`
   text-align: center;
   padding: 0 10px;
   font-size: 12px;
+  font-weight: bold;
   padding: 11px 15px;
   cursor: pointer;
+  border-bottom: 3px solid transparent;
 
   &:hover {
     color: #1da1f2;
+    border-bottom: 3px solid #1da1f2;
   }
-`;
 
-const Actions = styled.div`
-  display: flex;
+  &:focus {
+    outline: none;
+    color: #1da1f2;
+    border-bottom: 3px solid #1da1f2;
+  }
 `;
 
 const Value = styled.div`
@@ -43,44 +54,9 @@ const Value = styled.div`
   font-size: 18px;
 `;
 
-const Numbers = function() {
-  return (
-    <div>
-      <Links>
-        <li>
-          <Button>
-            <span>Tweets</span>
-            <Value>8,058</Value>
-          </Button>
-        </li>
-        <li>
-          <Button>
-            <span>Following</span>
-            <Value>721</Value>
-          </Button>
-        </li>
-        <li>
-          <Button>
-            <span>Followers</span>
-            <Value>1,815</Value>
-          </Button>
-        </li>
-        <li>
-          <Button>
-            <span>Likes</span>
-            <Value>460</Value>
-          </Button>
-        </li>
-        <li>
-          <Button>
-            <span>Lists</span>
-            <Value>2</Value>
-          </Button>
-        </li>
-      </Links>
-    </div>
-  );
-};
+const Actions = styled.div`
+  display: flex;
+`;
 
 const FollowButton = styled.button`
   background-color: #fff;
@@ -99,8 +75,13 @@ const FollowButton = styled.button`
     background-color: #e8f5fd;
   }
 
+  &:active {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+  }
+
   &:focus {
-    background-color: #e8f5fd;
+    outline: 0;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
   }
 `;
 
@@ -113,4 +94,53 @@ const ActionButton = styled.button`
   cursor: pointer;
 `;
 
-export { Statistics, Numbers, Actions, FollowButton, ActionButton };
+export default function() {
+  return (
+    <Statistics>
+      <div className="container">
+        <div className="row">
+          <div className="col-xs-offset-3 col-xs-9">
+            <Wrapper>
+              <ButtonsList>
+                <li>
+                  <Button>
+                    <span>Tweets</span>
+                    <Value>8,058</Value>
+                  </Button>
+                </li>
+                <li>
+                  <Button>
+                    <span>Following</span>
+                    <Value>721</Value>
+                  </Button>
+                </li>
+                <li>
+                  <Button>
+                    <span>Followers</span>
+                    <Value>1,815</Value>
+                  </Button>
+                </li>
+                <li>
+                  <Button>
+                    <span>Likes</span>
+                    <Value>460</Value>
+                  </Button>
+                </li>
+                <li>
+                  <Button>
+                    <span>Lists</span>
+                    <Value>2</Value>
+                  </Button>
+                </li>
+              </ButtonsList>
+              <Actions>
+                <FollowButton>Follow</FollowButton>
+                <ActionButton />
+              </Actions>
+            </Wrapper>
+          </div>
+        </div>
+      </div>
+    </Statistics>
+  );
+}
