@@ -1,14 +1,10 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-// images
-import iconTwitterLogo from "./img/icon-twitter-logo.svg";
 // css
 import "normalize.css";
 import "flexboxgrid2/flexboxgrid2.css";
 // components
 import Header from "./Header";
-import Navigation from "./Navigation";
-import NavigationExtra from "./NavigationExtra";
 import Banner from "./Banner";
 import {
   Statistics,
@@ -19,17 +15,8 @@ import {
 } from "./Statistics";
 import ProfileInfo from "./ProfileInfo";
 import Tweets from "./Tweets";
-
-const HeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const TwitterLogo = styled.img`
-  position: absolute;
-  left: 50%;
-`;
+// router
+import { BrowserRouter } from "react-router-dom";
 
 const StatisticsWrapper = styled.div`
   display: flex;
@@ -46,45 +33,39 @@ const Profile = styled.div`
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <Header>
-          <div className="container">
-            <HeaderWrapper>
-              <Navigation />
-              <TwitterLogo src={iconTwitterLogo} alt="twitterLogo" />
-              <NavigationExtra />
-            </HeaderWrapper>
-          </div>
-        </Header>
-        <Banner />
-        <Statistics>
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-offset-3 col-xs-9">
-                <StatisticsWrapper>
-                  <Numbers />
-                  <Actions>
-                    <FollowButton>Follow</FollowButton>
-                    <ActionButton />
-                  </Actions>
-                </StatisticsWrapper>
+      <BrowserRouter>
+        <div className="App">
+          <Header />
+          <Banner />
+          <Statistics>
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-offset-3 col-xs-9">
+                  <StatisticsWrapper>
+                    <Numbers />
+                    <Actions>
+                      <FollowButton>Follow</FollowButton>
+                      <ActionButton />
+                    </Actions>
+                  </StatisticsWrapper>
+                </div>
               </div>
             </div>
-          </div>
-        </Statistics>
-        <Profile>
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-3">
-                <ProfileInfo />
-              </div>
-              <div className="col-xs-6">
-                <Tweets />
+          </Statistics>
+          <Profile>
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-3">
+                  <ProfileInfo />
+                </div>
+                <div className="col-xs-6">
+                  <Tweets />
+                </div>
               </div>
             </div>
-          </div>
-        </Profile>
-      </div>
+          </Profile>
+        </div>
+      </BrowserRouter>
     );
   }
 }
