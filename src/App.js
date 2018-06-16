@@ -1,28 +1,12 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 // css
 import "normalize.css";
 import "flexboxgrid2/flexboxgrid2.css";
 // components
 import Header from "./Header";
-import Statistics from "./Statistics";
-import ProfileInfo from "./ProfileInfo";
-import Tweets from "./Tweets";
+import Profile from "./Profile/Index";
 // router
-import { BrowserRouter } from "react-router-dom";
-
-const Profile = styled.div`
-  background-color: #e6ecf0;
-  position: relative;
-  font-family: Helvetica Neue, Helvetica, sans-serif;
-`;
-
-const Banner = styled.div`
-  height: 380px;
-  background-image: url(${"/img/banner.png"});
-  background-repeat: no-repeat;
-  background-size: cover;
-`;
+import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
 
 class App extends Component {
   render() {
@@ -30,20 +14,10 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Header />
-          <Banner />
-          <Statistics />
-          <Profile>
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-3">
-                  <ProfileInfo />
-                </div>
-                <div className="col-xs-6">
-                  <Tweets />
-                </div>
-              </div>
-            </div>
-          </Profile>
+          <Switch>
+            <Route exact path="/EveryInteract" component={Profile} />
+            <Redirect exact from="/" to="/EveryInteract" />
+          </Switch>
         </div>
       </BrowserRouter>
     );

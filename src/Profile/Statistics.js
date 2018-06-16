@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconMore from "./img/icon-more.png";
+import iconMore from "./../img/icon-more.png";
 
 const Statistics = styled.div`
   position: relative;

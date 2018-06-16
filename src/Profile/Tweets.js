@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconPinned from "./img/icon-pinned.svg";
-import iconComments from "./img/icon-comments.svg";
-import iconRetweet from "./img/icon-retweet.svg";
-import iconLoves from "./img/icon-loves.svg";
-import iconEnvelope from "./img/icon-envelope.svg";
+import iconPinned from "./../img/icon-pinned.svg";
+import iconComments from "./../img/icon-comments.svg";
+import iconRetweet from "./../img/icon-retweet.svg";
+import iconLoves from "./../img/icon-loves.svg";
+import iconEnvelope from "./../img/icon-envelope.svg";
 
 const Wrapper = styled.div`
   margin-top: 10px;
