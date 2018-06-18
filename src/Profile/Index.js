@@ -6,11 +6,11 @@ import Statistics from "./Statistics";
 import ProfileInfo from "./ProfileInfo";
 import Tweets from "./Tweets";
 
-const Banner = styled.div`
+const Banner = styled.img`
+  display: block;
   height: 380px;
-  background-image: url(${"/img/banner.png"});
-  background-repeat: no-repeat;
-  background-size: cover;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const Profile = styled.div`
@@ -26,7 +26,7 @@ export default function() {
         <meta charSet="utf-8" />
         <title>Every Interaction (@EveryInteract) | Twitter</title>
       </Helmet>
-      <Banner />
+      <Banner src={process.env.PUBLIC_URL + "/img/banner.png"} alt="banner" />
       <Statistics />
       <Profile>
         <div className="container">

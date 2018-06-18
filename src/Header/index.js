@@ -181,7 +181,8 @@ export default function() {
               <AvatarIcon
                 src={process.env.PUBLIC_URL + "/img/avatar-small.png"}
                 srcSet={
-                  process.env.PUBLIC_URL + `${"/img/avatar-small-retina.png"} 2x`
+                  process.env.PUBLIC_URL +
+                  `${"/img/avatar-small-retina.png"} 2x`
                 }
                 alt="avatar"
               />

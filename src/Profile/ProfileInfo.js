@@ -26,6 +26,7 @@ const Avatar = styled.div`
 `;
 
 const AvatarImage = styled.img`
+  display: block;
   width: 174px;
   height: 174px;
 `;
@@ -141,7 +142,9 @@ export default function() {
       <Avatar>
         <AvatarImage
           src={process.env.PUBLIC_URL + "/img/avatar-large.png"}
-          srcSet={process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`}
+          srcSet={
+            process.env.PUBLIC_URL + `${"/img/avatar-large-retina.png"} 2x`
+          }
           alt="avatar"
         />
       </Avatar>
@@ -156,8 +159,8 @@ export default function() {
         <span>Follows you</span>
       </Header>
       <Bio>
-        UX Design studio focussed problem solving creativity. Design to us is how can
-        we make things *work* amazing.
+        UX Design studio focussed problem solving creativity. Design to us is
+        how can we make things *work* amazing.
       </Bio>
       <Info>
         <Element img={iconLocation}>
