@@ -4,7 +4,7 @@ import "normalize.css";
 import "flexboxgrid2/flexboxgrid2.css";
 // components
 import Header from "./Header";
-import Profile from "./Profile/index";
+import Profile from "./Profile";
 // router
 import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
 

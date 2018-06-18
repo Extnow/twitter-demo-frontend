@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconPinned from "./../img/icon-pinned.svg";
-import iconComments from "./../img/icon-comments.svg";
-import iconRetweet from "./../img/icon-retweet.svg";
-import iconLoves from "./../img/icon-loves.svg";
-import iconEnvelope from "./../img/icon-envelope.svg";
+import iconPinned from "./img/icon-pinned.svg";
+import iconComments from "./img/icon-comments.svg";
+import iconRetweet from "./img/icon-retweet.svg";
+import iconLoves from "./img/icon-loves.svg";
+import iconEnvelope from "./img/icon-envelope.svg";
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -138,7 +138,7 @@ const TextSmall = styled.p`
   font-size: 16px;
 `;
 
-const Url = styled.a`
+const Link = styled.a`
   color: #1da1f2;
   text-decoration: none;
   display: inline-block;
@@ -167,7 +167,7 @@ const Picture = styled.img`
   display: block;
 `;
 
-const TweetLinkContent = styled.a`
+const QuoteTweet = styled.a`
   display: flex;
   margin-top: 6px;
   background-color: #ffffff;
@@ -181,32 +181,32 @@ const TweetLinkContent = styled.a`
   }
 `;
 
-const TweetLinkImage = styled.img`
+const QuoteImage = styled.img`
   display: block;
   width: 126px;
   height: 126px;
 `;
 
-const TweetLink = styled.div`
+const QuoteContent = styled.div`
   display: flex;
   flex-direction: column;
   padding: 11px 9px;
 `;
 
-const LinkTitle = styled.h2`
+const QuoteTitle = styled.h2`
   font-weight: bold;
   font-size: 14px;
   margin: 0 0 5px 0;
 `;
 
-const LinkText = styled.p`
+const QuoteText = styled.p`
   font-size: 14px;
   line-height: 18px;
   margin: 0 0 5px 0;
   padding: 0;
 `;
 
-const LinkUrl = styled.span`
+const QuoteUrl = styled.span`
   font-size: 14px;
   line-height: 18px;
   color: #8899a6;
@@ -270,7 +270,7 @@ export default function() {
             <Text>
               We’ve made some more resources for all you wonderful{" "}
               <HashTag>#design</HashTag> folk
-              <Url>everyinteraction.com/resources/</Url>{" "}
+              <Link>everyinteraction.com/resources/</Link>{" "}
               <HashTag>#webdesign</HashTag>
               <HashTag>#UI</HashTag>
             </Text>
@@ -324,7 +324,7 @@ export default function() {
             </Header>
             <Text>
               Our new website concept; Taking you from… @ Every Interaction{" "}
-              <Url>instagram.com/p/BNFGrfhBP3M/</Url>
+              <Link>instagram.com/p/BNFGrfhBP3M/</Link>
             </Text>
             <Actions>
               <li>
@@ -371,24 +371,24 @@ export default function() {
               Variable web fonts are coming, and will open a world of opportunities
               for weight use online
             </TextSmall>
-            <TweetLinkContent>
+            <QuoteTweet>
               <div>
-                <TweetLinkImage
+                <QuoteImage
                   src={process.env.PUBLIC_URL + "/img/img2.png"}
                   srcSet={process.env.PUBLIC_URL + `${"/img/img2-retina.png"} 2x`}
                   alt=""
                 />
               </div>
-              <TweetLink>
-                <LinkTitle>The Future of Web Fonts</LinkTitle>
-                <LinkText>
+              <QuoteContent>
+                <QuoteTitle>The Future of Web Fonts</QuoteTitle>
+                <QuoteText>
                   We love typefaces. They give our sites and applications
                   personalized feel. They convey the information and tell a story.
                   They establish information hierarchy. But they’re…
-                </LinkText>
-                <LinkUrl>viliamis.com</LinkUrl>
-              </TweetLink>
-            </TweetLinkContent>
+                </QuoteText>
+                <QuoteUrl>viliamis.com</QuoteUrl>
+              </QuoteContent>
+            </QuoteTweet>
             <Actions>
               <li>
                 <Button img={iconComments} color={"#1da1f2"} />

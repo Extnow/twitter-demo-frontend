@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconTick from "./../img/icon-tick.svg";
-import iconLocation from "./../img/icon-location.svg";
-import iconLink from "./../img/icon-link.svg";
-import iconJoined from "./../img/icon-joined.svg";
+import iconTick from "./img/icon-tick.svg";
+import iconLocation from "./img/icon-location.svg";
+import iconLink from "./img/icon-link.svg";
+import iconJoined from "./img/icon-joined.svg";
 
 const Title = styled.h1`
   padding-top: 41px;

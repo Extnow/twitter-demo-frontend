@@ -61,9 +61,20 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-const TwitterLogo = styled.img`
-  position: absolute;
-  left: 50%;
+const TwitterLogo = styled.button`
+  border: none;
+  background: none;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 20px;
+    background-image: url(${iconTwitterLogo});
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -163,7 +174,7 @@ export default function() {
               </NavigationLink>
             </li>
           </Navigation>
-          <TwitterLogo src={iconTwitterLogo} alt="twitterLogo" />
+          <TwitterLogo />
           <NavExtra>
             <SearchInput placeholder="Search Twitter" type="text" />
             <AvatarButton>
