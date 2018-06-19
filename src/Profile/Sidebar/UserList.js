@@ -23,6 +23,11 @@ const Name = styled(NavLink)`
   &:hover {
     text-decoration: underline;
   }
+
+  &:focus {
+    outline: none;
+    text-decoration: underline;
+  }
 `;
 
 const Wrapper = styled.div`

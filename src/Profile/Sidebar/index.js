@@ -70,6 +70,7 @@ const Username = styled.a`
   font-size: 14px;
   margin-right: 8px;
   color: #697787;
+  text-overflow: ellipsis;
 
   &:hover {
     text-decoration: underline;

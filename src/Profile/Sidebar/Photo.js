@@ -10,6 +10,7 @@ const Img = styled.img`
   display: block;
   width: 83px;
   height: 83px;
+  border-radius: 2px;
 `;
 
 export default function(props) {

@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import Statistics from "./Statistics";
 import Sidebar from "./Sidebar";
 import Tweets from "./Tweets";
+import Recommends from "../Modules/Recommends";
 
 const Banner = styled.img`
   display: block;
@@ -36,6 +37,9 @@ export default function() {
             </div>
             <div className="col-xs-6">
               <Tweets />
+            </div>
+            <div className="col-xs-3">
+              <Recommends />
             </div>
           </div>
         </div>
