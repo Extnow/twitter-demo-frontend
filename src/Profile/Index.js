@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 // components
 import Statistics from "./Statistics";
-import ProfileInfo from "./ProfileInfo";
+import Sidebar from "./Sidebar";
 import Tweets from "./Tweets";
 
 const Banner = styled.img`
@@ -32,7 +32,7 @@ export default function() {
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
-              <ProfileInfo />
+              <Sidebar />
             </div>
             <div className="col-xs-6">
               <Tweets />
