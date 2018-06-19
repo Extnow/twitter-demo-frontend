@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 // img
 import Tweet from "./Tweet";
+// router
+import { NavLink } from "react-router-dom";
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -16,8 +18,9 @@ const Navigation = styled.ul`
   padding: 0;
 `;
 
-const NavigationButton = styled.button`
-  border: none;
+const NavigationLink = styled(NavLink)`
+  display: block;
+  text-decoration: none;
   background-color: #fff;
   font-size: 18px;
   line-height: 18px;
@@ -34,6 +37,10 @@ const NavigationButton = styled.button`
     outline: none;
     text-decoration: underline;
   }
+
+  &.active {
+    color: #14171a;
+  }
 `;
 
 export default function() {
@@ -41,13 +48,15 @@ export default function() {
     <Wrapper>
       <Navigation>
         <li>
-          <NavigationButton>Tweets</NavigationButton>
+          <NavigationLink to="/">Tweets</NavigationLink>
         </li>
         <li>
-          <NavigationButton>Tweets & replies</NavigationButton>
+          <NavigationLink to="/EveryInteract/with_replies">
+            Tweets & replies
+          </NavigationLink>
         </li>
         <li>
-          <NavigationButton>Media</NavigationButton>
+          <NavigationLink to="/EveryInteract/media">Media</NavigationLink>
         </li>
       </Navigation>
       <Tweet
@@ -68,8 +77,8 @@ export default function() {
         pictureSrc={process.env.PUBLIC_URL + "/img/img1.png"}
         pictureSrcSet={process.env.PUBLIC_URL + "/img/img1-retina.png 2x"}
         quote={false}
-        retweetValue="17"
-        lovesValue="47"
+        retweetValue={17}
+        lovesValue={47}
       />
       <Tweet
         avatarSrc={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
@@ -83,9 +92,9 @@ export default function() {
         text="Our new website concept; Taking you from… @ Every Interaction
         <a target='_blank' href='#'>instagram.com/p/BNFGrfhBP3M/</a>"
         quote={false}
-        commentValue="1"
-        retweetValue="4"
-        lovesValue="2"
+        commentValue={1}
+        retweetValue={4}
+        lovesValue={2}
       />
       <Tweet
         avatarSrc={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
