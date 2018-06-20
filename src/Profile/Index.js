@@ -6,6 +6,8 @@ import Statistics from "./Statistics";
 import Sidebar from "./Sidebar";
 import Tweets from "./Tweets";
 import Recommends from "../Modules/Recommends";
+import Trends from "../Modules/Trends";
+import Footer from "../Modules/Footer";
 
 const Banner = styled.img`
   display: block;
@@ -40,6 +42,8 @@ export default function() {
             </div>
             <div className="col-xs-3">
               <Recommends />
+              <Trends />
+              <Footer />
             </div>
           </div>
         </div>

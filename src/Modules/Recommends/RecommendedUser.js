@@ -2,16 +2,19 @@ import React from "react";
 import styled from "styled-components";
 // img
 import iconTick from "./img/icon-tick.svg";
+import iconClose from "./img/icon-close.svg";
 
 const User = styled.div`
   display: flex;
+  justify-content: space-between;
+  margin-top: 11px;
   border-bottom: 1px solid #e6ecf0;
   position: relative;
 `;
 
 const ImgWrapper = styled.div`
   position: absolute;
-  top: 10px;
+  top: 0;
   left: 0;
 `;
 
@@ -24,8 +27,8 @@ const Img = styled.img`
 const Content = styled.div`
   padding-left: 60px;
   overflow: hidden;
-  margin-top: 11px;
   padding-bottom: 11px;
+  padding-right: 20px;
 `;
 
 const Link = styled.a`
@@ -92,6 +95,21 @@ const Follow = styled.button`
   }
 `;
 
+const Close = styled.button`
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-bottom: auto;
+  padding: 0;
+`;
+
+const CloseIcon = styled.img`
+  display: block;
+  padding: 2px;
+  width: 8px;
+  height: 8px;
+`;
+
 export default function(props) {
   return (
     <User>
@@ -110,6 +128,9 @@ export default function(props) {
           <Follow>Follow</Follow>
         </div>
       </Content>
+      <Close>
+        <CloseIcon src={iconClose} alt="close button" />
+      </Close>
     </User>
   );
 }

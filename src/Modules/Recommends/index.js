@@ -10,8 +10,6 @@ const Wrapper = styled.div`
   padding: 15px;
 `;
 
-const Header = styled.header``;
-
 const Title = styled.h3`
   display: inline;
   color: #14171a;
@@ -78,13 +76,13 @@ const Footer = styled.a`
 export default function() {
   return (
     <Wrapper>
-      <Header>
+      <header>
         <Title>Who to follow</Title>
         <Small>·</Small>
         <Refresh>Refresh</Refresh>
         <Small>·</Small>
         <All href="#">All</All>
-      </Header>
+      </header>
       <RecommendedUser
         src={process.env.PUBLIC_URL + "/img/avatar-2.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-2-retina.png 2x"}
