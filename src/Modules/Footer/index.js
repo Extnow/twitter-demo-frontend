@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-// components
-import Link from "./Link.js";
 
 const Wrapper = styled.div`
   margin-top: 20px;
@@ -15,17 +13,30 @@ const Copyright = styled.span`
   margin-right: 7px;
 `;
 
+const Link = styled.a`
+  display: inline-block;
+  font-size: 13px;
+  line-height: 18px;
+  color: #718290;
+  text-decoration: none;
+  margin-right: 7px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
 export default function() {
   return (
     <Wrapper>
       <Copyright>© Twitter, 2018</Copyright>
-      <Link link="About" />
-      <Link link="Help Center" />
-      <Link link="Terms" />
-      <Link link="Privacy policy" />
-      <Link link="Cookies" />
-      <Link link="Ads" />
-      <Link link="Info" />
+      <Link href="#">About</Link>
+      <Link href="#">Help Center</Link>
+      <Link href="#">Terms</Link>
+      <Link href="#">Privacy policy</Link>
+      <Link href="#">Cookies</Link>
+      <Link href="#">Ads</Link>
+      <Link href="#">Info</Link>
     </Wrapper>
   );
 }
