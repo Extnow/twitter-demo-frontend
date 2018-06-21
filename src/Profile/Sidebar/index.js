@@ -139,9 +139,14 @@ const Button = styled.button`
   color: #fff;
   border: none;
   cursor: pointer;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #1da1f2;
+  }
+
+  &:active {
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
   }
 
   &:focus {

@@ -77,13 +77,14 @@ const Follow = styled.button`
   padding: 9px 27px;
   cursor: pointer;
   margin-right: 15px;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #e8f5fd;
   }
 
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1da1f2;
   }
 
   &:focus {
@@ -97,6 +98,7 @@ const ExtraActions = styled.button`
   background-color: transparent;
   cursor: pointer;
   padding: 8px;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:before {
     content: "";

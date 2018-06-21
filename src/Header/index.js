@@ -86,6 +86,7 @@ const SearchInput = styled.input`
   background-repeat: no-repeat;
   background-position: 193px 50%;
   margin-right: 15px;
+  transition: border 0.15s ease-in-out;
 
   &:focus {
     outline: none;
@@ -106,13 +107,14 @@ const TweetButton = styled.button`
   padding: 9px 16px;
   cursor: pointer;
   margin-left: 15px;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #1da1f2;
   }
 
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
   }
 
   &:focus {
@@ -133,6 +135,7 @@ const AvatarButton = styled.button`
   cursor: pointer;
   overflow: hidden;
   padding: 0;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:focus {
     outline: 0;

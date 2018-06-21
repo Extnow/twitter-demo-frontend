@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 const Follower = styled(Link)`
   display: block;
   margin: 0 5px 5px 0;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:focus {
     outline: none;

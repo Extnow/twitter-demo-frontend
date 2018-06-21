@@ -80,13 +80,14 @@ const Follow = styled.button`
   text-align: center;
   color: #1da1f2;
   cursor: pointer;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #e8f5fd;
   }
 
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1da1f2;
   }
 
   &:focus {
