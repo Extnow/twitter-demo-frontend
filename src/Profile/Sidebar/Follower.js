@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 // router
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Follower = styled(NavLink)`
+const Follower = styled(Link)`
   display: block;
   margin: 0 5px 5px 0;
 

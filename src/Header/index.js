@@ -47,7 +47,6 @@ const NavigationLink = styled(NavLink)`
   &:focus {
     outline: none;
     color: #1da1f2;
-    border-bottom: 3px solid #1da1f2;
   }
 
   &:before {

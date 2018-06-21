@@ -8,7 +8,7 @@ import iconJoined from "./img/icon-joined.svg";
 import iconFollowers from "./img/icon-followers.svg";
 import iconPhotos from "./img/icon-photos.svg";
 // components
-import UserList from "./UserList";
+import List from "./List";
 import Follower from "./Follower";
 import Photo from "./Photo";
 
@@ -194,11 +194,10 @@ export default function() {
         </Buttons>
       </WrapperInfo>
       <WrapperList>
-        <UserList
+        <List
           title="6 Followers you know"
-          url="/EveryInteract/followers_you_follow"
+          to="/EveryInteract/followers_you_follow"
           icon={iconFollowers}
-          isFollowers={true}
         >
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-1.png"}
@@ -236,14 +235,13 @@ export default function() {
             name="follower-6"
             url="/follower-6"
           />
-        </UserList>
+        </List>
       </WrapperList>
       <WrapperList>
-        <UserList
+        <List
           title="522 Photos and videos"
-          url="/EveryInteract/media"
+          to="/EveryInteract/media"
           icon={iconPhotos}
-          isPhotos={true}
         >
           <Photo
             src={process.env.PUBLIC_URL + "/img/photo-1.png"}
@@ -275,7 +273,7 @@ export default function() {
             srcSet={process.env.PUBLIC_URL + "/img/photo-6-retina.png 2x"}
             name="photo-6"
           />
-        </UserList>
+        </List>
       </WrapperList>
     </div>
   );

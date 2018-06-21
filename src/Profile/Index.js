@@ -5,9 +5,9 @@ import { Helmet } from "react-helmet";
 import Statistics from "./Statistics";
 import Sidebar from "./Sidebar";
 import Tweets from "./Tweets";
-import Recommends from "../Modules/Recommends";
-import Trends from "../Modules/Trends";
-import Footer from "../Modules/Footer";
+import Recommends from "../Recommends";
+import Trends from "../Trends";
+import Footer from "../Footer";
 
 const Banner = styled.img`
   display: block;

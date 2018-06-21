@@ -3,11 +3,11 @@ import styled from "styled-components";
 
 const Trend = styled.div`
   margin-bottom: 10px;
+  line-height: 20px;
 `;
 
-const HashTag = styled.a`
+const Link = styled.a`
   font-size: 15px;
-  line-height: 20px;
   color: #1da1f2;
   font-weight: bold;
   text-decoration: none;
@@ -17,17 +17,17 @@ const HashTag = styled.a`
   }
 `;
 
-const Statistics = styled.div`
+const Text = styled.div`
   font-size: 12px;
-  line-height: 16px;
   color: #657786;
 `;
 
 export default function(props) {
   return (
     <Trend>
-      <HashTag href="#">{props.hashTag}</HashTag>
-      <Statistics>{props.text}</Statistics>
+      <Link href="#">{props.link}</Link>
+      <Text>{props.description}</Text>
+      {props.isCount && <Text>{props.count} Tweets</Text>}
     </Trend>
   );
 }

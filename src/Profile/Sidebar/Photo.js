@@ -15,7 +15,7 @@ const Img = styled.img`
 
 export default function(props) {
   return (
-    <Photo href="#">
+    <Photo>
       <Img src={props.src} srcSet={props.srcSet} alt={props.name} />
     </Photo>
   );

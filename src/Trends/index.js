@@ -49,15 +49,15 @@ export default function() {
         <Change>Change</Change>
       </Header>
       <Trends>
-        <Trend hashTag="#BringYourDogToWorkDay" />
-        <Trend hashTag="#FridayFeeling" text="12.1K Tweets" />
+        <Trend link="#BringYourDogToWorkDay" />
+        <Trend link="#FridayFeeling" isCount={true} count="12.1K" />
         <Trend
-          hashTag="#BrexitAnniversary"
-          text="It’s one year since the UK voted to leave the European Union"
+          link="#BrexitAnniversary"
+          description="It’s one year since the UK voted to leave the European Union"
         />
-        <Trend hashTag="HMS Queen Elizabeth" text="1,036 Tweetsing" />
-        <Trend hashTag="Joe Budden" text="1,036 Tweets" />
-        <Trend hashTag="Trident" text="6,136 Tweets" />
+        <Trend link="HMS Queen Elizabeth" isCount={true} count="1,036" />
+        <Trend link="Joe Budden" isCount={true} count="1,036" />
+        <Trend link="Trident" isCount={true} count="6,136" />
       </Trends>
     </Wrapper>
   );

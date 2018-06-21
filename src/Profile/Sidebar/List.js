@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 // router
-import { NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const Name = styled(NavLink)`
+const StLink = styled(Link)`
   display: flex;
   text-decoration: none;
   color: #1da1f2;
@@ -38,15 +38,10 @@ const Wrapper = styled.div`
 export default function(props) {
   return (
     <div>
-      <Name to={props.url} icon={props.icon}>
+      <StLink to={props.to} icon={props.icon}>
         {props.title}
-      </Name>
-      {props.isFollowers && <Wrapper>{props.children}</Wrapper>}
-      {props.isPhotos && (
-        <Wrapper>
-          {props.isPhotos && <Wrapper>{props.children}</Wrapper>}
-        </Wrapper>
-      )}
+      </StLink>
+      <Wrapper>{props.children}</Wrapper>
     </div>
   );
 }
