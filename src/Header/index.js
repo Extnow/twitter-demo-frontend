@@ -85,7 +85,11 @@ const NavExtra = styled.ul`
 `;
 
 const Action = styled.li`
-  margin: 6px 9px;
+  margin-right: 16px;
+
+  &:last-child {
+    margin-right: 0;
+  }
 `;
 
 const SearchForm = styled.form`
