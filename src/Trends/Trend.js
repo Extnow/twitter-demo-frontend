@@ -27,9 +27,9 @@ const Text = styled.div`
 export default function(props) {
   return (
     <Trend>
-      <StLink to={`/search?q=${props.to}`}>{props.name}</StLink>
+      <StLink to={`/search?q=${props.to}`}>{props.to}</StLink>
       <Text>{props.description}</Text>
-      {props.isCount && <Text>{props.count} Tweets</Text>}
+      {props.count && <Text>{props.count} Tweets</Text>}
     </Trend>
   );
 }

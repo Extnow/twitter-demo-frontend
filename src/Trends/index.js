@@ -49,26 +49,15 @@ export default function() {
         <Change>Change</Change>
       </Header>
       <Trends>
-        <Trend to="BringYourDogToWorkDay" name="#BringYourDogToWorkDay" />
+        <Trend to="#BringYourDogToWorkDay" />
+        <Trend to="#FridayFeeling" count={12100} />
         <Trend
-          to="FridayFeeling"
-          name="#FridayFeeling"
-          isCount={true}
-          count="12.1K"
-        />
-        <Trend
-          to="BrexitAnniversary"
-          name="#BrexitAnniversary"
+          to="#BrexitAnniversary"
           description="It’s one year since the UK voted to leave the European Union"
         />
-        <Trend
-          to="HMSQnlz"
-          name="HMSQueenElizabeth"
-          isCount={true}
-          count="1,036"
-        />
-        <Trend to="JoeBudden" name="Joe Budden" isCount={true} count="1,036" />
-        <Trend to="Trident" name="Trident" isCount={true} count="6,136" />
+        <Trend to="HMS Queen Elizabeth" count={1036} />
+        <Trend to="Joe Budden" count={1036} />
+        <Trend to="Trident" count={6136} />
       </Trends>
     </Wrapper>
   );
