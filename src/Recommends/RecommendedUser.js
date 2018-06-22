@@ -3,6 +3,8 @@ import styled from "styled-components";
 // img
 import iconTick from "./img/icon-tick.svg";
 import iconClose from "./img/icon-close.svg";
+// router
+import { Link } from "react-router-dom";
 
 const User = styled.div`
   display: flex;
@@ -31,7 +33,7 @@ const Content = styled.div`
   padding-right: 20px;
 `;
 
-const Link = styled.a`
+const StLink = styled(Link)`
   display: block;
   flex-direction: column;
   text-decoration: none;
@@ -115,16 +117,19 @@ export default function(props) {
   return (
     <User>
       <Content>
-        <Link href="#">
+        <StLink to={props.to}>
           <ImgWrapper>
-            <Img src={props.src} srcSet={props.srcSet} alt={props.name} />
+            <Img src={props.src} srcSet={props.srcSet} alt={props.fullName} />
           </ImgWrapper>
           <Name>
             <FullName>{props.fullName}</FullName>
             {props.isTicked && <Tick src={iconTick} alt="tick" />}
-            <UserName>{props.userName}</UserName>
+            <UserName>
+              <span>@</span>
+              {props.to}
+            </UserName>
           </Name>
-        </Link>
+        </StLink>
         <div>
           <Follow>Follow</Follow>
         </div>

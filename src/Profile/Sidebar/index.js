@@ -11,6 +11,8 @@ import iconPhotos from "./img/icon-photos.svg";
 import List from "./List";
 import Follower from "./Follower";
 import Photo from "./Photo";
+// router
+import { Link } from "react-router-dom";
 
 const WrapperInfo = styled.div`
   margin: 40px 0 20px 0;
@@ -44,7 +46,7 @@ const AvatarImage = styled.img`
   height: 174px;
 `;
 
-const ProfileLink = styled.a`
+const ProfileLink = styled(Link)`
   color: #14171a;
   text-decoration: none;
   font-family: Helvetica;
@@ -65,7 +67,7 @@ const Header = styled.h2`
   font-weight: normal;
 `;
 
-const Username = styled.a`
+const Username = styled(Link)`
   text-decoration: none;
   font-size: 14px;
   margin-right: 8px;
@@ -169,13 +171,12 @@ export default function() {
           />
         </Avatar>
         <Title>
-          <ProfileLink href="#">Every Interaction</ProfileLink>
+          <ProfileLink to="/EveryInteract">Every Interaction</ProfileLink>
           <img src={iconTick} alt="tick" />
         </Title>
         <Header>
-          <Username a href="#">
-            @EveryInteract
-          </Username>
+          <span>@</span>
+          <Username to="/EveryInteract">EveryInteract</Username>
           <span>Follows you</span>
         </Header>
         <Bio>
@@ -187,7 +188,9 @@ export default function() {
             <InfoText>London, UK</InfoText>
           </Element>
           <Element img={iconLink}>
-            <InfoLink href="#">everyinteraction.com</InfoLink>
+            <InfoLink href="https://www.everyinteraction.com/" target="_blank">
+              everyinteraction.com
+            </InfoLink>
           </Element>
           <Element img={iconJoined}>
             <InfoText>Joined May 2008</InfoText>
@@ -207,38 +210,38 @@ export default function() {
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-1.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-1-retina.png 2x"}
-            name="follower-1"
-            url="/follower-1"
+            FullName="Follower-1 Follow"
+            to="follower-1"
           />
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-2.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-2-retina.png 2x"}
-            name="follower-2"
-            url="/follower-2"
+            FullName="Follower-2 Follow"
+            to="follower-2"
           />
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-3.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-3-retina.png 2x"}
-            name="follower-3"
-            url="/follower-3"
+            FullName="Follower-3 Follow"
+            to="follower-3"
           />
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-4.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-4-retina.png 2x"}
-            name="follower-4"
-            url="/follower-4"
+            FullName="Follower-4 Follow"
+            to="follower-4"
           />
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-5.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-5-retina.png 2x"}
-            name="follower-5"
-            url="/follower-5"
+            FullName="Follower-5 Follow"
+            to="follower-5"
           />
           <Follower
             src={process.env.PUBLIC_URL + "/img/follower-6.png"}
             srcSet={process.env.PUBLIC_URL + "/img/follower-6-retina.png 2x"}
-            name="follower-6"
-            url="/follower-6"
+            FullName="Follower-6 Follow"
+            to="follower-6"
           />
         </List>
       </WrapperList>

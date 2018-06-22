@@ -22,8 +22,8 @@ const Img = styled.img`
 
 export default function(props) {
   return (
-    <Follower to={props.url}>
-      <Img src={props.src} srcSet={props.srcSet} alt={props.name} />
+    <Follower to={`/${props.to}`}>
+      <Img src={props.src} srcSet={props.srcSet} alt={props.FullName} />
     </Follower>
   );
 }

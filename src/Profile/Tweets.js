@@ -70,8 +70,8 @@ export default function() {
         userName="@EveryInteract"
         time="2 Mar 2015"
         text="We’ve made some more resources for all you wonderful
-        <a target='_blank' href='#'>#design</a> folk <a target='_blank' href='#'>
-        everyinteraction.com/resources/</a> <a target='_blank' href='#'>#webdesign</a>
+        <a target='_blank' href='#'>#design</a> folk <a target='_blank' href='everyinteraction.com/resources/'>
+        http://www.everyinteraction.com/resources/</a> <a target='_blank' href='#'>#webdesign</a>
         <a target='_blank' href='#'>#UI</a>"
         picture={true}
         pictureSrc={process.env.PUBLIC_URL + "/img/img1.png"}
@@ -90,7 +90,7 @@ export default function() {
         userName="@EveryInteract"
         time="2 Mar 2015"
         text="Our new website concept; Taking you from… @ Every Interaction
-        <a target='_blank' href='#'>instagram.com/p/BNFGrfhBP3M/</a>"
+        <a target='_blank' href='https://www.instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
         quote={false}
         commentValue={1}
         retweetValue={4}

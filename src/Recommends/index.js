@@ -3,6 +3,8 @@ import styled from "styled-components";
 // components
 import RecommendedUser from "./RecommendedUser";
 import iconPeople from "./img/icon-people.svg";
+// router
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -45,7 +47,7 @@ const Small = styled.small`
   margin: 0 5px;
 `;
 
-const Footer = styled.a`
+const Footer = styled(Link)`
   display: flex;
   align-items: center;
   text-decoration: none;
@@ -84,28 +86,25 @@ export default function() {
         <All href="#">All</All>
       </header>
       <RecommendedUser
+        to="appleinsider"
         src={process.env.PUBLIC_URL + "/img/avatar-2.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-2-retina.png 2x"}
-        name="user-2"
         fullName="AppleInsider"
-        userName="@appleinsider"
       />
       <RecommendedUser
+        to="Creode"
         src={process.env.PUBLIC_URL + "/img/avatar-3.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-3-retina.png 2x"}
-        name="user-2"
         isTicked={true}
         fullName="Creode"
-        userName="@Creode"
       />
       <RecommendedUser
+        to="Epiphanysearch"
         src={process.env.PUBLIC_URL + "/img/avatar-4.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-4-retina.png 2x"}
-        name="user-2"
         fullName="Epiphany Search"
-        userName="@Epiphanysearch"
       />
-      <Footer href="#">Find people you know</Footer>
+      <Footer to="/who_to_follow/import">Find people you know</Footer>
     </Wrapper>
   );
 }
