@@ -86,20 +86,23 @@ export default function() {
         <All href="#">All</All>
       </header>
       <RecommendedUser
-        to="appleinsider"
+        to="/appleinsider"
+        userName="appleinsider"
         src={process.env.PUBLIC_URL + "/img/avatar-2.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-2-retina.png 2x"}
         fullName="AppleInsider"
       />
       <RecommendedUser
-        to="Creode"
+        to="/Creode"
+        userName="Creode"
         src={process.env.PUBLIC_URL + "/img/avatar-3.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-3-retina.png 2x"}
         isTicked={true}
         fullName="Creode"
       />
       <RecommendedUser
-        to="Epiphanysearch"
+        to="/Epiphanysearch"
+        userName="Epiphanysearch"
         src={process.env.PUBLIC_URL + "/img/avatar-4.png"}
         srcSet={process.env.PUBLIC_URL + "/img/avatar-4-retina.png 2x"}
         fullName="Epiphany Search"

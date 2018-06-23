@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconTick from "./img/icon-tick.svg";
+import iconTick from "./../Profile/Sidebar/img/icon-tick.svg";
 import iconClose from "./img/icon-close.svg";
 // router
 import { Link } from "react-router-dom";
@@ -126,7 +126,7 @@ export default function(props) {
             {props.isTicked && <Tick src={iconTick} alt="tick" />}
             <UserName>
               <span>@</span>
-              {props.to}
+              {props.userName}
             </UserName>
           </Name>
         </StLink>
