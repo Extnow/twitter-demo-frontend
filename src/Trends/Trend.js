@@ -21,9 +21,10 @@ const StLink = styled(Link)`
   }
 `;
 
-const Text = styled.div`
+const Text = styled.p`
   font-size: 12px;
   color: #657786;
+  margin: 0;
 `;
 
 export default function(props) {

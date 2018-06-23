@@ -43,7 +43,7 @@ const All = styled.a`
   }
 `;
 
-const Small = styled.small`
+const Dot = styled.small`
   margin: 0 5px;
 `;
 
@@ -80,9 +80,9 @@ export default function() {
     <Wrapper>
       <header>
         <Title>Who to follow</Title>
-        <Small>·</Small>
+        <Dot>·</Dot>
         <Refresh>Refresh</Refresh>
-        <Small>·</Small>
+        <Dot>·</Dot>
         <All href="#">All</All>
       </header>
       <RecommendedUser

@@ -227,7 +227,7 @@ export default function(props) {
         <Content>
           <Header>
             <FullName to="/EveryInteract">{props.fullName}</FullName>
-            <UserName>{props.userName}</UserName>
+            <UserName>@{props.userName}</UserName>
             <Time>
               <TimeLink href="#">{props.time}</TimeLink>
             </Time>

@@ -24,7 +24,7 @@ const Profile = styled.div`
 
 export default function() {
   return (
-    <div>
+    <main>
       <Helmet>
         <title>Every Interaction (@EveryInteract) | Twitter</title>
       </Helmet>
@@ -47,6 +47,6 @@ export default function() {
           </div>
         </div>
       </Profile>
-    </div>
+    </main>
   );
 }

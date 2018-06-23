@@ -67,7 +67,7 @@ export default function() {
         }
         avatarAlt="avatar"
         fullName="Every Interaction"
-        userName="@EveryInteract"
+        userName="EveryInteract"
         time="2 Mar 2015"
         text="We’ve made some more resources for all you wonderful
         <a target='_blank' href='#'>#design</a> folk <a target='_blank' href='everyinteraction.com/resources/'>
@@ -87,7 +87,7 @@ export default function() {
         }
         avatarAlt="avatar"
         fullName="Every Interaction"
-        userName="@EveryInteract"
+        userName="EveryInteract"
         time="2 Mar 2015"
         text="Our new website concept; Taking you from… @ Every Interaction
         <a target='_blank' href='https://www.instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
@@ -103,7 +103,7 @@ export default function() {
         }
         avatarAlt="avatar"
         fullName="Every Interaction"
-        userName="@EveryInteract"
+        userName="EveryInteract"
         time="23h"
         text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
         quote={true}
