@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 // router
 import { Link } from "react-router-dom";
+// libraries
+import { IntlProvider, FormattedNumber } from "react-intl";
 
 const Trend = styled.div`
   margin-bottom: 10px;
@@ -29,7 +31,14 @@ export default function(props) {
     <Trend>
       <StLink to={`/search?q=${props.to}`}>{props.to}</StLink>
       <Text>{props.description}</Text>
-      {props.count && <Text>{props.count} Tweets</Text>}
+      {props.count > 0 && (
+        <Text>
+          <IntlProvider locale="en">
+            <FormattedNumber value={props.count} />
+          </IntlProvider>
+          {props.count > 1 ? " Tweets" : " Tweet"}
+        </Text>
+      )}
     </Trend>
   );
 }

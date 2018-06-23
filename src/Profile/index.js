@@ -26,7 +26,6 @@ export default function() {
   return (
     <div>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Every Interaction (@EveryInteract) | Twitter</title>
       </Helmet>
       <Banner src={process.env.PUBLIC_URL + "/img/banner.png"} alt="banner" />
