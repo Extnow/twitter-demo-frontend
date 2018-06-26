@@ -2,6 +2,8 @@ import React from "react";
 import styled from "styled-components";
 // img
 import iconMore from "./img/icon-more.png";
+// router
+import { NavLink } from "react-router-dom";
 
 const Statistics = styled.div`
   position: relative;
@@ -25,10 +27,10 @@ const Navigation = styled.ul`
   margin: 0;
 `;
 
-const Button = styled.button`
+const NavigationLink = styled(NavLink)`
+  display: block;
+  text-decoration: none;
   color: #707e88;
-  background-color: transparent;
-  border: none;
   text-align: center;
   padding: 0 10px;
   font-size: 12px;
@@ -44,6 +46,11 @@ const Button = styled.button`
 
   &:focus {
     outline: none;
+    color: #1da1f2;
+    border-bottom: 3px solid #1da1f2;
+  }
+
+  &.active {
     color: #1da1f2;
     border-bottom: 3px solid #1da1f2;
   }
@@ -70,13 +77,14 @@ const Follow = styled.button`
   padding: 9px 27px;
   cursor: pointer;
   margin-right: 15px;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #e8f5fd;
   }
 
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1da1f2;
   }
 
   &:focus {
@@ -87,11 +95,25 @@ const Follow = styled.button`
 
 const ExtraActions = styled.button`
   border: none;
-  background: transparent;
-  background-image: url(${iconMore});
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  background-color: transparent;
   cursor: pointer;
+  padding: 8px;
+  transition: box-shadow 0.15s ease-in-out;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 4px;
+    height: 14px;
+    background-image: url(${iconMore});
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 153, 153, 0.4);
+  }
 `;
 
 export default function() {
@@ -103,34 +125,34 @@ export default function() {
             <Wrapper>
               <Navigation>
                 <li>
-                  <Button>
+                  <NavigationLink to="/">
                     <span>Tweets</span>
                     <Value>8,058</Value>
-                  </Button>
+                  </NavigationLink>
                 </li>
                 <li>
-                  <Button>
+                  <NavigationLink to="/EveryInteract/following">
                     <span>Following</span>
                     <Value>721</Value>
-                  </Button>
+                  </NavigationLink>
                 </li>
                 <li>
-                  <Button>
+                  <NavigationLink to="/EveryInteract/followers">
                     <span>Followers</span>
                     <Value>1,815</Value>
-                  </Button>
+                  </NavigationLink>
                 </li>
                 <li>
-                  <Button>
+                  <NavigationLink to="/EveryInteract/likes">
                     <span>Likes</span>
                     <Value>460</Value>
-                  </Button>
+                  </NavigationLink>
                 </li>
                 <li>
-                  <Button>
+                  <NavigationLink to="/EveryInteract/lists">
                     <span>Lists</span>
                     <Value>2</Value>
-                  </Button>
+                  </NavigationLink>
                 </li>
               </Navigation>
               <Actions>

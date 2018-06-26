@@ -3,8 +3,11 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 // components
 import Statistics from "./Statistics";
-import ProfileInfo from "./ProfileInfo";
+import Sidebar from "./UserInfo";
 import Tweets from "./Tweets";
+import Recommends from "../Recommends";
+import Trends from "../Trends";
+import Footer from "../Footer";
 
 const Banner = styled.img`
   display: block;
@@ -21,9 +24,8 @@ const Profile = styled.div`
 
 export default function() {
   return (
-    <div>
+    <main>
       <Helmet>
-        <meta charSet="utf-8" />
         <title>Every Interaction (@EveryInteract) | Twitter</title>
       </Helmet>
       <Banner src={process.env.PUBLIC_URL + "/img/banner.png"} alt="banner" />
@@ -32,14 +34,19 @@ export default function() {
         <div className="container">
           <div className="row">
             <div className="col-xs-3">
-              <ProfileInfo />
+              <Sidebar />
             </div>
             <div className="col-xs-6">
               <Tweets />
             </div>
+            <div className="col-xs-3">
+              <Recommends />
+              <Trends />
+              <Footer />
+            </div>
           </div>
         </div>
       </Profile>
-    </div>
+    </main>
   );
 }

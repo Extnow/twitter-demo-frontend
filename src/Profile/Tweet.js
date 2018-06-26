@@ -6,6 +6,8 @@ import iconComments from "./img/icon-comments.svg";
 import iconRetweet from "./img/icon-retweet.svg";
 import iconLoves from "./img/icon-loves.svg";
 import iconEnvelope from "./img/icon-envelope.svg";
+// router
+import { Link } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 9px 12px;
@@ -57,7 +59,7 @@ const Header = styled.header`
   font-size: 15px;
 `;
 
-const FullName = styled.a`
+const FullName = styled(Link)`
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
@@ -224,8 +226,8 @@ export default function(props) {
         </div>
         <Content>
           <Header>
-            <FullName href="#">{props.fullName}</FullName>
-            <UserName>{props.userName}</UserName>
+            <FullName to="/EveryInteract">{props.fullName}</FullName>
+            <UserName>@{props.userName}</UserName>
             <Time>
               <TimeLink href="#">{props.time}</TimeLink>
             </Time>

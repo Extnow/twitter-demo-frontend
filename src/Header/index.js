@@ -31,7 +31,7 @@ const Navigation = styled.ul`
 
 const NavigationLink = styled(NavLink)`
   display: flex;
-  padding: 14px 25px 14px 5px;
+  padding: 11px 25px 11px 5px;
   align-items: center;
   font-size: 13px;
   font-weight: bold;
@@ -47,7 +47,6 @@ const NavigationLink = styled(NavLink)`
   &:focus {
     outline: none;
     color: #1da1f2;
-    border-bottom: 3px solid #1da1f2;
   }
 
   &:before {
@@ -69,30 +68,94 @@ const TwitterLogo = styled.button`
   &:before {
     content: "";
     display: block;
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
     background-image: url(${iconTwitterLogo});
     background-repeat: no-repeat;
     background-position: 50% 50%;
   }
 `;
 
+const NavExtra = styled.ul`
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+`;
+
+const Action = styled.li`
+  margin-right: 16px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+`;
+
+const SearchForm = styled.form`
+  position: relative;
+  display: flex;
+  align-items: center;
+`;
+
 const SearchInput = styled.input`
   background-color: #f5f8fa;
   border: 1px solid #e6ecf0;
   border-radius: 100px;
-  padding: 9px 61px 8px 11px;
+  padding: 8px 61px 8px 11px;
   font-size: 12px;
-  background-image: url(${iconMagnifier});
-  background-repeat: no-repeat;
-  background-position: 193px 50%;
-  margin-right: 15px;
+  transition: border 0.15s ease-in-out;
 
   &:focus {
     outline: none;
     border: 1px solid #1da1f2;
     background-color: #fff;
   }
+`;
+
+const SearchButton = styled.button`
+  border: none;
+  background: transparent;
+  position: absolute;
+  padding: 2px;
+  right: 13px;
+  cursor: pointer;
+  transition: box-shadow 0.15s ease-in-out;
+
+  &:before {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background-image: url(${iconMagnifier});
+    background-repeat: no-repeat;
+  }
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+  }
+`;
+
+const AvatarButton = styled.button`
+  background-color: #fff;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  cursor: pointer;
+  padding: 0;
+  transition: box-shadow 0.15s ease-in-out;
+
+  &:focus {
+    outline: 0;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+  }
+`;
+
+const AvatarIcon = styled.img`
+  display: block;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
 `;
 
 const TweetButton = styled.button`
@@ -106,45 +169,20 @@ const TweetButton = styled.button`
   text-align: center;
   padding: 9px 16px;
   cursor: pointer;
-  margin-left: 15px;
+  transition: box-shadow 0.15s ease-in-out;
 
   &:hover {
     background-color: #1da1f2;
   }
 
   &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
+    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
   }
 
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
   }
-`;
-
-const NavExtra = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const AvatarButton = styled.button`
-  background-color: #fff;
-  border-radius: 50%;
-  border: 1px solid #fff;
-  cursor: pointer;
-  overflow: hidden;
-  padding: 0;
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
-const AvatarIcon = styled.img`
-  display: block;
-  width: 28px;
-  height: 28px;
 `;
 
 export default function() {
@@ -176,18 +214,27 @@ export default function() {
           </Navigation>
           <TwitterLogo />
           <NavExtra>
-            <SearchInput placeholder="Search Twitter" type="text" />
-            <AvatarButton>
-              <AvatarIcon
-                src={process.env.PUBLIC_URL + "/img/avatar-small.png"}
-                srcSet={
-                  process.env.PUBLIC_URL +
-                  `${"/img/avatar-small-retina.png"} 2x`
-                }
-                alt="avatar"
-              />
-            </AvatarButton>
-            <TweetButton>Tweet</TweetButton>
+            <Action>
+              <SearchForm>
+                <SearchInput placeholder="Search Twitter" type="text" />
+                <SearchButton />
+              </SearchForm>
+            </Action>
+            <Action>
+              <AvatarButton>
+                <AvatarIcon
+                  src={process.env.PUBLIC_URL + "/img/avatar-small.png"}
+                  srcSet={
+                    process.env.PUBLIC_URL +
+                    `${"/img/avatar-small-retina.png"} 2x`
+                  }
+                  alt="avatar"
+                />
+              </AvatarButton>
+            </Action>
+            <Action>
+              <TweetButton>Tweet</TweetButton>
+            </Action>
           </NavExtra>
         </Wrapper>
       </div>
