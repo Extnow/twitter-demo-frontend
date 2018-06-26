@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 const Photo = styled.span`
   display: block;
@@ -13,10 +13,8 @@ const Img = styled.img`
   border-radius: 2px;
 `;
 
-export default function(props) {
-  return (
-    <Photo>
-      <Img src={props.src} srcSet={props.srcSet} alt={props.name} />
-    </Photo>
-  );
-}
+export default ({ src, srcSet, name }) => (
+  <Photo>
+    <Img src={src} srcSet={srcSet} alt={name} />
+  </Photo>
+);

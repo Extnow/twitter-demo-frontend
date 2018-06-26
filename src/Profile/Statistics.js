@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 // img
-import iconMore from "./img/icon-more.png";
-// router
-import { NavLink } from "react-router-dom";
+import iconMore from './img/icon-more.png';
 
 const Statistics = styled.div`
   position: relative;
@@ -101,7 +100,7 @@ const ExtraActions = styled.button`
   transition: box-shadow 0.15s ease-in-out;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 4px;
     height: 14px;
@@ -116,53 +115,73 @@ const ExtraActions = styled.button`
   }
 `;
 
-export default function() {
-  return (
-    <Statistics>
-      <div className="container">
-        <div className="row">
-          <div className="col-xs-offset-3 col-xs-9">
-            <Wrapper>
-              <Navigation>
-                <li>
-                  <NavigationLink to="/">
-                    <span>Tweets</span>
-                    <Value>8,058</Value>
-                  </NavigationLink>
-                </li>
-                <li>
-                  <NavigationLink to="/EveryInteract/following">
-                    <span>Following</span>
-                    <Value>721</Value>
-                  </NavigationLink>
-                </li>
-                <li>
-                  <NavigationLink to="/EveryInteract/followers">
-                    <span>Followers</span>
-                    <Value>1,815</Value>
-                  </NavigationLink>
-                </li>
-                <li>
-                  <NavigationLink to="/EveryInteract/likes">
-                    <span>Likes</span>
-                    <Value>460</Value>
-                  </NavigationLink>
-                </li>
-                <li>
-                  <NavigationLink to="/EveryInteract/lists">
-                    <span>Lists</span>
-                    <Value>2</Value>
-                  </NavigationLink>
-                </li>
-              </Navigation>
-              <Actions>
-                <Follow>Follow</Follow>
-                <ExtraActions />
-              </Actions>
-            </Wrapper>
-          </div>
+export default () => (
+  <Statistics>
+    <div className="container">
+      <div className="row">
+        <div className="col-xs-offset-3 col-xs-9">
+          <Wrapper>
+            <Navigation>
+              <li>
+                <NavigationLink to="/">
+                  <span>
+Tweets
+                  </span>
+                  <Value>
+8,058
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to="/EveryInteract/following">
+                  <span>
+Following
+                  </span>
+                  <Value>
+721
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to="/EveryInteract/followers">
+                  <span>
+Followers
+                  </span>
+                  <Value>
+1,815
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to="/EveryInteract/likes">
+                  <span>
+Likes
+                  </span>
+                  <Value>
+460
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to="/EveryInteract/lists">
+                  <span>
+Lists
+                  </span>
+                  <Value>
+2
+                  </Value>
+                </NavigationLink>
+              </li>
+            </Navigation>
+            <Actions>
+              <Follow>
+Follow
+              </Follow>
+              <ExtraActions />
+            </Actions>
+          </Wrapper>
         </div>
       </div>
-    </Statistics>
-  );
-}
+    </div>
+  </Statistics>
+);

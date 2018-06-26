@@ -1,14 +1,13 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 // import icons
-import iconHome from "./img/icon-home.svg";
-import iconMoments from "./img/icon-moments.svg";
-import iconNotifications from "./img/icon-notifications.svg";
-import iconMessages from "./img/icon-messages.svg";
-import iconMagnifier from "./img/icon-magnifier.svg";
-import iconTwitterLogo from "./img/icon-twitter-logo.svg";
-// router
-import { NavLink } from "react-router-dom";
+import iconHome from './img/icon-home.svg';
+import iconMoments from './img/icon-moments.svg';
+import iconNotifications from './img/icon-notifications.svg';
+import iconMessages from './img/icon-messages.svg';
+import iconMagnifier from './img/icon-magnifier.svg';
+import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
 const Header = styled.header`
   background-color: #fff;
@@ -50,8 +49,8 @@ const NavigationLink = styled(NavLink)`
   }
 
   &:before {
-    content: "";
-    background-image: url(${props => props.img});
+    content: '';
+    background-image: url(${({ img }) => img});
     background-repeat: no-repeat;
     background-position: center center;
     width: 20px;
@@ -66,7 +65,7 @@ const TwitterLogo = styled.button`
   cursor: pointer;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 21px;
     height: 21px;
@@ -123,7 +122,7 @@ const SearchButton = styled.button`
   transition: box-shadow 0.15s ease-in-out;
 
   &:before {
-    content: "";
+    content: '';
     display: block;
     width: 15px;
     height: 15px;
@@ -185,59 +184,56 @@ const TweetButton = styled.button`
   }
 `;
 
-export default function() {
-  return (
-    <Header>
-      <div className="container">
-        <Wrapper>
-          <Navigation>
-            <li>
-              <NavigationLink img={iconHome} to="/">
-                Home
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink img={iconMoments} to="/moments">
-                Moments
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink img={iconNotifications} to="/notifications">
-                Notifications
-              </NavigationLink>
-            </li>
-            <li>
-              <NavigationLink img={iconMessages} to="/messages">
-                Messages
-              </NavigationLink>
-            </li>
-          </Navigation>
-          <TwitterLogo />
-          <NavExtra>
-            <Action>
-              <SearchForm>
-                <SearchInput placeholder="Search Twitter" type="text" />
-                <SearchButton />
-              </SearchForm>
-            </Action>
-            <Action>
-              <AvatarButton>
-                <AvatarIcon
-                  src={process.env.PUBLIC_URL + "/img/avatar-small.png"}
-                  srcSet={
-                    process.env.PUBLIC_URL +
-                    `${"/img/avatar-small-retina.png"} 2x`
-                  }
-                  alt="avatar"
-                />
-              </AvatarButton>
-            </Action>
-            <Action>
-              <TweetButton>Tweet</TweetButton>
-            </Action>
-          </NavExtra>
-        </Wrapper>
-      </div>
-    </Header>
-  );
-}
+export default () => (
+  <Header>
+    <div className="container">
+      <Wrapper>
+        <Navigation>
+          <li>
+            <NavigationLink img={iconHome} to="/">
+              Home
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink img={iconMoments} to="/moments">
+              Moments
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink img={iconNotifications} to="/notifications">
+              Notifications
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink img={iconMessages} to="/messages">
+              Messages
+            </NavigationLink>
+          </li>
+        </Navigation>
+        <TwitterLogo />
+        <NavExtra>
+          <Action>
+            <SearchForm>
+              <SearchInput placeholder="Search Twitter" type="text" />
+              <SearchButton />
+            </SearchForm>
+          </Action>
+          <Action>
+            <AvatarButton>
+              <AvatarIcon
+                src={`${process.env.PUBLIC_URL}/img/avatar-small.png`}
+                srcSet={`${process.env.PUBLIC_URL}${'/img/avatar-small-retina.png'} 2x`}
+                alt="avatar"
+              />
+            </AvatarButton>
+          </Action>
+          <Action>
+            <TweetButton>
+Tweet
+            </TweetButton>
+          </Action>
+        </NavExtra>
+      </Wrapper>
+    </div>
+  </Header>
+);

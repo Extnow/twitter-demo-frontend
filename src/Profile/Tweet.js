@@ -1,13 +1,12 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // img
-import iconPinned from "./img/icon-pinned.svg";
-import iconComments from "./img/icon-comments.svg";
-import iconRetweet from "./img/icon-retweet.svg";
-import iconLoves from "./img/icon-loves.svg";
-import iconEnvelope from "./img/icon-envelope.svg";
-// router
-import { Link } from "react-router-dom";
+import iconPinned from './img/icon-pinned.svg';
+import iconComments from './img/icon-comments.svg';
+import iconRetweet from './img/icon-retweet.svg';
+import iconLoves from './img/icon-loves.svg';
+import iconEnvelope from './img/icon-envelope.svg';
 
 const Wrapper = styled.div`
   padding: 9px 12px;
@@ -26,7 +25,7 @@ const Pinned = styled.div`
   color: #707e88;
 
   &:before {
-    content: "";
+    content: '';
     margin-right: 12px;
     display: inline-block;
     background-image: url(${iconPinned});
@@ -76,16 +75,10 @@ const UserName = styled.span`
   padding: 0 5px;
 `;
 
-const Time = styled.span`
-  &:before {
-    content: "\00b7";
-    margin-right: 5px;
-  }
-`;
-
 const TimeLink = styled.a`
   color: #657786;
   text-decoration: none;
+  margin-left: 5px;
 
   &:hover {
     text-decoration: underline;
@@ -189,24 +182,45 @@ const Button = styled.button`
   padding: 2px;
 
   &:before {
-    content: "";
+    content: '';
     height: 18px;
     width: 18px;
     margin-right: 10px;
     display: inline-block;
-    background-image: url(${props => props.img});
+    background-image: url(${({ img }) => img});
     background-position: 0% 50%;
     background-repeat: no-repeat;
   }
 
   &:hover {
-    color: ${props => props.color};
+    color: ${({ color }) => color};
   }
 `;
 
-export default function(props) {
+export default function ({
+  text,
+  pinned,
+  avatarSrc,
+  avatarSrcSet,
+  avatarAlt,
+  fullName,
+  userName,
+  time,
+  picture,
+  pictureSrc,
+  pictureSrcSet,
+  quote,
+  quoteSrc,
+  quoteSrcSet,
+  quoteTitle,
+  quoteText,
+  quoteLink,
+  commentsValue,
+  retweetValue,
+  lovesValue,
+}) {
   function createMarkup() {
-    return { __html: props.text };
+    return { __html: text };
   }
 
   function styledText() {
@@ -215,67 +229,73 @@ export default function(props) {
 
   return (
     <Wrapper>
-      {props.pinned && <Pinned>Pinned Tweet</Pinned>}
+      {pinned && (
+      <Pinned>
+Pinned Tweet
+      </Pinned>
+      )}
       <Main>
         <div>
-          <Avatar
-            src={props.avatarSrc}
-            srcSet={props.avatarSrcSet}
-            alt={props.avatarAlt}
-          />
+          <Avatar src={avatarSrc} srcSet={avatarSrcSet} alt={avatarAlt} />
         </div>
         <Content>
           <Header>
-            <FullName to="/EveryInteract">{props.fullName}</FullName>
-            <UserName>@{props.userName}</UserName>
-            <Time>
-              <TimeLink href="#">{props.time}</TimeLink>
-            </Time>
+            <FullName to="/EveryInteract">
+              {fullName}
+            </FullName>
+            <UserName>
+              @
+              {userName}
+            </UserName>
+            <span>
+              ·
+              <TimeLink href="#">
+                {time}
+              </TimeLink>
+            </span>
           </Header>
           {styledText()}
-          {props.picture && (
+          {picture && (
             <PictureContainer>
-              <Picture
-                src={props.pictureSrc}
-                srcSet={props.pictureSrcSet}
-                alt=""
-              />
+              <Picture src={pictureSrc} srcSet={pictureSrcSet} alt="" />
             </PictureContainer>
           )}
-          {props.quote && (
+          {quote && (
             <QuoteTweet>
               <div>
-                <QuoteImage
-                  src={props.quoteSrc}
-                  srcSet={props.quoteSrcSet}
-                  alt={props.quoteTitle}
-                />
+                <QuoteImage src={quoteSrc} srcSet={quoteSrcSet} alt={quoteTitle} />
               </div>
               <QuoteContent>
-                <QuoteTitle>{props.quoteTitle}</QuoteTitle>
-                <QuoteText>{props.quoteText}</QuoteText>
-                <QuoteLink>{props.quoteLink}</QuoteLink>
+                <QuoteTitle>
+                  {quoteTitle}
+                </QuoteTitle>
+                <QuoteText>
+                  {quoteText}
+                </QuoteText>
+                <QuoteLink>
+                  {quoteLink}
+                </QuoteLink>
               </QuoteContent>
             </QuoteTweet>
           )}
           <Actions>
             <li>
-              <Button img={iconComments} color={"#1da1f2"}>
-                {props.commentsValue}
+              <Button img={iconComments} color="#1da1f2">
+                {commentsValue}
               </Button>
             </li>
             <li>
-              <Button img={iconRetweet} color={"#17bf63"}>
-                {props.retweetValue}
+              <Button img={iconRetweet} color="#17bf63">
+                {retweetValue}
               </Button>
             </li>
             <li>
-              <Button img={iconLoves} color={"#e0245e"}>
-                {props.lovesValue}
+              <Button img={iconLoves} color="#e0245e">
+                {lovesValue}
               </Button>
             </li>
             <li>
-              <Button img={iconEnvelope} color={"#1da1f2"} />
+              <Button img={iconEnvelope} color="#1da1f2" />
             </li>
           </Actions>
         </Content>

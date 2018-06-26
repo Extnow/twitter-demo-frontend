@@ -1,7 +1,7 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 // components
-import Trend from "./Trend";
+import Trend from './Trend';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -40,25 +40,29 @@ const Change = styled.button`
 
 const Trends = styled.div``;
 
-export default function() {
-  return (
-    <Wrapper>
-      <Header>
-        <Title>United Kingdom Trends</Title>
-        <Small>·</Small>
-        <Change>Change</Change>
-      </Header>
-      <Trends>
-        <Trend title="#BringYourDogToWorkDay" />
-        <Trend title="#FridayFeeling" count={12100} />
-        <Trend
-          title="#BrexitAnniversary"
-          description="It’s one year since the UK voted to leave the European Union"
-        />
-        <Trend title="HMS Queen Elizabeth" count={1036} />
-        <Trend title="Joe Budden" count={1036} />
-        <Trend title="Trident" count={6136} />
-      </Trends>
-    </Wrapper>
-  );
-}
+export default () => (
+  <Wrapper>
+    <Header>
+      <Title>
+United Kingdom Trends
+      </Title>
+      <Small>
+·
+      </Small>
+      <Change>
+Change
+      </Change>
+    </Header>
+    <Trends>
+      <Trend title="#BringYourDogToWorkDay" />
+      <Trend title="#FridayFeeling" count={12100} />
+      <Trend
+        title="#BrexitAnniversary"
+        description="It’s one year since the UK voted to leave the European Union"
+      />
+      <Trend title="HMS Queen Elizabeth" count={1036} />
+      <Trend title="Joe Budden" count={1036} />
+      <Trend title="Trident" count={6136} />
+    </Trends>
+  </Wrapper>
+);

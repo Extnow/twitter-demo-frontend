@@ -1,7 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-// router
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const Follower = styled(Link)`
   display: block;
@@ -20,10 +19,10 @@ const Img = styled.img`
   height: 48px;
 `;
 
-export default function(props) {
-  return (
-    <Follower to={`/${props.to}`}>
-      <Img src={props.src} srcSet={props.srcSet} alt={props.FullName} />
-    </Follower>
-  );
-}
+export default ({
+  to, src, srcSet, fullName,
+}) => (
+  <Follower to={`/${to}`}>
+    <Img src={src} srcSet={srcSet} alt={fullName} />
+  </Follower>
+);

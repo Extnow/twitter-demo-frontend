@@ -1,31 +1,25 @@
-import React, { Component } from "react";
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import {
+  BrowserRouter, Switch, Redirect, Route,
+} from 'react-router-dom';
 // css
-import "normalize.css";
-import "flexboxgrid2/flexboxgrid2.css";
+import 'normalize.css';
+import 'flexboxgrid2/flexboxgrid2.css';
 // components
-import Header from "./Header";
-import Profile from "./Profile";
-// router
-import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
-// libraries
-import { IntlProvider } from "react-intl";
+import Header from './Header';
+import Profile from './Profile';
 
-class App extends Component {
-  render() {
-    return (
-      <IntlProvider locale="en">
-        <BrowserRouter>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Redirect exact from="/" to="/EveryInteract" />
-              <Route exact path="/EveryInteract" component={Profile} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </IntlProvider>
-    );
-  }
-}
-
-export default App;
+export default () => (
+  <IntlProvider locale="en">
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Redirect exact from="/" to="/EveryInteract" />
+          <Route exact path="/EveryInteract" component={Profile} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  </IntlProvider>
+);

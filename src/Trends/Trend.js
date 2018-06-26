@@ -1,9 +1,7 @@
-import React from "react";
-import styled from "styled-components";
-// router
-import { Link } from "react-router-dom";
-// libraries
-import { FormattedNumber } from "react-intl";
+import React from 'react';
+import styled from 'styled-components';
+import { FormattedNumber } from 'react-intl';
+import { Link } from 'react-router-dom';
 
 const Trend = styled.div`
   margin-bottom: 10px;
@@ -31,19 +29,21 @@ const Text = styled.p`
   margin: 0;
 `;
 
-export default function(props) {
-  return (
-    <Trend>
-      <StLink to={`/search?q=${props.title}`}>
-        <Title>{props.title}</Title>
-        <Text>{props.description}</Text>
-        {props.count > 0 && (
-          <Text>
-            <FormattedNumber value={props.count} />
-            {props.count > 1 ? " Tweets" : " Tweet"}
-          </Text>
-        )}
-      </StLink>
-    </Trend>
-  );
-}
+export default ({ title, description, count }) => (
+  <Trend>
+    <StLink to={`/search?q=${title}`}>
+      <Title>
+        {title}
+      </Title>
+      <Text>
+        {description}
+      </Text>
+      {count > 0 && (
+        <Text>
+          <FormattedNumber value={count} />
+          {count > 1 ? ' Tweets' : ' Tweet'}
+        </Text>
+      )}
+    </StLink>
+  </Trend>
+);

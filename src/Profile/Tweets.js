@@ -1,9 +1,8 @@
-import React from "react";
-import styled from "styled-components";
-// img
-import Tweet from "./Tweet";
-// router
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
+// components
+import Tweet from './Tweet';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -43,76 +42,72 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default function() {
-  return (
-    <Wrapper>
-      <Navigation>
-        <li>
-          <NavigationLink to="/">Tweets</NavigationLink>
-        </li>
-        <li>
-          <NavigationLink to="/EveryInteract/with_replies">
-            Tweets & replies
-          </NavigationLink>
-        </li>
-        <li>
-          <NavigationLink to="/EveryInteract/media">Media</NavigationLink>
-        </li>
-      </Navigation>
-      <Tweet
-        pinned={true}
-        avatarSrc={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
-        avatarSrcSet={
-          process.env.PUBLIC_URL + "/img/avatar-medium-retina.png 2x"
-        }
-        avatarAlt="avatar"
-        fullName="Every Interaction"
-        userName="EveryInteract"
-        time="2 Mar 2015"
-        text="We’ve made some more resources for all you wonderful
-        <a target='_blank' href='#'>#design</a> folk <a target='_blank' href='everyinteraction.com/resources/'>
-        http://www.everyinteraction.com/resources/</a> <a target='_blank' href='#'>#webdesign</a>
-        <a target='_blank' href='#'>#UI</a>"
-        picture={true}
-        pictureSrc={process.env.PUBLIC_URL + "/img/img1.png"}
-        pictureSrcSet={process.env.PUBLIC_URL + "/img/img1-retina.png 2x"}
-        quote={false}
-        retweetValue={17}
-        lovesValue={47}
-      />
-      <Tweet
-        avatarSrc={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
-        avatarSrcSet={
-          process.env.PUBLIC_URL + "/img/avatar-medium-retina.png 2x"
-        }
-        avatarAlt="avatar"
-        fullName="Every Interaction"
-        userName="EveryInteract"
-        time="2 Mar 2015"
-        text="Our new website concept; Taking you from… @ Every Interaction
-        <a target='_blank' href='https://www.instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
-        quote={false}
-        commentValue={1}
-        retweetValue={4}
-        lovesValue={2}
-      />
-      <Tweet
-        avatarSrc={process.env.PUBLIC_URL + "/img/avatar-medium.png"}
-        avatarSrcSet={
-          process.env.PUBLIC_URL + "/img/avatar-medium-retina.png 2x"
-        }
-        avatarAlt="avatar"
-        fullName="Every Interaction"
-        userName="EveryInteract"
-        time="23h"
-        text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
-        quote={true}
-        quoteSrc={process.env.PUBLIC_URL + "/img/img2.png"}
-        quoteSrcSet={process.env.PUBLIC_URL + "/img/img2-retina.png 2x"}
-        quoteTitle="The Future of Web Fonts"
-        quoteText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
-        quoteLink="vilijamis.com"
-      />
-    </Wrapper>
-  );
-}
+export default () => (
+  <Wrapper>
+    <Navigation>
+      <li>
+        <NavigationLink to="/">
+Tweets
+        </NavigationLink>
+      </li>
+      <li>
+        <NavigationLink to="/EveryInteract/with_replies">
+Tweets & replies
+        </NavigationLink>
+      </li>
+      <li>
+        <NavigationLink to="/EveryInteract/media">
+Media
+        </NavigationLink>
+      </li>
+    </Navigation>
+    <Tweet
+      pinned
+      avatarSrc={`${process.env.PUBLIC_URL}/img/avatar-medium.png`}
+      avatarSrcSet={`${process.env.PUBLIC_URL}/img/avatar-medium-retina.png 2x`}
+      avatarAlt="avatar"
+      fullName="Every Interaction"
+      userName="EveryInteract"
+      time="2 Mar 2015"
+      text="We’ve made some more resources for all you wonderful
+      <a target='_blank' href='#'>#design</a> folk <a target='_blank' href='everyinteraction.com/resources/'>
+      http://www.everyinteraction.com/resources/</a> <a target='_blank' href='#'>#webdesign</a>
+      <a target='_blank' href='#'>#UI</a>"
+      picture
+      pictureSrc={`${process.env.PUBLIC_URL}/img/img1.png`}
+      pictureSrcSet={`${process.env.PUBLIC_URL}/img/img1-retina.png 2x`}
+      quote={false}
+      retweetValue={17}
+      lovesValue={47}
+    />
+    <Tweet
+      avatarSrc={`${process.env.PUBLIC_URL}/img/avatar-medium.png`}
+      avatarSrcSet={`${process.env.PUBLIC_URL}/img/avatar-medium-retina.png 2x`}
+      avatarAlt="avatar"
+      fullName="Every Interaction"
+      userName="EveryInteract"
+      time="2 Mar 2015"
+      text="Our new website concept; Taking you from… @ Every Interaction
+      <a target='_blank' href='https://www.instagram.com/p/BNFGrfhBP3M/'>instagram.com/p/BNFGrfhBP3M/</a>"
+      quote={false}
+      commentValue={1}
+      retweetValue={4}
+      lovesValue={2}
+    />
+    <Tweet
+      avatarSrc={`${process.env.PUBLIC_URL}/img/avatar-medium.png`}
+      avatarSrcSet={`${process.env.PUBLIC_URL}/img/avatar-medium-retina.png 2x`}
+      avatarAlt="avatar"
+      fullName="Every Interaction"
+      userName="EveryInteract"
+      time="23h"
+      text="Variable web fonts are coming, and will open a world of opportunities for weight use online"
+      quote
+      quoteSrc={`${process.env.PUBLIC_URL}/img/img2.png`}
+      quoteSrcSet={`${process.env.PUBLIC_URL}/img/img2-retina.png 2x`}
+      quoteTitle="The Future of Web Fonts"
+      quoteText="We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…"
+      quoteLink="vilijamis.com"
+    />
+  </Wrapper>
+);
