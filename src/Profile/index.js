@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { Helmet } from "react-helmet";
 // components
 import Statistics from "./Statistics";
-import Sidebar from "./Sidebar";
+import Sidebar from "./UserInfo";
 import Tweets from "./Tweets";
 import Recommends from "../Recommends";
 import Trends from "../Trends";

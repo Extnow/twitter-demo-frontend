@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 // img
-import iconTick from "./../Profile/Sidebar/img/icon-tick.svg";
+import iconTick from "./../img/icon-tick.svg";
 import iconClose from "./img/icon-close.svg";
 // router
 import { Link } from "react-router-dom";
@@ -117,7 +117,7 @@ export default function(props) {
   return (
     <User>
       <Content>
-        <StLink to={props.to}>
+        <StLink to={`/${props.userName}`}>
           <ImgWrapper>
             <Img src={props.src} srcSet={props.srcSet} alt={props.fullName} />
           </ImgWrapper>

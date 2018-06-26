@@ -3,7 +3,7 @@ import styled from "styled-components";
 // router
 import { Link } from "react-router-dom";
 // libraries
-import { IntlProvider, FormattedNumber } from "react-intl";
+import { FormattedNumber } from "react-intl";
 
 const Trend = styled.div`
   margin-bottom: 10px;
@@ -11,10 +11,14 @@ const Trend = styled.div`
 `;
 
 const StLink = styled(Link)`
+  text-decoration: none;
+`;
+
+const Title = styled.h3`
+  margin: 0;
   font-size: 15px;
   color: #1da1f2;
   font-weight: bold;
-  text-decoration: none;
 
   &:hover {
     text-decoration: underline;
@@ -30,16 +34,16 @@ const Text = styled.p`
 export default function(props) {
   return (
     <Trend>
-      <StLink to={`/search?q=${props.to}`}>{props.to}</StLink>
-      <Text>{props.description}</Text>
-      {props.count > 0 && (
-        <Text>
-          <IntlProvider locale="en">
+      <StLink to={`/search?q=${props.title}`}>
+        <Title>{props.title}</Title>
+        <Text>{props.description}</Text>
+        {props.count > 0 && (
+          <Text>
             <FormattedNumber value={props.count} />
-          </IntlProvider>
-          {props.count > 1 ? " Tweets" : " Tweet"}
-        </Text>
-      )}
+            {props.count > 1 ? " Tweets" : " Tweet"}
+          </Text>
+        )}
+      </StLink>
     </Trend>
   );
 }
