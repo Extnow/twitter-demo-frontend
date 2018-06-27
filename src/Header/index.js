@@ -50,7 +50,7 @@ const NavigationLink = styled(NavLink)`
 
   &:before {
     content: '';
-    background-image: url(${({ img }) => img});
+    background-image: url(${({ icon }) => icon});
     background-repeat: no-repeat;
     background-position: center center;
     width: 20px;
@@ -184,31 +184,45 @@ const TweetButton = styled.button`
   }
 `;
 
+const navigationLinks = [
+  {
+    id: 1,
+    icon: iconHome,
+    link: '/',
+    title: 'Home',
+  },
+  {
+    id: 2,
+    icon: iconMoments,
+    link: '/moments',
+    title: 'Moments',
+  },
+  {
+    id: 3,
+    icon: iconNotifications,
+    link: '/notifications',
+    title: 'Notifications',
+  },
+  {
+    id: 4,
+    icon: iconMessages,
+    link: '/messages',
+    title: 'Messages',
+  },
+];
+
 export default () => (
   <Header>
     <div className="container">
       <Wrapper>
         <Navigation>
-          <li>
-            <NavigationLink img={iconHome} to="/">
-              Home
-            </NavigationLink>
-          </li>
-          <li>
-            <NavigationLink img={iconMoments} to="/moments">
-              Moments
-            </NavigationLink>
-          </li>
-          <li>
-            <NavigationLink img={iconNotifications} to="/notifications">
-              Notifications
-            </NavigationLink>
-          </li>
-          <li>
-            <NavigationLink img={iconMessages} to="/messages">
-              Messages
-            </NavigationLink>
-          </li>
+          {navigationLinks.map(navigation => (
+            <li key={navigation.id}>
+              <NavigationLink icon={navigation.icon} to={navigation.link}>
+                {navigation.title}
+              </NavigationLink>
+            </li>
+          ))}
         </Navigation>
         <TwitterLogo />
         <NavExtra>

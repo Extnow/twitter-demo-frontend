@@ -11,8 +11,7 @@ import iconPhotos from './img/icon-photos.svg';
 // components
 import List from './List';
 import Follower from './Follower';
-import Photo from './Photo';
-
+import Media from './Media';
 
 const WrapperInfo = styled.div`
   margin: 40px 0 20px 0;
@@ -99,7 +98,7 @@ const Element = styled.li`
   align-items: center;
 
   &:before {
-    content: "";
+    content: '';
     background-image: url(${({ img }) => img});
     background-repeat: no-repeat;
     background-position: center center;
@@ -157,43 +156,125 @@ const Button = styled.button`
   }
 `;
 
+const followers = [
+  {
+    id: 1,
+    src: 'follower-1.png',
+    srcSet: 'follower-1-retina.png',
+    fullName: 'Oleg',
+    to: 'salahov30',
+  },
+  {
+    id: 2,
+    src: 'follower-2.png',
+    srcSet: 'follower-2-retina.png',
+    fullName: 'Сергей Черкашин',
+    to: 'VonderVuflya‏',
+  },
+  {
+    id: 3,
+    src: 'follower-3.png',
+    srcSet: 'follower-3-retina.png',
+    fullName: 'Caroline Ward',
+    to: 'noveltyshoe',
+  },
+  {
+    id: 4,
+    src: 'follower-4.png',
+    srcSet: 'follower-4-retina.png',
+    fullName: 'Aya Ulan',
+    to: 'aya_ulan',
+  },
+  {
+    id: 5,
+    src: 'follower-5.png',
+    srcSet: 'follower-5-retina.png',
+    fullName: 'CM/UX',
+    to: 'lighthorsechris',
+  },
+  {
+    id: 6,
+    src: 'follower-6.png',
+    srcSet: 'follower-6-retina.png',
+    fullName: 'Pinky Bazaz',
+    to: 'PinkyBazaz',
+  },
+];
+
+const mediaFiles = [
+  {
+    id: 1,
+    src: 'photo-1.png',
+    srcSet: 'photo-1-retina.png',
+    name: 'photo-1',
+  },
+  {
+    id: 2,
+    src: 'photo-2.png',
+    srcSet: 'photo-2-retina.png',
+    name: 'photo-2',
+  },
+  {
+    id: 3,
+    src: 'photo-3.png',
+    srcSet: 'photo-3-retina.png',
+    name: 'photo-3',
+  },
+  {
+    id: 4,
+    src: 'photo-4.png',
+    srcSet: 'photo-4-retina.png',
+    name: 'photo-4',
+  },
+  {
+    id: 5,
+    src: 'photo-5.png',
+    srcSet: 'photo-5-retina.png',
+    name: 'photo-5',
+  },
+  {
+    id: 6,
+    src: 'photo-6.png',
+    srcSet: 'photo-6-retina.png',
+    name: 'photo-6',
+  },
+];
+
 export default () => (
   <div>
     <WrapperInfo>
       <Avatar>
         <AvatarImage
           src={`${process.env.PUBLIC_URL} /img/avatar-large.png`}
-          srcSet={
-            `${process.env.PUBLIC_URL} /img/avatar-large-retina.png 2x`
-          }
+          srcSet={`${process.env.PUBLIC_URL} /img/avatar-large-retina.png 2x`}
           alt="avatar"
         />
       </Avatar>
       <Title>
         <ProfileLink to="/EveryInteract">
-          Every Interaction
+Every Interaction
         </ProfileLink>
         <img src={iconTick} alt="tick" />
       </Title>
       <Header>
         <span>
-          @
+@
         </span>
         <Username to="/EveryInteract">
-          EveryInteract
+EveryInteract
         </Username>
         <span>
-          Follows you
+Follows you
         </span>
       </Header>
       <Bio>
-        UX Design studio focussed problem solving creativity. Design to us is
-        how can we make things *work* amazing.
+        UX Design studio focussed problem solving creativity. Design to us is how can we make things
+        *work* amazing.
       </Bio>
       <Info>
         <Element img={iconLocation}>
           <InfoText>
-            London, UK
+London, UK
           </InfoText>
         </Element>
         <Element img={iconLink}>
@@ -203,16 +284,16 @@ export default () => (
         </Element>
         <Element img={iconJoined}>
           <InfoText>
-            Joined May 2008
+Joined May 2008
           </InfoText>
         </Element>
       </Info>
       <Buttons>
         <Button>
-          Tweet to
+Tweet to
         </Button>
         <Button>
-          Message
+Message
         </Button>
       </Buttons>
     </WrapperInfo>
@@ -222,80 +303,27 @@ export default () => (
         to="/EveryInteract/followers_you_follow"
         icon={iconFollowers}
       >
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-1.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-1-retina.png 2x`}
-          fullName="Follower-1 Follow"
-          to="follower-1"
-        />
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-2.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-2-retina.png 2x`}
-          fullName="Follower-2 Follow"
-          to="follower-2"
-        />
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-3.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-3-retina.png 2x`}
-          fullName="Follower-3 Follow"
-          to="follower-3"
-        />
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-4.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-4-retina.png 2x`}
-          fullName="Follower-4 Follow"
-          to="follower-4"
-        />
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-5.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-5-retina.png 2x`}
-          fullName="Follower-5 Follow"
-          to="follower-5"
-        />
-        <Follower
-          src={`${process.env.PUBLIC_URL} /img/follower-6.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/follower-6-retina.png 2x`}
-          fullName="Follower-6 Follow"
-          to="follower-6"
-        />
+        {followers.map(follower => (
+          <Follower
+            key={follower.id}
+            src={`${process.env.PUBLIC_URL} /img/${follower.src}`}
+            srcSet={`${process.env.PUBLIC_URL} /img/${follower.srcSet}} 2x`}
+            fullName={follower.fullName}
+            to={follower.to}
+          />
+        ))}
       </List>
     </WrapperList>
     <WrapperList>
-      <List
-        title="522 Photos and videos"
-        to="/EveryInteract/media"
-        icon={iconPhotos}
-      >
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-1.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-1-retina.png 2x`}
-          name="photo-1"
-        />
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-2.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-2-retina.png 2x`}
-          name="photo-2"
-        />
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-3.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-3-retina.png 2x`}
-          name="photo-3"
-        />
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-4.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-4-retina.png 2x`}
-          name="photo-4"
-        />
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-5.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-5-retina.png 2x`}
-          name="photo-5"
-        />
-        <Photo
-          src={`${process.env.PUBLIC_URL} /img/photo-6.png`}
-          srcSet={`${process.env.PUBLIC_URL} /img/photo-6-retina.png 2x`}
-          name="photo-6"
-        />
+      <List title="522 Photos and videos" to="/EveryInteract/media" icon={iconPhotos}>
+        {mediaFiles.map(media => (
+          <Media
+            key={media.id}
+            src={`${process.env.PUBLIC_URL} /img/${media.src}`}
+            srcSet={`${process.env.PUBLIC_URL} /img${media.srcSet} 2x`}
+            name={media.name}
+          />
+        ))}
       </List>
     </WrapperList>
   </div>

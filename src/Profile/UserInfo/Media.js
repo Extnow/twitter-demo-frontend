@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Photo = styled.span`
+const Media = styled.span`
   display: block;
   margin: 0 5px 5px 0;
 `;
@@ -14,7 +14,7 @@ const Img = styled.img`
 `;
 
 export default ({ src, srcSet, name }) => (
-  <Photo>
+  <Media>
     <Img src={src} srcSet={srcSet} alt={name} />
-  </Photo>
+  </Media>
 );

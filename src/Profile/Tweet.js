@@ -11,6 +11,7 @@ import iconEnvelope from './img/icon-envelope.svg';
 const Wrapper = styled.div`
   padding: 9px 12px;
   cursor: pointer;
+  border-bottom: 1px solid #E1E8ED;
 
   &:hover {
     background-color: #f5f8fa;

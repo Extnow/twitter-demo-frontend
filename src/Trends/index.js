@@ -38,7 +38,37 @@ const Change = styled.button`
   }
 `;
 
-const Trends = styled.div``;
+const trends = [
+  {
+    id: 1,
+    title: '#BringYourDogToWorkDay',
+  },
+  {
+    id: 2,
+    title: '#FridayFeeling',
+    count: 12100,
+  },
+  {
+    id: 3,
+    title: '#BrexitAnniversary',
+    description: 'It’s one year since the UK voted to leave the European Union',
+  },
+  {
+    id: 4,
+    title: 'HMS Queen Elizabeth',
+    count: 1036,
+  },
+  {
+    id: 5,
+    title: 'Joe Budden',
+    count: 1036,
+  },
+  {
+    id: 6,
+    title: 'Trident',
+    count: 6136,
+  },
+];
 
 export default () => (
   <Wrapper>
@@ -53,16 +83,13 @@ United Kingdom Trends
 Change
       </Change>
     </Header>
-    <Trends>
-      <Trend title="#BringYourDogToWorkDay" />
-      <Trend title="#FridayFeeling" count={12100} />
+    {trends.map(trend => (
       <Trend
-        title="#BrexitAnniversary"
-        description="It’s one year since the UK voted to leave the European Union"
+        key={trend.id}
+        title={trend.title}
+        description={trend.description}
+        count={trend.count}
       />
-      <Trend title="HMS Queen Elizabeth" count={1036} />
-      <Trend title="Joe Budden" count={1036} />
-      <Trend title="Trident" count={6136} />
-    </Trends>
+    ))}
   </Wrapper>
 );

@@ -74,44 +74,60 @@ const Footer = styled(Link)`
   }
 `;
 
+const recommendedUsers = [
+  {
+    id: 1,
+    userName: 'appleinsider',
+    src: 'avatar-2.png',
+    srcSet: 'avatar-2-retina.png',
+    fullName: 'AppleInsider',
+    isTicked: false,
+  },
+  {
+    id: 2,
+    userName: 'Creode',
+    src: 'avatar-3.png',
+    srcSet: 'avatar-3-retina.png',
+    fullName: 'Creode',
+    isTicked: true,
+  },
+  {
+    id: 3,
+    userName: 'Epiphanysearch',
+    src: 'avatar-4.png',
+    srcSet: 'avatar-4-retina.png',
+    fullName: 'Epiphany Search',
+    isTicked: false,
+  },
+];
+
 export default () => (
   <Wrapper>
-    <header>
-      <Title>
+    <Title>
 Who to follow
-      </Title>
-      <Dot>
+    </Title>
+    <Dot>
 ·
-      </Dot>
-      <Refresh>
+    </Dot>
+    <Refresh>
 Refresh
-      </Refresh>
-      <Dot>
+    </Refresh>
+    <Dot>
 ·
-      </Dot>
-      <All href="#">
+    </Dot>
+    <All href="#">
 All
-      </All>
-    </header>
-    <RecommendedUser
-      userName="appleinsider"
-      src={`${process.env.PUBLIC_URL}/img/avatar-2.png`}
-      srcSet={`${process.env.PUBLIC_URL}/img/avatar-2-retina.png 2x`}
-      fullName="AppleInsider"
-    />
-    <RecommendedUser
-      userName="Creode"
-      src={`${process.env.PUBLIC_URL}/img/avatar-3.png`}
-      srcSet={`${process.env.PUBLIC_URL}/img/avatar-3-retina.png 2x`}
-      isTicked
-      fullName="Creode"
-    />
-    <RecommendedUser
-      userName="Epiphanysearch"
-      src={`${process.env.PUBLIC_URL}/img/avatar-4.png`}
-      srcSet={`${process.env.PUBLIC_URL}/img/avatar-4-retina.png 2x`}
-      fullName="Epiphany Search"
-    />
+    </All>
+    {recommendedUsers.map(user => (
+      <RecommendedUser
+        key={user.id}
+        userName={user.userName}
+        src={`${process.env.PUBLIC_URL} /img/${user.src}`}
+        srcSet={`${process.env.PUBLIC_URL} /img/${user.src}} 2x`}
+        isTicked={user.isTicked}
+        fullName={user.fullName}
+      />
+    ))}
     <Footer to="/who_to_follow/import">
 Find people you know
     </Footer>
