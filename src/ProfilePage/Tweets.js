@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { NavLink, Switch, Route } from 'react-router-dom';
 // components
 import Tweet from './Tweet';
+import OtherPage from '../OtherPage';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -141,22 +142,8 @@ Media
         </li>
       </Navigation>
       <Switch>
-        <Route
-          path={`${match.url}/with_replies`}
-          render={() => (
-            <h2>
-with_replies
-            </h2>
-          )}
-        />
-        <Route
-          path={`${match.url}/media`}
-          render={() => (
-            <h2>
-media
-            </h2>
-          )}
-        />
+        <Route path={`${match.url}/with_replies`} component={OtherPage} />
+        <Route path={`${match.url}/media`} component={OtherPage} />
         <Route path={`${match.url}`} render={() => tweetsList} />
       </Switch>
     </Wrapper>

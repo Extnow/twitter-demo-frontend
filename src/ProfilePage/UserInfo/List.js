@@ -34,15 +34,19 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
+const WrapperList = styled.div`
+  margin: 20px 0;
+`;
+
 export default ({
   to, title, icon, children,
 }) => (
-  <div>
+  <WrapperList>
     <StLink to={to} icon={icon}>
       {title}
     </StLink>
     <Wrapper>
       {children}
     </Wrapper>
-  </div>
+  </WrapperList>
 );

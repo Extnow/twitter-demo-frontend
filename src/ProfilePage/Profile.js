@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Route, Switch } from 'react-router-dom';
 // components
 import Statistics from './Statistics';
 import UserInfo from './UserInfo';
@@ -7,6 +8,7 @@ import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
+import OtherPage from '../OtherPage';
 
 const Banner = styled.img`
   display: block;
@@ -37,7 +39,13 @@ export default ({
             <UserInfo username={username} />
           </div>
           <div className="col-xs-6">
-            <Tweets match={match} />
+            <Switch>
+              <Route path={`${match.url}/following`} component={OtherPage} />
+              <Route path={`${match.url}/followers`} component={OtherPage} />
+              <Route path={`${match.url}/likes`} component={OtherPage} />
+              <Route path={`${match.url}/lists`} component={OtherPage} />
+              <Route path={`${match.url}`} component={Tweets} />
+            </Switch>
           </div>
           <div className="col-xs-3">
             <Recommends />

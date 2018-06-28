@@ -12,9 +12,6 @@ export default () => (
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/moments" component={OtherPage} />
-          <Route path="/notifications" component={OtherPage} />
-          <Route path="/messages" component={OtherPage} />
           <Route path="/about" component={OtherPage} />
           <Route path="/help" component={OtherPage} />
           <Route path="/terms" component={OtherPage} />
