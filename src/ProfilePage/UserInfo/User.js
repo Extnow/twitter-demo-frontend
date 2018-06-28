@@ -179,7 +179,7 @@ export default ({
       <span>
 @
       </span>
-      <Username to="/EveryInteract">
+      <Username to={`/${userName}`}>
         {userName}
       </Username>
       {isFollowsYou && (

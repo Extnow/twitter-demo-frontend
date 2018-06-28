@@ -25,6 +25,7 @@ export default () => (
           <Route path="/cookies" component={TemplatePage} />
           <Route path="/advertising" component={TemplatePage} />
           <Route path="/info" component={TemplatePage} />
+          <Route path="/search" component={TemplatePage} />
           <Route path="/:username" component={Profile} />
         </Switch>
       </div>
