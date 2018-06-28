@@ -15,7 +15,7 @@ const Title = styled.h1`
   margin: 0;
 `;
 
-const Avatar = styled.div`
+const Avatar = styled.img`
   position: absolute;
   display: flex;
   justify-content: center;
@@ -27,10 +27,6 @@ const Avatar = styled.div`
   border: 1px solid #e7ecf0;
   overflow: hidden;
   z-index: 2;
-`;
-
-const AvatarImage = styled.img`
-  display: block;
   width: 174px;
   height: 174px;
 `;
@@ -169,13 +165,11 @@ export default ({
   joined,
 }) => (
   <WrapperInfo>
-    <Avatar>
-      <AvatarImage
-        src={`${process.env.PUBLIC_URL} ${src}`}
-        srcSet={`${process.env.PUBLIC_URL} ${srcSet} 2x`}
-        alt={fullName}
-      />
-    </Avatar>
+    <Avatar
+      src={`${process.env.PUBLIC_URL} ${src}`}
+      srcSet={`${process.env.PUBLIC_URL} ${srcSet} 2x`}
+      alt={fullName}
+    />
     <Title>
       <FullName official={official} to={userName}>
         {fullName}

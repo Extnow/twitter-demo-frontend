@@ -1,5 +1,4 @@
 import React from 'react';
-
 import iconFollowers from './img/icon-followers.svg';
 import iconPhotos from './img/icon-photos.svg';
 // components
