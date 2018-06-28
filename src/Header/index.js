@@ -10,9 +10,14 @@ import iconMagnifier from './img/icon-magnifier.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
 const Header = styled.header`
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  z-index: 1000;
   background-color: #fff;
   font-family: Helvetica Neue, Helvetica;
-  box-shadow: 0px 2px 2px #b0b8be;
+  box-shadow: 0px 1px 1px #b0b8be;
 `;
 
 const Wrapper = styled.div`

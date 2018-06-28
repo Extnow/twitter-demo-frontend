@@ -1,9 +1,11 @@
 import React from 'react';
 import { IntlProvider } from 'react-intl';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 // components
 import Header from './Header';
-import OtherPage from './OtherPage';
+import TemplatePage from './TemplatePage';
 import Profile from './ProfilePage';
 
 export default () => (
@@ -12,14 +14,18 @@ export default () => (
       <div className="App">
         <Header />
         <Switch>
-          <Route path="/about" component={OtherPage} />
-          <Route path="/help" component={OtherPage} />
-          <Route path="/terms" component={OtherPage} />
-          <Route path="/privacy" component={OtherPage} />
-          <Route path="/cookies" component={OtherPage} />
-          <Route path="/advertising" component={OtherPage} />
-          <Route path="/info" component={OtherPage} />
-          <Route path="/" component={Profile} />
+          <Redirect exact from="/" to="/EveryInteraction" />
+          <Route path="/moments" component={TemplatePage} />
+          <Route path="/notifications" component={TemplatePage} />
+          <Route path="/messages" component={TemplatePage} />
+          <Route path="/about" component={TemplatePage} />
+          <Route path="/help" component={TemplatePage} />
+          <Route path="/terms" component={TemplatePage} />
+          <Route path="/privacy" component={TemplatePage} />
+          <Route path="/cookies" component={TemplatePage} />
+          <Route path="/advertising" component={TemplatePage} />
+          <Route path="/info" component={TemplatePage} />
+          <Route path="/:username" component={Profile} />
         </Switch>
       </div>
     </BrowserRouter>

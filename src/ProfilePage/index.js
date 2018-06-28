@@ -1,23 +1,65 @@
 import React from 'react';
+import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 // components
-import Profile from './Profile';
-import OtherPage from '../OtherPage';
+import Statistics from './Statistics';
+import UserInfo from './UserInfo';
+import Tweets from './Tweets';
+import Recommends from '../Recommends';
+import Trends from '../Trends';
+import Footer from '../Footer';
+import TemplatePage from '../TemplatePage';
 
-export default () => (
-  <React.Fragment>
-    <Helmet>
-      <title>
-Every Interaction (@EveryInteract) | Twitter
-      </title>
-    </Helmet>
-    <Switch>
-      <Redirect from="/" to="/EveryInteraction" exact />
-      <Route path="/moments" component={OtherPage} />
-      <Route path="/notifications" component={OtherPage} />
-      <Route path="/messages" component={OtherPage} />
-      <Route path="/:username" component={Profile} />
-    </Switch>
-  </React.Fragment>
-);
+const Banner = styled.img`
+  display: block;
+  height: 380px;
+  width: 100%;
+  object-fit: cover;
+`;
+
+const Profile = styled.div`
+  background-color: #e6ecf0;
+  position: relative;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+`;
+
+export default ({ match }) => {
+  const { username } = match.params;
+  return (
+    <React.Fragment>
+      <Helmet>
+        <title>
+  Every Interaction (@EveryInteract) | Twitter
+        </title>
+      </Helmet>
+      <main>
+        <Banner src={`${process.env.PUBLIC_URL}/img/banner.png`} alt="banner" />
+        <Statistics match={match} />
+        <Profile>
+          <div className="container">
+            <div className="row">
+              <div className="col-xs-3">
+                <UserInfo username={username} />
+              </div>
+              <div className="col-xs-6">
+                <Switch>
+                  <Route path={`${match.url}/following`} component={TemplatePage} />
+                  <Route path={`${match.url}/followers`} component={TemplatePage} />
+                  <Route path={`${match.url}/likes`} component={TemplatePage} />
+                  <Route path={`${match.url}/lists`} component={TemplatePage} />
+                  <Route path={`${match.url}`} component={Tweets} />
+                </Switch>
+              </div>
+              <div className="col-xs-3">
+                <Recommends />
+                <Trends />
+                <Footer />
+              </div>
+            </div>
+          </div>
+        </Profile>
+      </main>
+    </React.Fragment>
+  );
+};
