@@ -99,11 +99,12 @@ export default ({ username }) => (
       srcSet="/img/avatar-large-retina.png"
       userName={username}
       fullName="Every Interaction"
-      isTicked="true"
-      isFollowsYou="true"
+      official
+      isFollowsYou
       bio="UX Design studio focussed problem solving creativity. Design to us is how can we make things *work* amazing."
       location="London, UK"
       website="everyinteraction.com"
+      websiteUrl="https://www.everyinteraction.com/"
       joined="Joined May 2008"
     />
     <List

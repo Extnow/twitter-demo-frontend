@@ -30,7 +30,7 @@ export default ({ match }) => {
     <React.Fragment>
       <Helmet>
         <title>
-  Every Interaction (@EveryInteract) | Twitter
+Every Interaction (@EveryInteract) | Twitter
         </title>
       </Helmet>
       <main>

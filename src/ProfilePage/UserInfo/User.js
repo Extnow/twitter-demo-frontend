@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // img
-import iconTick from '../../img/icon-tick.svg';
+import iconOfficial from '../../img/icon-official.svg';
 import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
 import iconJoined from './img/icon-joined.svg';
@@ -35,13 +35,22 @@ const AvatarImage = styled.img`
   height: 174px;
 `;
 
-const ProfileLink = styled(Link)`
+const FullName = styled(Link)`
   color: #14171a;
   text-decoration: none;
   font-family: Helvetica;
   line-height: 22px;
   font-size: 22px;
   margin-right: 5px;
+
+  &:after {
+    content: '';
+    display: inline-block;
+    background-image: url(${({ official }) => (official ? iconOfficial : '')});
+    width: 18px;
+    height: 18px;
+    margin-left: 5px;
+  }
 
   &:hover {
     text-decoration: underline;
@@ -150,12 +159,13 @@ export default ({
   src,
   srcSet,
   userName,
-  isTicked,
+  official,
   fullName,
   isFollowsYou,
   bio,
   location,
   website,
+  websiteUrl,
   joined,
 }) => (
   <WrapperInfo>
@@ -167,10 +177,9 @@ export default ({
       />
     </Avatar>
     <Title>
-      <ProfileLink to={userName}>
+      <FullName official={official} to={userName}>
         {fullName}
-      </ProfileLink>
-      {isTicked && <img src={iconTick} alt="tick" />}
+      </FullName>
     </Title>
     <Header>
       <span>
@@ -195,7 +204,7 @@ Follows you
         </InfoText>
       </Element>
       <Element img={iconLink}>
-        <InfoLink href="https://www.everyinteraction.com/" target="_blank">
+        <InfoLink href={websiteUrl} target="_blank">
           {website}
         </InfoLink>
       </Element>

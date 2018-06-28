@@ -81,7 +81,7 @@ const recommendedUsers = [
     src: 'avatar-2.png',
     srcSet: 'avatar-2-retina.png',
     fullName: 'AppleInsider',
-    isTicked: false,
+    official: false,
   },
   {
     id: 2,
@@ -89,7 +89,7 @@ const recommendedUsers = [
     src: 'avatar-3.png',
     srcSet: 'avatar-3-retina.png',
     fullName: 'Creode',
-    isTicked: true,
+    official: true,
   },
   {
     id: 3,
@@ -97,7 +97,7 @@ const recommendedUsers = [
     src: 'avatar-4.png',
     srcSet: 'avatar-4-retina.png',
     fullName: 'Epiphany Search',
-    isTicked: false,
+    official: false,
   },
 ];
 
@@ -124,7 +124,7 @@ All
         userName={user.userName}
         src={`${process.env.PUBLIC_URL} /img/${user.src}`}
         srcSet={`${process.env.PUBLIC_URL} /img/${user.src}} 2x`}
-        isTicked={user.isTicked}
+        official={user.official}
         fullName={user.fullName}
       />
     ))}

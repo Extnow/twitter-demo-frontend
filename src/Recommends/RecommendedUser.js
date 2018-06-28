@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // img
-import iconTick from '../img/icon-tick.svg';
+import iconOfficial from '../img/icon-official.svg';
 import iconClose from './img/icon-close.svg';
 
 const User = styled.div`
@@ -113,7 +113,7 @@ const CloseIcon = styled.img`
 `;
 
 export default ({
-  userName, src, srcSet, fullName, isTicked,
+  userName, src, srcSet, fullName, official,
 }) => (
   <User>
     <Content>
@@ -125,7 +125,7 @@ export default ({
           <FullName>
             {fullName}
           </FullName>
-          {isTicked && <Tick src={iconTick} alt="tick" />}
+          {official && <Tick src={iconOfficial} alt="tick" />}
           <UserName>
             <span>
 @
