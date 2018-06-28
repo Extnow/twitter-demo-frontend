@@ -115,60 +115,67 @@ const ExtraActions = styled.button`
   }
 `;
 
-const navigationLinks = [
-  {
-    id: '1',
-    link: '/',
-    title: 'Tweets',
-    count: 8058,
-  },
-  {
-    id: '2',
-    link: '/EveryInteract/following',
-    title: 'Following',
-    count: 721,
-  },
-  {
-    id: '3',
-    link: '/EveryInteract/followers',
-    title: 'Followers',
-    count: 1815,
-  },
-  {
-    id: '4',
-    link: '/EveryInteract/likes',
-    title: 'Likes',
-    count: 460,
-  },
-  {
-    id: '5',
-    link: '/EveryInteract/lists',
-    title: 'Lists',
-    count: 2,
-  },
-];
-
-export default () => (
+export default ({ match }) => (
   <Statistics>
     <div className="container">
       <div className="row">
         <div className="col-xs-offset-3 col-xs-9">
           <Wrapper>
             <Navigation>
-              {navigationLinks.map(links => (
-                <li key={links.id}>
-                  <NavigationLink to={links.link}>
-                    {links.title}
-                    <Value>
-                      {links.count}
-                    </Value>
-                  </NavigationLink>
-                </li>
-              ))}
+              <li>
+                <NavigationLink to={`${match.url}`} exact>
+                  <span>
+Tweets
+                  </span>
+                  <Value>
+8,058
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to={`${match.url}/following`}>
+                  <span>
+Following
+                  </span>
+                  <Value>
+721
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to={`${match.url}/followers`}>
+                  <span>
+Followers
+                  </span>
+                  <Value>
+1,815
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to={`${match.url}/likes`}>
+                  <span>
+Likes
+                  </span>
+                  <Value>
+460
+                  </Value>
+                </NavigationLink>
+              </li>
+              <li>
+                <NavigationLink to={`${match.url}/lists`}>
+                  <span>
+Lists
+                  </span>
+                  <Value>
+2
+                  </Value>
+                </NavigationLink>
+              </li>
             </Navigation>
             <Actions>
               <Follow>
-                Follow
+Follow
               </Follow>
               <ExtraActions />
             </Actions>

@@ -240,7 +240,7 @@ const mediaFiles = [
   },
 ];
 
-export default () => (
+export default ({ username }) => (
   <div>
     <WrapperInfo>
       <Avatar>
@@ -251,8 +251,8 @@ export default () => (
         />
       </Avatar>
       <Title>
-        <ProfileLink to="/EveryInteract">
-Every Interaction
+        <ProfileLink to={`/${username}`}>
+          {username}
         </ProfileLink>
         <img src={iconTick} alt="tick" />
       </Title>

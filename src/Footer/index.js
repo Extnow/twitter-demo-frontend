@@ -28,54 +28,32 @@ const StLink = styled(Link)`
   }
 `;
 
-const footerLinks = [
-  {
-    id: 1,
-    link: '/about',
-    text: 'About',
-  },
-  {
-    id: 2,
-    link: '/help',
-    text: 'Help Center',
-  },
-  {
-    id: 3,
-    link: '/terms',
-    text: 'Terms',
-  },
-  {
-    id: 4,
-    link: '/privacy',
-    text: 'Privacy policy',
-  },
-  {
-    id: 5,
-    link: '/cookies',
-    text: 'Cookies',
-  },
-  {
-    id: 6,
-    link: '/advertising',
-    text: 'Ads',
-  },
-  {
-    id: 7,
-    link: '/info',
-    text: 'Info',
-  },
-];
-
 export default () => (
   <Wrapper>
     <Copyright>
       © Twitter,
       {getYear(new Date())}
     </Copyright>
-    {footerLinks.map(links => (
-      <StLink key={links.id} to={links.link}>
-        {links.text}
-      </StLink>
-    ))}
+    <StLink to="/about">
+About
+    </StLink>
+    <StLink to="/help">
+Help Center
+    </StLink>
+    <StLink to="/terms">
+Terms
+    </StLink>
+    <StLink to="/privacy">
+Privacy policy
+    </StLink>
+    <StLink to="/cookies">
+Cookies
+    </StLink>
+    <StLink to="/advertising">
+Ads
+    </StLink>
+    <StLink to="/info">
+Info
+    </StLink>
   </Wrapper>
 );

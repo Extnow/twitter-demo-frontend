@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Helmet } from 'react-helmet';
 // components
 import Statistics from './Statistics';
-import Sidebar from './UserInfo';
+import UserInfo from './UserInfo';
 import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
@@ -22,23 +21,23 @@ const Profile = styled.div`
   font-family: Helvetica Neue, Helvetica, sans-serif;
 `;
 
-export default () => (
+export default ({
+  match,
+  match: {
+    params: { username },
+  },
+}) => (
   <main>
-    <Helmet>
-      <title>
-Every Interaction (@EveryInteract) | Twitter
-      </title>
-    </Helmet>
     <Banner src={`${process.env.PUBLIC_URL}/img/banner.png`} alt="banner" />
-    <Statistics />
+    <Statistics match={match} />
     <Profile>
       <div className="container">
         <div className="row">
           <div className="col-xs-3">
-            <Sidebar />
+            <UserInfo username={username} />
           </div>
           <div className="col-xs-6">
-            <Tweets />
+            <Tweets match={match} />
           </div>
           <div className="col-xs-3">
             <Recommends />

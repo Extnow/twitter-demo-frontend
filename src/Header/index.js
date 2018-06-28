@@ -12,6 +12,7 @@ import iconTwitterLogo from './img/icon-twitter-logo.svg';
 const Header = styled.header`
   background-color: #fff;
   font-family: Helvetica Neue, Helvetica;
+  box-shadow: 0px 2px 2px #b0b8be;
 `;
 
 const Wrapper = styled.div`
@@ -184,45 +185,31 @@ const TweetButton = styled.button`
   }
 `;
 
-const navigationLinks = [
-  {
-    id: 1,
-    icon: iconHome,
-    link: '/',
-    title: 'Home',
-  },
-  {
-    id: 2,
-    icon: iconMoments,
-    link: '/moments',
-    title: 'Moments',
-  },
-  {
-    id: 3,
-    icon: iconNotifications,
-    link: '/notifications',
-    title: 'Notifications',
-  },
-  {
-    id: 4,
-    icon: iconMessages,
-    link: '/messages',
-    title: 'Messages',
-  },
-];
-
 export default () => (
   <Header>
     <div className="container">
       <Wrapper>
         <Navigation>
-          {navigationLinks.map(navigation => (
-            <li key={navigation.id}>
-              <NavigationLink icon={navigation.icon} to={navigation.link}>
-                {navigation.title}
-              </NavigationLink>
-            </li>
-          ))}
+          <li>
+            <NavigationLink icon={iconHome} to="/">
+              Home
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink icon={iconMoments} to="/moments">
+              Moments
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink icon={iconNotifications} to="/notifications">
+              Notifications
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink icon={iconMessages} to="/messages">
+              Messages
+            </NavigationLink>
+          </li>
         </Navigation>
         <TwitterLogo />
         <NavExtra>
