@@ -176,9 +176,7 @@ export default ({
       </FullName>
     </Title>
     <Header>
-      <span>
 @
-      </span>
       <Username to={`/${userName}`}>
         {userName}
       </Username>

@@ -43,59 +43,55 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default ({ match }) => {
-  const tweets = [
-    {
-      id: 1,
-      isPinned: true,
-      avatarSrc: 'avatar-medium.png',
-      avatarSrcSet: 'avatar-medium-retina.png',
-      avatarAlt: 'avatar',
-      fullName: 'Every Interaction',
-      userName: 'EveryInteract',
-      time: '2 Mar 2015',
-      text:
-        'We’ve made some more resources for all you wonderful <a target="_blank" href="#">#design</a> folk <a target="_blank" href="everyinteraction.com/resources/">http://www.everyinteraction.com/resources/</a> <a target="_blank" href="#">#webdesign</a> <a target="_blank" href="#">#UI</a>',
-      picture: true,
-      pictureSrc: 'img1.png',
-      pictureSrcSet: 'img1-retina.png',
-      retweetValue: 17,
-      lovesValue: 47,
-    },
-    {
-      id: 2,
-      avatarSrc: 'avatar-medium.png',
-      avatarSrcSet: 'avatar-medium-retina.png',
-      avatarAlt: 'avatar',
-      fullName: 'Every Interaction',
-      userName: 'EveryInteract',
-      time: '23h',
-      text:
-        'Our new website concept; Taking you from… @ Every Interaction <a target="_blank" href="https://www.instagram.com/p/BNFGrfhBP3M/">instagram.com/p/BNFGrfhBP3M/</a>',
-      commentValue: 1,
-      retweetValue: 4,
-      lovesValue: 2,
-    },
-    {
-      id: 3,
-      avatarSrc: 'avatar-medium.png',
-      avatarSrcSet: 'avatar-medium-retina.png',
-      avatarAlt: 'avatar',
-      fullName: 'Every Interaction',
-      userName: 'EveryInteract',
-      time: 'Nov 18',
-      text:
-        'Variable web fonts are coming, and will open a world of opportunities for weight use online',
-      quote: true,
-      quoteSrc: 'img2.png',
-      quoteSrcSet: 'img2-retina.png',
-      quoteTitle: 'The Future of Web Fonts',
-      quoteText:
-        'We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…',
-      quoteLink: 'vilijamis.com',
-    },
-  ];
+const tweets = [
+  {
+    id: 1,
+    isPinned: true,
+    avatarSrc: 'avatar-medium.png',
+    avatarSrcSet: 'avatar-medium-retina.png',
+    avatarAlt: 'avatar',
+    fullName: 'Every Interaction',
+    userName: 'EveryInteract',
+    time: '2 Mar 2015',
+    text: 'We’ve made some more resources for all you wonderful <a target="_blank" href="#">#design</a> folk <a target="_blank" href="everyinteraction.com/resources/">http://www.everyinteraction.com/resources/</a> <a target="_blank" href="#">#webdesign</a> <a target="_blank" href="#">#UI</a>',
+    picture: true,
+    pictureSrc: 'img1.png',
+    pictureSrcSet: 'img1-retina.png',
+    retweetValue: 17,
+    lovesValue: 47,
+  },
+  {
+    id: 2,
+    avatarSrc: 'avatar-medium.png',
+    avatarSrcSet: 'avatar-medium-retina.png',
+    avatarAlt: 'avatar',
+    fullName: 'Every Interaction',
+    userName: 'EveryInteract',
+    time: '23h',
+    text: 'Our new website concept; Taking you from… @ Every Interaction <a target="_blank" href="https://www.instagram.com/p/BNFGrfhBP3M/">instagram.com/p/BNFGrfhBP3M/</a>',
+    commentValue: 1,
+    retweetValue: 4,
+    lovesValue: 2,
+  },
+  {
+    id: 3,
+    avatarSrc: 'avatar-medium.png',
+    avatarSrcSet: 'avatar-medium-retina.png',
+    avatarAlt: 'avatar',
+    fullName: 'Every Interaction',
+    userName: 'EveryInteract',
+    time: 'Nov 18',
+    text: 'Variable web fonts are coming, and will open a world of opportunities for weight use online',
+    quote: true,
+    quoteSrc: 'img2.png',
+    quoteSrcSet: 'img2-retina.png',
+    quoteTitle: 'The Future of Web Fonts',
+    quoteText: 'We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…',
+    quoteLink: 'vilijamis.com',
+  },
+];
 
+export default ({ match }) => {
   const tweetsList = tweets.map(tweet => (
     <Tweet
       key={tweet.id}
