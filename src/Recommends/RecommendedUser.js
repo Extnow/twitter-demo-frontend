@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // img
-import iconTick from "./../img/icon-tick.svg";
-import iconClose from "./img/icon-close.svg";
-// router
-import { Link } from "react-router-dom";
+import iconOfficial from '../img/icon-official.svg';
+import iconClose from './img/icon-close.svg';
 
 const User = styled.div`
   display: flex;
@@ -113,30 +112,36 @@ const CloseIcon = styled.img`
   height: 8px;
 `;
 
-export default function(props) {
-  return (
-    <User>
-      <Content>
-        <StLink to={`/${props.userName}`}>
-          <ImgWrapper>
-            <Img src={props.src} srcSet={props.srcSet} alt={props.fullName} />
-          </ImgWrapper>
-          <Name>
-            <FullName>{props.fullName}</FullName>
-            {props.isTicked && <Tick src={iconTick} alt="tick" />}
-            <UserName>
-              <span>@</span>
-              {props.userName}
-            </UserName>
-          </Name>
-        </StLink>
-        <div>
-          <Follow>Follow</Follow>
-        </div>
-      </Content>
-      <Close>
-        <CloseIcon src={iconClose} alt="close button" />
-      </Close>
-    </User>
-  );
-}
+export default ({
+  userName, src, srcSet, fullName, official,
+}) => (
+  <User>
+    <Content>
+      <StLink to={`/${userName}`}>
+        <ImgWrapper>
+          <Img src={src} srcSet={srcSet} alt={fullName} />
+        </ImgWrapper>
+        <Name>
+          <FullName>
+            {fullName}
+          </FullName>
+          {official && <Tick src={iconOfficial} alt="tick" />}
+          <UserName>
+            <span>
+@
+            </span>
+            {userName}
+          </UserName>
+        </Name>
+      </StLink>
+      <div>
+        <Follow>
+Follow
+        </Follow>
+      </div>
+    </Content>
+    <Close>
+      <CloseIcon src={iconClose} alt="close button" />
+    </Close>
+  </User>
+);

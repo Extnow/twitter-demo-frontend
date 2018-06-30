@@ -1,7 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-// router
-import { Link } from "react-router-dom";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StLink = styled(Link)`
   display: flex;
@@ -11,11 +10,11 @@ const StLink = styled(Link)`
   margin-bottom: 8px;
 
   &:before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 15px;
     height: 15px;
-    background-image: url(${props => props.icon});
+    background-image: url(${({ icon }) => icon});
     background-repeat: no-repeat;
     margin-right: 12px;
   }
@@ -35,13 +34,19 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `;
 
-export default function(props) {
-  return (
-    <div>
-      <StLink to={props.to} icon={props.icon}>
-        {props.title}
-      </StLink>
-      <Wrapper>{props.children}</Wrapper>
-    </div>
-  );
-}
+const WrapperList = styled.div`
+  margin: 20px 0;
+`;
+
+export default ({
+  to, title, icon, children,
+}) => (
+  <WrapperList>
+    <StLink to={to} icon={icon}>
+      {title}
+    </StLink>
+    <Wrapper>
+      {children}
+    </Wrapper>
+  </WrapperList>
+);

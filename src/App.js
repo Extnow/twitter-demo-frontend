@@ -1,31 +1,34 @@
-import React, { Component } from "react";
-// css
-import "normalize.css";
-import "flexboxgrid2/flexboxgrid2.css";
+import React from 'react';
+import { IntlProvider } from 'react-intl';
+import {
+  BrowserRouter, Switch, Route, Redirect,
+} from 'react-router-dom';
 // components
-import Header from "./Header";
-import Profile from "./Profile";
-// router
-import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
-// libraries
-import { IntlProvider } from "react-intl";
+import Header from './Header';
+import TemplatePage from './TemplatePage';
+import Profile from './ProfilePage';
 
-class App extends Component {
-  render() {
-    return (
-      <IntlProvider locale="en">
-        <BrowserRouter>
-          <div className="App">
-            <Header />
-            <Switch>
-              <Redirect exact from="/" to="/EveryInteract" />
-              <Route exact path="/EveryInteract" component={Profile} />
-            </Switch>
-          </div>
-        </BrowserRouter>
-      </IntlProvider>
-    );
-  }
-}
-
-export default App;
+export default () => (
+  <IntlProvider locale="en">
+    <BrowserRouter>
+      <div className="App">
+        <Header />
+        <Switch>
+          <Redirect exact from="/" to="/EveryInteraction" />
+          <Route path="/moments" component={TemplatePage} />
+          <Route path="/notifications" component={TemplatePage} />
+          <Route path="/messages" component={TemplatePage} />
+          <Route path="/about" component={TemplatePage} />
+          <Route path="/help" component={TemplatePage} />
+          <Route path="/terms" component={TemplatePage} />
+          <Route path="/privacy" component={TemplatePage} />
+          <Route path="/cookies" component={TemplatePage} />
+          <Route path="/advertising" component={TemplatePage} />
+          <Route path="/info" component={TemplatePage} />
+          <Route path="/search" component={TemplatePage} />
+          <Route path="/:username" component={Profile} />
+        </Switch>
+      </div>
+    </BrowserRouter>
+  </IntlProvider>
+);

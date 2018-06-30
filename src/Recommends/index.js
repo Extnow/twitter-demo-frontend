@@ -1,10 +1,9 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 // components
-import RecommendedUser from "./RecommendedUser";
-import iconPeople from "./img/icon-people.svg";
-// router
-import { Link } from "react-router-dom";
+import RecommendedUser from './RecommendedUser';
+import iconPeople from './img/icon-people.svg';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -56,7 +55,7 @@ const Footer = styled(Link)`
   margin-top: 24px;
 
   &:before {
-    content: "";
+    content: '';
     display: inline-block;
     width: 16px;
     height: 12px;
@@ -75,36 +74,62 @@ const Footer = styled(Link)`
   }
 `;
 
-export default function() {
-  return (
-    <Wrapper>
-      <header>
-        <Title>Who to follow</Title>
-        <Dot>·</Dot>
-        <Refresh>Refresh</Refresh>
-        <Dot>·</Dot>
-        <All href="#">All</All>
-      </header>
+const recommendedUsers = [
+  {
+    id: 1,
+    userName: 'appleinsider',
+    src: 'avatar-2.png',
+    srcSet: 'avatar-2-retina.png',
+    fullName: 'AppleInsider',
+    official: false,
+  },
+  {
+    id: 2,
+    userName: 'Creode',
+    src: 'avatar-3.png',
+    srcSet: 'avatar-3-retina.png',
+    fullName: 'Creode',
+    official: true,
+  },
+  {
+    id: 3,
+    userName: 'Epiphanysearch',
+    src: 'avatar-4.png',
+    srcSet: 'avatar-4-retina.png',
+    fullName: 'Epiphany Search',
+    official: false,
+  },
+];
+
+export default () => (
+  <Wrapper>
+    <Title>
+Who to follow
+    </Title>
+    <Dot>
+·
+    </Dot>
+    <Refresh>
+Refresh
+    </Refresh>
+    <Dot>
+·
+    </Dot>
+    <All href="#">
+All
+    </All>
+    {recommendedUsers.map(user => (
       <RecommendedUser
-        userName="appleinsider"
-        src={process.env.PUBLIC_URL + "/img/avatar-2.png"}
-        srcSet={process.env.PUBLIC_URL + "/img/avatar-2-retina.png 2x"}
-        fullName="AppleInsider"
+        key={user.id}
+        userName={user.userName}
+        src={`${process.env.PUBLIC_URL} /img/${user.src}`}
+        srcSet={`${process.env.PUBLIC_URL} /img/${user.src}} 2x`}
+        official={user.official}
+        fullName={user.fullName}
       />
-      <RecommendedUser
-        userName="Creode"
-        src={process.env.PUBLIC_URL + "/img/avatar-3.png"}
-        srcSet={process.env.PUBLIC_URL + "/img/avatar-3-retina.png 2x"}
-        isTicked={true}
-        fullName="Creode"
-      />
-      <RecommendedUser
-        userName="Epiphanysearch"
-        src={process.env.PUBLIC_URL + "/img/avatar-4.png"}
-        srcSet={process.env.PUBLIC_URL + "/img/avatar-4-retina.png 2x"}
-        fullName="Epiphany Search"
-      />
-      <Footer to="/who_to_follow/import">Find people you know</Footer>
-    </Wrapper>
-  );
-}
+    ))}
+    <Footer to="/who_to_follow/import">
+Find people you know
+    </Footer>
+  </Wrapper>
+);
