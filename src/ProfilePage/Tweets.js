@@ -127,7 +127,7 @@ export default ({ match }) => {
           </NavigationLink>
         </li>
         <li>
-          <NavigationLink to={`${match.url}/with_replies`}>
+          <NavigationLink to={`${match.url}/with-replies`}>
 Tweets & replies
           </NavigationLink>
         </li>
@@ -138,7 +138,7 @@ Media
         </li>
       </Navigation>
       <Switch>
-        <Route path={`${match.url}/with_replies`} component={TemplatePage} />
+        <Route path={`${match.url}/with-replies`} component={TemplatePage} />
         <Route path={`${match.url}/media`} component={TemplatePage} />
         <Route path={`${match.url}`} render={() => tweetsList} />
       </Switch>
