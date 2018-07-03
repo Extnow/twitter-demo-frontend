@@ -233,9 +233,7 @@ export default () => (
             </AvatarButton>
           </Action>
           <Action>
-            <TweetButton>
-Tweet
-            </TweetButton>
+            <TweetButton>Tweet</TweetButton>
           </Action>
         </NavExtra>
       </Wrapper>

@@ -61,7 +61,7 @@ export default class ProfilePage extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>Every Interaction (@EveryInteract) | Twitter</title>
+          <title>{userInfo.display_name} (@{userInfo.username}) | Twitter</title>
         </Helmet>
         <main>
           <Banner userInfo={userInfo} />
