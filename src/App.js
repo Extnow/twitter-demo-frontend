@@ -14,7 +14,6 @@ export default () => (
       <div className="App">
         <Header />
         <Switch>
-          <Redirect exact from="/" to="/EveryInteraction" />
           <Route path="/moments" component={TemplatePage} />
           <Route path="/notifications" component={TemplatePage} />
           <Route path="/messages" component={TemplatePage} />
@@ -27,6 +26,7 @@ export default () => (
           <Route path="/info" component={TemplatePage} />
           <Route path="/search" component={TemplatePage} />
           <Route path="/:username" component={Profile} />
+          <Redirect exact from="/" to="/admin" />
         </Switch>
       </div>
     </BrowserRouter>

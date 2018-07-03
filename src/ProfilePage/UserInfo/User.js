@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // img
-import iconOfficial from '../img/icon-official.svg';
+import iconOfficial from '../../img/icon-official.svg';
 import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
 import iconJoined from './img/icon-joined.svg';
@@ -73,10 +73,9 @@ const Username = styled(Link)`
 `;
 
 const Bio = styled.p`
-  padding: 13px 0;
+  margin: 13px 0;
   line-height: 20px;
   font-size: 14px;
-  margin: 0;
 
   p {
     margin: 0;
