@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // img
-import iconOfficial from '../../img/icon-official.svg';
+import iconOfficial from '../img/icon-official.svg';
 import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
 import iconJoined from './img/icon-joined.svg';
@@ -22,13 +22,12 @@ const Avatar = styled.img`
   align-items: center;
   top: -179px;
   background-color: #fff;
-  padding: 18px;
-  border-radius: 100px;
-  border: 1px solid #e7ecf0;
+  border-radius: 50%;
+  border: 5px solid #fff;
   overflow: hidden;
   z-index: 2;
-  width: 174px;
-  height: 174px;
+  width: 207px;
+  height: 207px;
 `;
 
 const FullName = styled(Link)`
@@ -78,6 +77,11 @@ const Bio = styled.p`
   line-height: 20px;
   font-size: 14px;
   margin: 0;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
 `;
 
 const Info = styled.ul`
@@ -91,6 +95,7 @@ const Info = styled.ul`
 const Element = styled.li`
   display: flex;
   align-items: center;
+  margin-bottom: 8px;
 
   &:before {
     content: '';
@@ -99,14 +104,13 @@ const Element = styled.li`
     background-position: center center;
     width: 20px;
     height: 20px;
-    margin-right: 5px;
   }
 `;
 
 const InfoLink = styled.a`
-  margin-left: 13px;
+  margin-left: 5px;
   font-size: 14px
-  line-height: 28px
+  line-height: 14px;
   color: #1DA1F2;
   text-decoration: none;
 
@@ -116,9 +120,9 @@ const InfoLink = styled.a`
 `;
 
 const InfoText = styled.span`
-  margin-left: 13px;
+  margin-left: 5px;
   font-size: 14px
-  line-height: 28px
+  line-height: 14px;
   color: #697787;
 `;
 
@@ -151,7 +155,7 @@ const Button = styled.button`
   }
 `;
 
-export default ({
+export default function ({
   src,
   srcSet,
   userName,
@@ -163,56 +167,54 @@ export default ({
   website,
   websiteUrl,
   joined,
-}) => (
-  <WrapperInfo>
-    <Avatar
-      src={`${process.env.PUBLIC_URL} ${src}`}
-      srcSet={`${process.env.PUBLIC_URL} ${srcSet} 2x`}
-      alt={fullName}
-    />
-    <Title>
-      <FullName official={official} to={userName}>
-        {fullName}
-      </FullName>
-    </Title>
-    <Header>
-@
-      <Username to={`/${userName}`}>
-        {userName}
-      </Username>
-      {isFollowsYou && (
-      <span>
-Follows you
-      </span>
-      )}
-    </Header>
-    <Bio>
-      {bio}
-    </Bio>
-    <Info>
-      <Element img={iconLocation}>
-        <InfoText>
-          {location}
-        </InfoText>
-      </Element>
-      <Element img={iconLink}>
-        <InfoLink href={websiteUrl} target="_blank">
-          {website}
-        </InfoLink>
-      </Element>
-      <Element img={iconJoined}>
-        <InfoText>
-          {joined}
-        </InfoText>
-      </Element>
-    </Info>
-    <Buttons>
-      <Button>
-Tweet to
-      </Button>
-      <Button>
-Message
-      </Button>
-    </Buttons>
-  </WrapperInfo>
-);
+}) {
+  function createMarkup() {
+    return { __html: bio };
+  }
+
+  function styledText() {
+    return <Bio dangerouslySetInnerHTML={createMarkup()} />;
+  }
+
+  return (
+    <WrapperInfo>
+      <Avatar
+        src={`${process.env.PUBLIC_URL} ${src}`}
+        srcSet={`${process.env.PUBLIC_URL} ${srcSet} 2x`}
+        alt={fullName}
+      />
+      <Title>
+        <FullName official={official} to={userName}>
+          {fullName}
+        </FullName>
+      </Title>
+      <Header>
+        @
+        <Username to={`/${userName}`}>{userName}</Username>
+        {isFollowsYou && <span>Follows you</span>}
+      </Header>
+      {styledText()}
+      <Info>
+        {location && (
+          <Element img={iconLocation}>
+            <InfoText>{location}</InfoText>
+          </Element>
+        )}
+        <Element img={iconLink}>
+          <InfoLink href={websiteUrl} target="_blank">
+            {website}
+          </InfoLink>
+        </Element>
+        {joined && (
+          <Element img={iconJoined}>
+            <InfoText>{joined}</InfoText>
+          </Element>
+        )}
+      </Info>
+      <Buttons>
+        <Button>Tweet to</Button>
+        <Button>Message</Button>
+      </Buttons>
+    </WrapperInfo>
+  );
+}

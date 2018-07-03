@@ -124,59 +124,37 @@ export default ({ match }) => (
             <Navigation>
               <li>
                 <NavigationLink to={`${match.url}`} exact>
-                  <span>
-Tweets
-                  </span>
-                  <Value>
-8,058
-                  </Value>
+                  <span>Tweets</span>
+                  <Value>8,058</Value>
                 </NavigationLink>
               </li>
               <li>
                 <NavigationLink to={`${match.url}/following`}>
-                  <span>
-Following
-                  </span>
-                  <Value>
-721
-                  </Value>
+                  <span>Following</span>
+                  <Value>721</Value>
                 </NavigationLink>
               </li>
               <li>
                 <NavigationLink to={`${match.url}/followers`}>
-                  <span>
-Followers
-                  </span>
-                  <Value>
-1,815
-                  </Value>
+                  <span>Followers</span>
+                  <Value>1,815</Value>
                 </NavigationLink>
               </li>
               <li>
                 <NavigationLink to={`${match.url}/likes`}>
-                  <span>
-Likes
-                  </span>
-                  <Value>
-460
-                  </Value>
+                  <span>Likes</span>
+                  <Value>460</Value>
                 </NavigationLink>
               </li>
               <li>
                 <NavigationLink to={`${match.url}/lists`}>
-                  <span>
-Lists
-                  </span>
-                  <Value>
-2
-                  </Value>
+                  <span>Lists</span>
+                  <Value>2</Value>
                 </NavigationLink>
               </li>
             </Navigation>
             <Actions>
-              <Follow>
-Follow
-              </Follow>
+              <Follow>Follow</Follow>
               <ExtraActions />
             </Actions>
           </Wrapper>

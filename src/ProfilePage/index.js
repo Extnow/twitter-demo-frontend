@@ -10,13 +10,8 @@ import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
 import TemplatePage from '../TemplatePage';
+import Banner from './Banner';
 
-const Banner = styled.img`
-  display: block;
-  height: 380px;
-  width: 100%;
-  object-fit: cover;
-`;
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -29,12 +24,10 @@ export default ({ match }) => {
   return (
     <React.Fragment>
       <Helmet>
-        <title>
-Every Interaction (@EveryInteract) | Twitter
-        </title>
+        <title>Every Interaction (@EveryInteract) | Twitter</title>
       </Helmet>
       <main>
-        <Banner src={`${process.env.PUBLIC_URL}/img/banner.png`} alt="banner" />
+        <Banner />
         <Statistics match={match} />
         <Profile>
           <div className="container">
