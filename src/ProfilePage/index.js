@@ -11,6 +11,7 @@ import Footer from '../Footer';
 import TemplatePage from '../TemplatePage';
 import Banner from './Banner';
 import UserInfo from './UserInfo';
+import Followers from './Followers';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -60,7 +61,9 @@ export default class ProfilePage extends React.Component {
     return (
       <React.Fragment>
         <Helmet>
-          <title>{userInfo.display_name} (@{userInfo.username}) | Twitter</title>
+          <title>
+            {userInfo.display_name} (@{userInfo.username}) | Twitter
+          </title>
         </Helmet>
         <main>
           <Banner userInfo={userInfo} />
@@ -74,7 +77,10 @@ export default class ProfilePage extends React.Component {
                 <div className="col-xs-6">
                   <Switch>
                     <Route path={`/${userInfo.username}/following`} component={TemplatePage} />
-                    <Route path={`/${userInfo.username}/followers`} component={TemplatePage} />
+                    <Route
+                      path={`/${userInfo.username}/followers`}
+                      render={() => <Followers userInfo={userInfo} />}
+                    />
                     <Route
                       path={`/${userInfo.username}`}
                       render={() => <Tweets userInfo={userInfo} />}
