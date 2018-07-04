@@ -94,6 +94,11 @@ const Text = styled.p`
   font-size: 25px;
   color: #292f33;
 
+  p {
+    margin: 0;
+    margin-bottom: 17px;
+  }
+
   a {
     color: #1da1f2;
     text-decoration: none;
@@ -107,10 +112,6 @@ const Text = styled.p`
       text-decoration: underline;
     }
   }
-`;
-
-const PictureContainer = styled.div`
-  margin-top: 17px;
 `;
 
 const Picture = styled.img`
@@ -202,14 +203,11 @@ export default function ({
   text,
   pinned,
   avatarSrc,
-  avatarSrcSet,
   avatarAlt,
   fullName,
   userName,
   time,
-  picture,
   pictureSrc,
-  pictureSrcSet,
   quote,
   quoteSrc,
   quoteSrcSet,
@@ -231,22 +229,19 @@ export default function ({
   return (
     <Wrapper>
       {pinned && (
-      <Pinned>
-Pinned Tweet
-      </Pinned>
+      <Pinned>Pinned Tweet</Pinned>
       )}
       <Main>
         <div>
-          <Avatar src={avatarSrc} srcSet={avatarSrcSet} alt={avatarAlt} />
+          <Avatar src={avatarSrc} alt={avatarAlt} />
         </div>
         <Content>
           <Header>
-            <FullName to="/EveryInteract">
+            <FullName to={userName}>
               {fullName}
             </FullName>
             <UserName>
-              @
-              {userName}
+              @{userName}
             </UserName>
             <span>
               ·
@@ -256,11 +251,7 @@ Pinned Tweet
             </span>
           </Header>
           {styledText()}
-          {picture && (
-            <PictureContainer>
-              <Picture src={pictureSrc} srcSet={pictureSrcSet} alt="" />
-            </PictureContainer>
-          )}
+          <Picture src={pictureSrc} />
           {quote && (
             <QuoteTweet>
               <div>

@@ -20,17 +20,16 @@ const Profile = styled.div`
 
 export default class ProfilePage extends React.Component {
   state = {
-    userInfo: [],
+    userInfo: {},
     error: null,
     isLoaded: false,
   };
 
   componentDidMount() {
-    fetch(
-      `https://twitter-demo.erodionov.ru/api/v1/accounts/1?access_token=${
-        process.env.REACT_APP_ACCESS_TOKEN
-      }`,
-    )
+    const host = 'https://twitter-demo.erodionov.ru';
+    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+
+    fetch(`${host}/api/v1/accounts/1?access_token=${accesToken}`)
       .then(response => response.json())
       .then(
         (result) => {
