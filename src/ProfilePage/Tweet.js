@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import format from 'date-fns/format';
 // img
 import iconPinned from './img/icon-pinned.svg';
 import iconComments from './img/icon-comments.svg';
@@ -11,7 +12,7 @@ import iconEnvelope from './img/icon-envelope.svg';
 const Wrapper = styled.div`
   padding: 9px 12px;
   cursor: pointer;
-  border-bottom: 1px solid #E1E8ED;
+  border-bottom: 1px solid #e1e8ed;
 
   &:hover {
     background-color: #f5f8fa;
@@ -226,28 +227,22 @@ export default function ({
     return <Text dangerouslySetInnerHTML={createMarkup()} />;
   }
 
+  const formattedTime = format(new Date(time), 'D MMMM YYYY');
+
   return (
     <Wrapper>
-      {pinned && (
-      <Pinned>Pinned Tweet</Pinned>
-      )}
+      {pinned && <Pinned>Pinned Tweet</Pinned>}
       <Main>
         <div>
           <Avatar src={avatarSrc} alt={avatarAlt} />
         </div>
         <Content>
           <Header>
-            <FullName to={userName}>
-              {fullName}
-            </FullName>
-            <UserName>
-              @{userName}
-            </UserName>
+            <FullName to={userName}>{fullName}</FullName>
+            <UserName>@{userName}</UserName>
             <span>
               ·
-              <TimeLink href="#">
-                {time}
-              </TimeLink>
+              <TimeLink href="#">{formattedTime}</TimeLink>
             </span>
           </Header>
           {styledText()}
@@ -258,15 +253,9 @@ export default function ({
                 <QuoteImage src={quoteSrc} srcSet={quoteSrcSet} alt={quoteTitle} />
               </div>
               <QuoteContent>
-                <QuoteTitle>
-                  {quoteTitle}
-                </QuoteTitle>
-                <QuoteText>
-                  {quoteText}
-                </QuoteText>
-                <QuoteLink>
-                  {quoteLink}
-                </QuoteLink>
+                <QuoteTitle>{quoteTitle}</QuoteTitle>
+                <QuoteText>{quoteText}</QuoteText>
+                <QuoteLink>{quoteLink}</QuoteLink>
               </QuoteContent>
             </QuoteTweet>
           )}

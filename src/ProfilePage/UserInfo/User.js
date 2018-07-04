@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import format from 'date-fns/format';
 // img
 import iconOfficial from '../../img/icon-official.svg';
 import iconLocation from './img/icon-location.svg';
@@ -175,6 +176,8 @@ export default function ({
     return <Bio dangerouslySetInnerHTML={createMarkup()} />;
   }
 
+  const formattedDate = format(new Date(joined), 'MMMM YYYY');
+
   return (
     <WrapperInfo>
       <Avatar
@@ -206,7 +209,7 @@ export default function ({
         </Element>
         {joined && (
           <Element img={iconJoined}>
-            <InfoText>{joined}</InfoText>
+            <InfoText>Joined {formattedDate}</InfoText>
           </Element>
         )}
       </Info>
