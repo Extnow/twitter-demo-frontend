@@ -29,14 +29,15 @@ export default class ProfilePage extends React.Component {
   componentDidMount() {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+    const id = 1;
 
-    fetch(`${host}/api/v1/accounts/1?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
       .then(response => response.json())
       .then(
-        (result) => {
+        (userInfo) => {
           this.setState({
             isLoaded: true,
-            userInfo: result,
+            userInfo,
           });
         },
         (error) => {
