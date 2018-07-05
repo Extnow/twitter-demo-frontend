@@ -53,82 +53,69 @@ const followers = [
   },
 ];
 
-const mediaFiles = [
-  {
-    id: 1,
-    src: 'photo-1.png',
-    srcSet: 'photo-1-retina.png',
-    name: 'photo-1',
-  },
-  {
-    id: 2,
-    src: 'photo-2.png',
-    srcSet: 'photo-2-retina.png',
-    name: 'photo-2',
-  },
-  {
-    id: 3,
-    src: 'photo-3.png',
-    srcSet: 'photo-3-retina.png',
-    name: 'photo-3',
-  },
-  {
-    id: 4,
-    src: 'photo-4.png',
-    srcSet: 'photo-4-retina.png',
-    name: 'photo-4',
-  },
-  {
-    id: 5,
-    src: 'photo-5.png',
-    srcSet: 'photo-5-retina.png',
-    name: 'photo-5',
-  },
-  {
-    id: 6,
-    src: 'photo-6.png',
-    srcSet: 'photo-6-retina.png',
-    name: 'photo-6',
-  },
-];
+export default class UserInfo extends React.Component {
+  state = {
+    mediaFiles: [],
+  };
 
-export default ({ userInfo }) => (
-  <div>
-    <User
-      id={userInfo.id}
-      src={userInfo.avatar_static}
-      userName={userInfo.username}
-      fullName={userInfo.display_name}
-      url={userInfo.url}
-      bio={userInfo.note}
-      website={userInfo.url}
-      websiteUrl={userInfo.url}
-      joined={userInfo.created_at}
-    />
-    <List
-      title="6 Followers you know"
-      to="/EveryInteract/followers_you_follow"
-      icon={iconFollowers}
-    >
-      {followers.map(follower => (
-        <Follower
-          key={follower.id}
-          src={`${process.env.PUBLIC_URL} /img/${follower.src}`}
-          srcSet={`${process.env.PUBLIC_URL} /img/${follower.srcSet}} 2x`}
-          fullName={follower.fullName}
-          to={follower.to}
+  componentDidMount() {
+    const host = 'https://twitter-demo.erodionov.ru';
+    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+
+    fetch(`${host}/api/v1/accounts/1/statuses?only_media=yes&access_token=${accesToken}`)
+      .then(response => response.json())
+      .then((result) => {
+        this.setState({
+          mediaFiles: result,
+        });
+      });
+  }
+
+  render() {
+    const { mediaFiles } = this.state;
+    const { userInfo } = this.props;
+    const countMediaFiles = mediaFiles.length;
+
+    return (
+      <div>
+        <User
+          key={userInfo.id}
+          src={userInfo.avatar_static}
+          userName={userInfo.username}
+          fullName={userInfo.display_name}
+          url={userInfo.url}
+          bio={userInfo.note}
+          website={userInfo.url}
+          websiteUrl={userInfo.url}
+          joined={userInfo.created_at}
         />
-      ))}
-    </List>
-    <List title="522 Photos and videos" to="/EveryInteract/media" icon={iconPhotos}>
-      {mediaFiles.map(media => (
-        <Media
-          key={media.id}
-          src={`${process.env.PUBLIC_URL} /img/${media.src}`}
-          srcSet={`${process.env.PUBLIC_URL} /img${media.srcSet} 2x`}
-          name={media.name}
-        />
-      ))}
-    </List>
-  </div>
-);
+        <List
+          title="6 Followers you know"
+          to="/EveryInteract/followers_you_follow"
+          icon={iconFollowers}
+        >
+          {followers.map(follower => (
+            <Follower
+              key={follower.id}
+              src={`${process.env.PUBLIC_URL} /img/${follower.src}`}
+              srcSet={`${process.env.PUBLIC_URL} /img/${follower.srcSet} 2x`}
+              fullName={follower.fullName}
+              to={follower.to}
+            />
+          ))}
+        </List>
+        <List
+          title={`${countMediaFiles} Photos and videos`}
+          to={`/${userInfo.username}/media`}
+          icon={iconPhotos}
+        >
+          {mediaFiles.map(media => (
+            <Media
+              pictureProps={media.media_attachments}
+            />
+          ))}
+        </List>
+      </div>
+    );
+  }
+}

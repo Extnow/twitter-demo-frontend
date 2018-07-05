@@ -85,9 +85,7 @@ export default class Tweets extends React.Component {
         fullName={tweet.account.display_name}
         userName={tweet.account.username}
         time={tweet.created_at}
-        pictureSrc={tweet.media_attachments.map(img => (
-          img.preview_url
-        ))}
+        pictureSrc={tweet.media_attachments}
         text={tweet.content}
         lovesValue={tweet.favourites_count}
         retweetValue={tweet.reblogs_count}
