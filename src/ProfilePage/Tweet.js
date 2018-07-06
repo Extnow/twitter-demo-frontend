@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import format from 'date-fns/format';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 // img
 import iconPinned from './img/icon-pinned.svg';
 import iconComments from './img/icon-comments.svg';
@@ -227,7 +227,7 @@ export default function ({
     return <Text dangerouslySetInnerHTML={createMarkup()} />;
   }
 
-  const formattedTime = format(new Date(time), 'D MMMM YYYY');
+  const formattedTime = distanceInWordsToNow(new Date(time), { addSuffix: true });
 
   return (
     <Wrapper>
@@ -246,9 +246,7 @@ export default function ({
             </span>
           </Header>
           {styledText()}
-          {pictureSrc.map(picSrc => (
-            <Picture key={picSrc.id} src={picSrc.preview_url} />
-          ))}
+          {pictureSrc.map(picSrc => <Picture src={picSrc.preview_url} />)}
           {quote && (
             <QuoteTweet>
               <div>
