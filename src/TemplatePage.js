@@ -12,17 +12,10 @@ const Wrapper = styled.div`
 export default ({ match }) => (
   <React.Fragment>
     <Helmet>
-      <title>
-        {match.url}
-        {' '}
-| Twitter
-      </title>
+      <title>{match.url} | Twitter</title>
     </Helmet>
     <Wrapper>
-      <h1>
-        page
-        {match.url}
-      </h1>
+      <h1>page{match.url}</h1>
     </Wrapper>
   </React.Fragment>
 );

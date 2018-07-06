@@ -247,7 +247,7 @@ export default function ({
           </Header>
           {styledText()}
           {pictureSrc.map(picSrc => (
-            <Picture src={picSrc.preview_url} />
+            <Picture key={picSrc.id} src={picSrc.preview_url} />
           ))}
           {quote && (
             <QuoteTweet>

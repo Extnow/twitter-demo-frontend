@@ -10,6 +10,7 @@ import iconMagnifier from './img/icon-magnifier.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
 const Header = styled.header`
+  position: sticky;
   top: 0px;
   right: 0px;
   left: 0px;

@@ -79,6 +79,7 @@ export default class UserInfo extends React.Component {
       <div>
         <User
           key={userInfo.id}
+          id={userInfo.id}
           src={userInfo.avatar_static}
           userName={userInfo.username}
           fullName={userInfo.display_name}
@@ -110,6 +111,7 @@ export default class UserInfo extends React.Component {
         >
           {mediaFiles.map(media => (
             <Media
+              key={media.id}
               pictureProps={media.media_attachments}
             />
           ))}

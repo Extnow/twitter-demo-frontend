@@ -104,23 +104,23 @@ export default class Tweets extends React.Component {
       <Wrapper>
         <Navigation>
           <li>
-            <NavigationLink to={`/${userInfo.username}`} exact>
+            <NavigationLink to={`/${userInfo.id}`} exact>
               Tweets
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink to={`/${userInfo.username}/with-replies`}>
+            <NavigationLink to={`/${userInfo.id}/with-replies`}>
               Tweets & replies
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink to={`/${userInfo.username}/media`}>Media</NavigationLink>
+            <NavigationLink to={`/${userInfo.id}/media`}>Media</NavigationLink>
           </li>
         </Navigation>
         <Switch>
-          <Route path={`/${userInfo.username}/with-replies`} component={TemplatePage} />
-          <Route path={`/${userInfo.username}/media`} component={TemplatePage} />
-          <Route path={`/${userInfo.username}`} render={() => tweetsList} />
+          <Route path={`/${userInfo.id}/with-replies`} component={TemplatePage} />
+          <Route path={`/${userInfo.id}/media`} component={TemplatePage} />
+          <Route path={`/${userInfo.id}`} render={() => tweetsList} />
         </Switch>
       </Wrapper>
     );

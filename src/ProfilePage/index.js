@@ -77,13 +77,13 @@ export default class ProfilePage extends React.Component {
                 </div>
                 <div className="col-xs-6">
                   <Switch>
-                    <Route path={`/${userInfo.username}/following`} component={TemplatePage} />
+                    <Route path={`/${userInfo.id}/following`} component={TemplatePage} />
                     <Route
-                      path={`/${userInfo.username}/followers`}
+                      path={`/${userInfo.id}/followers`}
                       render={() => <Followers userInfo={userInfo} />}
                     />
                     <Route
-                      path={`/${userInfo.username}`}
+                      path={`/${userInfo.id}`}
                       render={() => <Tweets userInfo={userInfo} />}
                     />
                   </Switch>

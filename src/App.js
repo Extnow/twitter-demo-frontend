@@ -26,7 +26,7 @@ export default () => (
           <Route path="/info" component={TemplatePage} />
           <Route path="/search" component={TemplatePage} />
           <Route path="/:username" component={Profile} />
-          <Redirect exact from="/" to="/admin" />
+          <Redirect exact from="/" to="/1" />
         </Switch>
       </div>
     </BrowserRouter>

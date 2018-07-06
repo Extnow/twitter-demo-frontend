@@ -156,6 +156,7 @@ const Button = styled.button`
 `;
 
 export default function ({
+  id,
   src,
   srcSet,
   userName,
@@ -186,13 +187,13 @@ export default function ({
         alt={fullName}
       />
       <Title>
-        <FullName official={official} to={userName}>
+        <FullName official={official} to={`/${id}`}>
           {fullName}
         </FullName>
       </Title>
       <Header>
         @
-        <Username to={`/${userName}`}>{userName}</Username>
+        <Username to={`/${id}`}>{userName}</Username>
         {isFollowsYou && <span>Follows you</span>}
       </Header>
       {styledText()}

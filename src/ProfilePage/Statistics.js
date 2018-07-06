@@ -123,19 +123,19 @@ export default ({ userInfo }) => (
           <Wrapper>
             <Navigation>
               <li>
-                <NavigationLink to={`/${userInfo.username}`} exact>
+                <NavigationLink to={`/${userInfo.id}`} exact>
                   <span>Tweets</span>
                   <Value>{userInfo.statuses_count}</Value>
                 </NavigationLink>
               </li>
               <li>
-                <NavigationLink to={`/${userInfo.username}/following`}>
+                <NavigationLink to={`/${userInfo.id}/following`}>
                   <span>Following</span>
                   <Value>{userInfo.following_count}</Value>
                 </NavigationLink>
               </li>
               <li>
-                <NavigationLink to={`/${userInfo.username}/followers`}>
+                <NavigationLink to={`/${userInfo.id}/followers`}>
                   <span>Followers</span>
                   <Value>{userInfo.followers_count}</Value>
                 </NavigationLink>

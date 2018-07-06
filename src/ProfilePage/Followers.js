@@ -18,14 +18,15 @@ export default class Followers extends React.Component {
   componentDidMount() {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+    const id = 1;
 
-    fetch(`${host}/api/v1/accounts/1/followers?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${id}/followers?access_token=${accesToken}`)
       .then(response => response.json())
       .then(
-        (result) => {
+        (followers) => {
           this.setState({
             isLoaded: true,
-            followers: result,
+            followers,
           });
         },
         (error) => {
@@ -47,7 +48,7 @@ export default class Followers extends React.Component {
       return <div>Loading...</div>;
     }
 
-    const followersName = followers.map(name => <Follower>{name.username}</Follower>);
+    const followersName = followers.map(name => <Follower key={name.id}>{name.username}</Follower>);
 
     return <Wrapper>{followersName}</Wrapper>;
   }
