@@ -91,7 +91,7 @@ export default class UserInfo extends React.Component {
         />
         <List
           title="6 Followers you know"
-          to="/EveryInteract/followers_you_follow"
+          to={`/${userInfo.id}/followers_you_follow`}
           icon={iconFollowers}
         >
           {followers.map(follower => (
@@ -106,15 +106,10 @@ export default class UserInfo extends React.Component {
         </List>
         <List
           title={`${countMediaFiles} Photos and videos`}
-          to={`/${userInfo.username}/media`}
+          to={`/${userInfo.id}/media`}
           icon={iconPhotos}
         >
-          {mediaFiles.map(media => (
-            <Media
-              key={media.id}
-              pictureProps={media.media_attachments}
-            />
-          ))}
+          {mediaFiles.map(media => <Media key={media.id} pictureProps={media.media_attachments} />)}
         </List>
       </div>
     );

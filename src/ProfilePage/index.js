@@ -29,7 +29,11 @@ export default class ProfilePage extends React.Component {
   componentDidMount() {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
-    const id = 1;
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
       .then(response => response.json())
@@ -82,10 +86,7 @@ export default class ProfilePage extends React.Component {
                       path={`/${userInfo.id}/followers`}
                       render={() => <Followers userInfo={userInfo} />}
                     />
-                    <Route
-                      path={`/${userInfo.id}`}
-                      render={() => <Tweets userInfo={userInfo} />}
-                    />
+                    <Route path={`/${userInfo.id}`} render={() => <Tweets userInfo={userInfo} />} />
                   </Switch>
                 </div>
                 <div className="col-xs-3">
