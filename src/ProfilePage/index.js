@@ -11,7 +11,6 @@ import Footer from '../Footer';
 import Banner from './Banner';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
-import Following from './Following';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -35,6 +34,22 @@ export default class ProfilePage extends React.Component {
   };
 
   componentDidMount() {
+    this.getUserInfo();
+  }
+
+  componentDidUpdate(prevProps) {
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+
+    if (prevProps.id !== id) {
+      this.getUserInfo();
+    }
+  }
+
+  getUserInfo = () => {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const {
@@ -56,7 +71,7 @@ export default class ProfilePage extends React.Component {
           this.setState({ error });
         },
       );
-  }
+  };
 
   render() {
     const { userInfo, error, isLoaded } = this.state;
@@ -88,11 +103,11 @@ export default class ProfilePage extends React.Component {
                   <Switch>
                     <Route
                       path={`/${userInfo.id}/following`}
-                      render={() => <Following id={userInfo.id} userInfo={userInfo} />}
+                      render={() => <Followers id={userInfo.id} type="following" />}
                     />
                     <Route
                       path={`/${userInfo.id}/followers`}
-                      render={() => <Followers id={userInfo.id} userInfo={userInfo} />}
+                      render={() => <Followers id={userInfo.id} type="followers" />}
                     />
                     <Route
                       path={`/${userInfo.id}`}
