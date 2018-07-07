@@ -53,7 +53,7 @@ export default class Tweets extends React.Component {
   componentDidMount() {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
-    const id = 1;
+    const { id } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}/statuses?access_token=${accesToken}`)
       .then(response => response.json())
@@ -109,9 +109,7 @@ export default class Tweets extends React.Component {
             </NavigationLink>
           </li>
           <li>
-            <NavigationLink to={`/${userInfo.id}/with-replies`}>
-              Tweets & replies
-            </NavigationLink>
+            <NavigationLink to={`/${userInfo.id}/with-replies`}>Tweets & replies</NavigationLink>
           </li>
           <li>
             <NavigationLink to={`/${userInfo.id}/media`}>Media</NavigationLink>

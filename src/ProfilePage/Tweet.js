@@ -91,13 +91,14 @@ const TimeLink = styled.a`
 const Text = styled.p`
   margin: 0px;
   padding: 0px;
-  line-height: 30px;
-  font-size: 25px;
+  line-height: 22px;
+  font-size: 16px;
   color: #292f33;
 
   p {
     margin: 0;
     margin-bottom: 17px;
+    word-break: breaka-all;
   }
 
   a {
@@ -116,8 +117,9 @@ const Text = styled.p`
 `;
 
 const Picture = styled.img`
-  max-width: 100%;
   display: block;
+  width: 100%;
+  max-width: 450px;
 `;
 
 const QuoteTweet = styled.a`

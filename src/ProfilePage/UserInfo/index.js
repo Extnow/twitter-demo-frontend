@@ -61,7 +61,7 @@ export default class UserInfo extends React.Component {
   componentDidMount() {
     const host = 'https://twitter-demo.erodionov.ru';
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
-    const id = 1;
+    const { id } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}/statuses?only_media=yes&access_token=${accesToken}`)
       .then(response => response.json())

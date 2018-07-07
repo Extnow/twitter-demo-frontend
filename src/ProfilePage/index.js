@@ -77,16 +77,19 @@ export default class ProfilePage extends React.Component {
             <div className="container">
               <div className="row">
                 <div className="col-xs-3">
-                  <UserInfo userInfo={userInfo} />
+                  <UserInfo id={userInfo.id} userInfo={userInfo} />
                 </div>
                 <div className="col-xs-6">
                   <Switch>
                     <Route path={`/${userInfo.id}/following`} component={TemplatePage} />
                     <Route
                       path={`/${userInfo.id}/followers`}
-                      render={() => <Followers userInfo={userInfo} />}
+                      render={() => <Followers id={userInfo.id} userInfo={userInfo} />}
                     />
-                    <Route path={`/${userInfo.id}`} render={() => <Tweets userInfo={userInfo} />} />
+                    <Route
+                      path={`/${userInfo.id}`}
+                      render={() => <Tweets id={userInfo.id} userInfo={userInfo} />}
+                    />
                   </Switch>
                 </div>
                 <div className="col-xs-3">
