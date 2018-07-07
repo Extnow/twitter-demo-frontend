@@ -38,13 +38,9 @@ export default class ProfilePage extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props;
+    const { match } = this.props;
 
-    if (prevProps.id !== id) {
+    if (prevProps.match.params.id !== match.params.id) {
       this.getUserInfo();
     }
   }
