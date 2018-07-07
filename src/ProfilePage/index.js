@@ -4,19 +4,13 @@ import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 // components
 import Statistics from './Statistics';
-import UserInfo from './UserInfo';
 import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
-import TemplatePage from '../TemplatePage';
-
-const Banner = styled.img`
-  display: block;
-  height: 380px;
-  width: 100%;
-  object-fit: cover;
-`;
+import Banner from './Banner';
+import UserInfo from './UserInfo';
+import Followers from './Followers';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -24,42 +18,109 @@ const Profile = styled.div`
   font-family: Helvetica Neue, Helvetica, sans-serif;
 `;
 
-export default ({ match }) => {
-  const { username } = match.params;
-  return (
-    <React.Fragment>
-      <Helmet>
-        <title>
-Every Interaction (@EveryInteract) | Twitter
-        </title>
-      </Helmet>
-      <main>
-        <Banner src={`${process.env.PUBLIC_URL}/img/banner.png`} alt="banner" />
-        <Statistics match={match} />
-        <Profile>
-          <div className="container">
-            <div className="row">
-              <div className="col-xs-3">
-                <UserInfo username={username} />
-              </div>
-              <div className="col-xs-6">
-                <Switch>
-                  <Route path={`${match.url}/following`} component={TemplatePage} />
-                  <Route path={`${match.url}/followers`} component={TemplatePage} />
-                  <Route path={`${match.url}/likes`} component={TemplatePage} />
-                  <Route path={`${match.url}/lists`} component={TemplatePage} />
-                  <Route path={`${match.url}`} component={Tweets} />
-                </Switch>
-              </div>
-              <div className="col-xs-3">
-                <Recommends />
-                <Trends />
-                <Footer />
+const NotFound = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 30px;
+`;
+
+export default class ProfilePage extends React.Component {
+  state = {
+    userInfo: {},
+    error: null,
+    isLoaded: false,
+  };
+
+  componentDidMount() {
+    this.getUserInfo();
+  }
+
+  componentDidUpdate(prevProps) {
+    const { match } = this.props;
+
+    if (prevProps.match.params.id !== match.params.id) {
+      this.getUserInfo();
+    }
+  }
+
+  getUserInfo = () => {
+    const host = 'https://twitter-demo.erodionov.ru';
+    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+    const {
+      match: {
+        params: { id },
+      },
+    } = this.props;
+
+    fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
+      .then(response => response.json())
+      .then(
+        (userInfo) => {
+          this.setState({
+            isLoaded: true,
+            userInfo,
+          });
+        },
+        (error) => {
+          this.setState({ error });
+        },
+      );
+  };
+
+  render() {
+    const { userInfo, error, isLoaded } = this.state;
+
+    if (error || userInfo.error) {
+      return <NotFound>Sorry, user not found</NotFound>;
+    }
+    if (!isLoaded) {
+      return <div>Loading...</div>;
+    }
+
+    return (
+      <React.Fragment>
+        <Helmet>
+          <title>
+            {userInfo.display_name} (@{userInfo.username}) | Twitter
+          </title>
+        </Helmet>
+        <main>
+          <Banner userInfo={userInfo} />
+          <Statistics userInfo={userInfo} />
+          <Profile>
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-3">
+                  <UserInfo id={userInfo.id} userInfo={userInfo} />
+                </div>
+                <div className="col-xs-6">
+                  <Switch>
+                    <Route
+                      path={`/${userInfo.id}/following`}
+                      render={() => <Followers id={userInfo.id} type="following" />}
+                    />
+                    <Route
+                      path={`/${userInfo.id}/followers`}
+                      render={() => <Followers id={userInfo.id} type="followers" />}
+                    />
+                    <Route
+                      path={`/${userInfo.id}`}
+                      render={() => <Tweets id={userInfo.id} userInfo={userInfo} />}
+                    />
+                  </Switch>
+                </div>
+                <div className="col-xs-3">
+                  <Recommends />
+                  <Trends />
+                  <Footer />
+                </div>
               </div>
             </div>
-          </div>
-        </Profile>
-      </main>
-    </React.Fragment>
-  );
-};
+          </Profile>
+        </main>
+      </React.Fragment>
+    );
+  }
+}

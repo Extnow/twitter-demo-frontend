@@ -115,7 +115,7 @@ const ExtraActions = styled.button`
   }
 `;
 
-export default ({ match }) => (
+export default ({ userInfo }) => (
   <Statistics>
     <div className="container">
       <div className="row">
@@ -123,60 +123,26 @@ export default ({ match }) => (
           <Wrapper>
             <Navigation>
               <li>
-                <NavigationLink to={`${match.url}`} exact>
-                  <span>
-Tweets
-                  </span>
-                  <Value>
-8,058
-                  </Value>
+                <NavigationLink to={`/${userInfo.id}`} exact>
+                  <span>Tweets</span>
+                  <Value>{userInfo.statuses_count}</Value>
                 </NavigationLink>
               </li>
               <li>
-                <NavigationLink to={`${match.url}/following`}>
-                  <span>
-Following
-                  </span>
-                  <Value>
-721
-                  </Value>
+                <NavigationLink to={`/${userInfo.id}/following`}>
+                  <span>Following</span>
+                  <Value>{userInfo.following_count}</Value>
                 </NavigationLink>
               </li>
               <li>
-                <NavigationLink to={`${match.url}/followers`}>
-                  <span>
-Followers
-                  </span>
-                  <Value>
-1,815
-                  </Value>
-                </NavigationLink>
-              </li>
-              <li>
-                <NavigationLink to={`${match.url}/likes`}>
-                  <span>
-Likes
-                  </span>
-                  <Value>
-460
-                  </Value>
-                </NavigationLink>
-              </li>
-              <li>
-                <NavigationLink to={`${match.url}/lists`}>
-                  <span>
-Lists
-                  </span>
-                  <Value>
-2
-                  </Value>
+                <NavigationLink to={`/${userInfo.id}/followers`}>
+                  <span>Followers</span>
+                  <Value>{userInfo.followers_count}</Value>
                 </NavigationLink>
               </li>
             </Navigation>
             <Actions>
-              <Follow>
-Follow
-              </Follow>
+              <Follow>Follow</Follow>
               <ExtraActions />
             </Actions>
           </Wrapper>

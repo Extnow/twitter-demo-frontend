@@ -43,105 +43,78 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-const tweets = [
-  {
-    id: 1,
-    isPinned: true,
-    avatarSrc: 'avatar-medium.png',
-    avatarSrcSet: 'avatar-medium-retina.png',
-    avatarAlt: 'avatar',
-    fullName: 'Every Interaction',
-    userName: 'EveryInteract',
-    time: '2 Mar 2015',
-    text: 'We’ve made some more resources for all you wonderful <a target="_blank" href="#">#design</a> folk <a target="_blank" href="everyinteraction.com/resources/">http://www.everyinteraction.com/resources/</a> <a target="_blank" href="#">#webdesign</a> <a target="_blank" href="#">#UI</a>',
-    picture: true,
-    pictureSrc: 'img1.png',
-    pictureSrcSet: 'img1-retina.png',
-    retweetValue: 17,
-    lovesValue: 47,
-  },
-  {
-    id: 2,
-    avatarSrc: 'avatar-medium.png',
-    avatarSrcSet: 'avatar-medium-retina.png',
-    avatarAlt: 'avatar',
-    fullName: 'Every Interaction',
-    userName: 'EveryInteract',
-    time: '23h',
-    text: 'Our new website concept; Taking you from… @ Every Interaction <a target="_blank" href="https://www.instagram.com/p/BNFGrfhBP3M/">instagram.com/p/BNFGrfhBP3M/</a>',
-    commentValue: 1,
-    retweetValue: 4,
-    lovesValue: 2,
-  },
-  {
-    id: 3,
-    avatarSrc: 'avatar-medium.png',
-    avatarSrcSet: 'avatar-medium-retina.png',
-    avatarAlt: 'avatar',
-    fullName: 'Every Interaction',
-    userName: 'EveryInteract',
-    time: 'Nov 18',
-    text: 'Variable web fonts are coming, and will open a world of opportunities for weight use online',
-    quote: true,
-    quoteSrc: 'img2.png',
-    quoteSrcSet: 'img2-retina.png',
-    quoteTitle: 'The Future of Web Fonts',
-    quoteText: 'We love typefaces. They give our sites and applications personalized feel. They convey the information and tell a story. They establish information hierarchy. But they’re…',
-    quoteLink: 'vilijamis.com',
-  },
-];
+export default class Tweets extends React.Component {
+  state = {
+    tweetsInfo: [],
+    error: null,
+  };
 
-export default ({ match }) => {
-  const tweetsList = tweets.map(tweet => (
-    <Tweet
-      key={tweet.id}
-      pinned={tweet.isPinned}
-      avatarSrc={`${process.env.PUBLIC_URL} /img/${tweet.avatarSrc}`}
-      avatarSrcSet={`${process.env.PUBLIC_URL} /img/${tweet.avatarSrcSet}} 2x`}
-      avatarAlt={tweet.avatarAlt}
-      fullName={tweet.fullName}
-      userName={tweet.userName}
-      time={tweet.time}
-      text={tweet.text}
-      picture={tweet.picture}
-      pictureSrc={`${process.env.PUBLIC_URL} /img/${tweet.pictureSrc}`}
-      pictureSrcSet={`${process.env.PUBLIC_URL} /img/${tweet.pictureSrcSet}} 2x`}
-      quote={tweet.quote}
-      quoteSrc={`${process.env.PUBLIC_URL} /img/${tweet.quoteSrc}`}
-      quoteSrcSet={`${process.env.PUBLIC_URL} /img/${tweet.quoteSrcSet}} 2x`}
-      quoteTitle={tweet.quoteTitle}
-      quoteText={tweet.quoteText}
-      quoteLink={tweet.quoteLink}
-      commentValue={tweet.commentValue}
-      retweetValue={tweet.retweetValue}
-      lovesValue={tweet.lovesValue}
-    />
-  ));
+  componentDidMount() {
+    const host = 'https://twitter-demo.erodionov.ru';
+    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+    const { id } = this.props;
 
-  return (
-    <Wrapper>
-      <Navigation>
-        <li>
-          <NavigationLink to={`${match.url}`} exact>
-            Tweets
-          </NavigationLink>
-        </li>
-        <li>
-          <NavigationLink to={`${match.url}/with-replies`}>
-Tweets & replies
-          </NavigationLink>
-        </li>
-        <li>
-          <NavigationLink to={`${match.url}/media`}>
-Media
-          </NavigationLink>
-        </li>
-      </Navigation>
-      <Switch>
-        <Route path={`${match.url}/with-replies`} component={TemplatePage} />
-        <Route path={`${match.url}/media`} component={TemplatePage} />
-        <Route path={`${match.url}`} render={() => tweetsList} />
-      </Switch>
-    </Wrapper>
-  );
-};
+    fetch(`${host}/api/v1/accounts/${id}/statuses?access_token=${accesToken}`)
+      .then(response => response.json())
+      .then(
+        (tweetsInfo) => {
+          this.setState({
+            tweetsInfo,
+          });
+        },
+        (error) => {
+          this.setState({
+            error,
+          });
+        },
+      );
+  }
+
+  render() {
+    const { tweetsInfo, error } = this.state;
+    const { userInfo } = this.props;
+
+    const tweetsList = tweetsInfo.map(tweet => (
+      <Tweet
+        key={tweet.id}
+        pinned={tweet.pinned}
+        avatarSrc={tweet.account.avatar_static}
+        avatarAlt={tweet.account.display_name}
+        fullName={tweet.account.display_name}
+        userName={tweet.account.username}
+        time={tweet.created_at}
+        pictureSrc={tweet.media_attachments}
+        text={tweet.content}
+        lovesValue={tweet.favourites_count}
+        retweetValue={tweet.reblogs_count}
+      />
+    ));
+
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    }
+
+    return (
+      <Wrapper>
+        <Navigation>
+          <li>
+            <NavigationLink to={`/${userInfo.id}`} exact>
+              Tweets
+            </NavigationLink>
+          </li>
+          <li>
+            <NavigationLink to={`/${userInfo.id}/with-replies`}>Tweets & replies</NavigationLink>
+          </li>
+          <li>
+            <NavigationLink to={`/${userInfo.id}/media`}>Media</NavigationLink>
+          </li>
+        </Navigation>
+        <Switch>
+          <Route path={`/${userInfo.id}/with-replies`} component={TemplatePage} />
+          <Route path={`/${userInfo.id}/media`} component={TemplatePage} />
+          <Route path={`/${userInfo.id}`} render={() => tweetsList} />
+        </Switch>
+      </Wrapper>
+    );
+  }
+}

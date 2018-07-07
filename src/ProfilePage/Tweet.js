@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 // img
 import iconPinned from './img/icon-pinned.svg';
 import iconComments from './img/icon-comments.svg';
@@ -11,7 +12,7 @@ import iconEnvelope from './img/icon-envelope.svg';
 const Wrapper = styled.div`
   padding: 9px 12px;
   cursor: pointer;
-  border-bottom: 1px solid #E1E8ED;
+  border-bottom: 1px solid #e1e8ed;
 
   &:hover {
     background-color: #f5f8fa;
@@ -90,9 +91,15 @@ const TimeLink = styled.a`
 const Text = styled.p`
   margin: 0px;
   padding: 0px;
-  line-height: 30px;
-  font-size: 25px;
+  line-height: 22px;
+  font-size: 16px;
   color: #292f33;
+
+  p {
+    margin: 0;
+    margin-bottom: 17px;
+    word-break: breaka-all;
+  }
 
   a {
     color: #1da1f2;
@@ -109,13 +116,10 @@ const Text = styled.p`
   }
 `;
 
-const PictureContainer = styled.div`
-  margin-top: 17px;
-`;
-
 const Picture = styled.img`
-  max-width: 100%;
   display: block;
+  width: 100%;
+  max-width: 450px;
 `;
 
 const QuoteTweet = styled.a`
@@ -202,14 +206,11 @@ export default function ({
   text,
   pinned,
   avatarSrc,
-  avatarSrcSet,
   avatarAlt,
   fullName,
   userName,
   time,
-  picture,
   pictureSrc,
-  pictureSrcSet,
   quote,
   quoteSrc,
   quoteSrcSet,
@@ -228,54 +229,35 @@ export default function ({
     return <Text dangerouslySetInnerHTML={createMarkup()} />;
   }
 
+  const formattedTime = distanceInWordsToNow(new Date(time), { addSuffix: true });
+
   return (
     <Wrapper>
-      {pinned && (
-      <Pinned>
-Pinned Tweet
-      </Pinned>
-      )}
+      {pinned && <Pinned>Pinned Tweet</Pinned>}
       <Main>
         <div>
-          <Avatar src={avatarSrc} srcSet={avatarSrcSet} alt={avatarAlt} />
+          <Avatar src={avatarSrc} alt={avatarAlt} />
         </div>
         <Content>
           <Header>
-            <FullName to="/EveryInteract">
-              {fullName}
-            </FullName>
-            <UserName>
-              @
-              {userName}
-            </UserName>
+            <FullName to={userName}>{fullName}</FullName>
+            <UserName>@{userName}</UserName>
             <span>
               ·
-              <TimeLink href="#">
-                {time}
-              </TimeLink>
+              <TimeLink href="#">{formattedTime}</TimeLink>
             </span>
           </Header>
           {styledText()}
-          {picture && (
-            <PictureContainer>
-              <Picture src={pictureSrc} srcSet={pictureSrcSet} alt="" />
-            </PictureContainer>
-          )}
+          {pictureSrc.map(picSrc => <Picture key={picSrc.id} src={picSrc.preview_url} />)}
           {quote && (
             <QuoteTweet>
               <div>
                 <QuoteImage src={quoteSrc} srcSet={quoteSrcSet} alt={quoteTitle} />
               </div>
               <QuoteContent>
-                <QuoteTitle>
-                  {quoteTitle}
-                </QuoteTitle>
-                <QuoteText>
-                  {quoteText}
-                </QuoteText>
-                <QuoteLink>
-                  {quoteLink}
-                </QuoteLink>
+                <QuoteTitle>{quoteTitle}</QuoteTitle>
+                <QuoteText>{quoteText}</QuoteText>
+                <QuoteLink>{quoteLink}</QuoteLink>
               </QuoteContent>
             </QuoteTweet>
           )}

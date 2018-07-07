@@ -34,26 +34,12 @@ export default () => (
       © Twitter,
       {getYear(new Date())}
     </Copyright>
-    <StLink to="/about">
-About
-    </StLink>
-    <StLink to="/help">
-Help Center
-    </StLink>
-    <StLink to="/terms">
-Terms
-    </StLink>
-    <StLink to="/privacy">
-Privacy policy
-    </StLink>
-    <StLink to="/cookies">
-Cookies
-    </StLink>
-    <StLink to="/advertising">
-Ads
-    </StLink>
-    <StLink to="/info">
-Info
-    </StLink>
+    <StLink to="/about">About</StLink>
+    <StLink to="/help">Help Center</StLink>
+    <StLink to="/terms">Terms</StLink>
+    <StLink to="/privacy">Privacy policy</StLink>
+    <StLink to="/cookies">Cookies</StLink>
+    <StLink to="/advertising">Ads</StLink>
+    <StLink to="/info">Info</StLink>
   </Wrapper>
 );

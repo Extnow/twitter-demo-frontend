@@ -10,7 +10,7 @@ import iconMagnifier from './img/icon-magnifier.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
 const Header = styled.header`
-  position: fixed;
+  position: sticky;
   top: 0px;
   right: 0px;
   left: 0px;
@@ -234,9 +234,7 @@ export default () => (
             </AvatarButton>
           </Action>
           <Action>
-            <TweetButton>
-Tweet
-            </TweetButton>
+            <TweetButton>Tweet</TweetButton>
           </Action>
         </NavExtra>
       </Wrapper>

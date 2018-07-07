@@ -13,8 +13,6 @@ const Img = styled.img`
   border-radius: 2px;
 `;
 
-export default ({ src, srcSet, name }) => (
-  <Media>
-    <Img src={src} srcSet={srcSet} alt={name} />
-  </Media>
+export default ({ pictureProps }) => (
+  <Media>{pictureProps.map(img => <Img key={img.id} src={img.preview_url} />)}</Media>
 );
