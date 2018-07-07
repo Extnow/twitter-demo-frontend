@@ -47,7 +47,6 @@ export default class Tweets extends React.Component {
   state = {
     tweetsInfo: [],
     error: null,
-    isLoaded: false,
   };
 
   componentDidMount() {
@@ -60,13 +59,11 @@ export default class Tweets extends React.Component {
       .then(
         (tweetsInfo) => {
           this.setState({
-            isLoaded: true,
             tweetsInfo,
           });
         },
         (error) => {
           this.setState({
-            isLoaded: true,
             error,
           });
         },
@@ -74,7 +71,7 @@ export default class Tweets extends React.Component {
   }
 
   render() {
-    const { tweetsInfo, error, isLoaded } = this.state;
+    const { tweetsInfo, error } = this.state;
     const { userInfo } = this.props;
 
     const tweetsList = tweetsInfo.map(tweet => (
@@ -95,9 +92,6 @@ export default class Tweets extends React.Component {
 
     if (error) {
       return <div>Error: {error.message}</div>;
-    }
-    if (!isLoaded) {
-      return <div>Loading...</div>;
     }
 
     return (

@@ -8,15 +8,23 @@ import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
-import TemplatePage from '../TemplatePage';
 import Banner from './Banner';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
+import Following from './Following';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
   position: relative;
   font-family: Helvetica Neue, Helvetica, sans-serif;
+`;
+
+const NotFound = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  font-size: 30px;
 `;
 
 export default class ProfilePage extends React.Component {
@@ -45,10 +53,7 @@ export default class ProfilePage extends React.Component {
           });
         },
         (error) => {
-          this.setState({
-            isLoaded: true,
-            error,
-          });
+          this.setState({ error });
         },
       );
   }
@@ -56,8 +61,8 @@ export default class ProfilePage extends React.Component {
   render() {
     const { userInfo, error, isLoaded } = this.state;
 
-    if (error) {
-      return <div>Error: {error.message}</div>;
+    if (error || userInfo.error) {
+      return <NotFound>Sorry, user not found</NotFound>;
     }
     if (!isLoaded) {
       return <div>Loading...</div>;
@@ -81,7 +86,10 @@ export default class ProfilePage extends React.Component {
                 </div>
                 <div className="col-xs-6">
                   <Switch>
-                    <Route path={`/${userInfo.id}/following`} component={TemplatePage} />
+                    <Route
+                      path={`/${userInfo.id}/following`}
+                      render={() => <Following id={userInfo.id} userInfo={userInfo} />}
+                    />
                     <Route
                       path={`/${userInfo.id}/followers`}
                       render={() => <Followers id={userInfo.id} userInfo={userInfo} />}

@@ -19,7 +19,7 @@ export default class Followers extends React.Component {
     const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const { id } = this.props;
 
-    fetch(`${host}/api/v1/accounts/${id}/followers?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${id}/following?access_token=${accesToken}`)
       .then(response => response.json())
       .then(
         (followers) => {
