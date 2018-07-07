@@ -158,7 +158,6 @@ const Button = styled.button`
 export default function ({
   id,
   src,
-  srcSet,
   userName,
   official,
   fullName,
@@ -183,7 +182,6 @@ export default function ({
     <WrapperInfo>
       <Avatar
         src={`${process.env.PUBLIC_URL} ${src}`}
-        srcSet={`${process.env.PUBLIC_URL} ${srcSet} 2x`}
         alt={fullName}
       />
       <Title>

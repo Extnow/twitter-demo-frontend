@@ -90,7 +90,7 @@ export default class UserInfo extends React.Component {
           joined={userInfo.created_at}
         />
         <List
-          title="6 Followers you know"
+          title={`${userInfo.followers_count} Followers you know`}
           to={`/${userInfo.id}/followers_you_follow`}
           icon={iconFollowers}
         >

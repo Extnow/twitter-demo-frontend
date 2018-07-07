@@ -103,33 +103,21 @@ const recommendedUsers = [
 
 export default () => (
   <Wrapper>
-    <Title>
-Who to follow
-    </Title>
-    <Dot>
-·
-    </Dot>
-    <Refresh>
-Refresh
-    </Refresh>
-    <Dot>
-·
-    </Dot>
-    <All href="#">
-All
-    </All>
+    <Title>Who to follow</Title>
+    <Dot>·</Dot>
+    <Refresh>Refresh</Refresh>
+    <Dot>·</Dot>
+    <All href="#">All</All>
     {recommendedUsers.map(user => (
       <RecommendedUser
         key={user.id}
         userName={user.userName}
         src={`${process.env.PUBLIC_URL} /img/${user.src}`}
-        srcSet={`${process.env.PUBLIC_URL} /img/${user.src}} 2x`}
+        srcSet={`${process.env.PUBLIC_URL} /img/${user.src} 2x`}
         official={user.official}
         fullName={user.fullName}
       />
     ))}
-    <Footer to="/who_to_follow/import">
-Find people you know
-    </Footer>
+    <Footer to="/who_to_follow/import">Find people you know</Footer>
   </Wrapper>
 );
