@@ -11,6 +11,7 @@ import Footer from '../Footer';
 import Banner from './Banner';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
+import { host, accesToken } from '../utils';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -46,8 +47,6 @@ export default class ProfilePage extends React.Component {
   }
 
   getUserInfo = () => {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const {
       match: {
         params: { id },

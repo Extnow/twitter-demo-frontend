@@ -1,12 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import TweetButton from '../UI/TweetButton';
 // import icons
+import iconMagnifier from './img/icon-magnifier.svg';
 import iconHome from './img/icon-home.svg';
 import iconMoments from './img/icon-moments.svg';
 import iconNotifications from './img/icon-notifications.svg';
 import iconMessages from './img/icon-messages.svg';
-import iconMagnifier from './img/icon-magnifier.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
 const Header = styled.header`
@@ -163,33 +164,6 @@ const AvatarIcon = styled.img`
   border-radius: 50%;
 `;
 
-const TweetButton = styled.button`
-  background-color: #4ab3f4;
-  border-radius: 100px;
-  border: 1px solid #4ab3f4;
-  color: #fff;
-  line-height: 14px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  padding: 9px 16px;
-  cursor: pointer;
-  transition: box-shadow 0.15s ease-in-out;
-
-  &:hover {
-    background-color: #1da1f2;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
 export default () => (
   <Header>
     <div className="container">
@@ -221,7 +195,7 @@ export default () => (
           <Action>
             <SearchForm>
               <SearchInput placeholder="Search Twitter" type="text" />
-              <SearchButton />
+              <SearchButton type="submit" />
             </SearchForm>
           </Action>
           <Action>
@@ -234,7 +208,7 @@ export default () => (
             </AvatarButton>
           </Action>
           <Action>
-            <TweetButton>Tweet</TweetButton>
+            <TweetButton small>Tweet</TweetButton>
           </Action>
         </NavExtra>
       </Wrapper>

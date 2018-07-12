@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Follower from './Follower';
+import { host, accesToken } from '../utils';
 
 const Wrapper = styled.div`
   display: flex;
@@ -28,8 +29,6 @@ export default class Followers extends React.Component {
   }
 
   getFollowers = () => {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const { id } = this.props;
     const { type } = this.props;
 

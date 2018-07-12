@@ -203,6 +203,7 @@ const Button = styled.button`
 `;
 
 export default function ({
+  id,
   text,
   pinned,
   avatarSrc,
@@ -240,7 +241,7 @@ export default function ({
         </div>
         <Content>
           <Header>
-            <FullName to={userName}>{fullName}</FullName>
+            <FullName to={`/${id}`}>{fullName}</FullName>
             <UserName>@{userName}</UserName>
             <span>
               ·

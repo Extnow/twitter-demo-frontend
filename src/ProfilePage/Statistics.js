@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import FollowButton from '../UI/FollowButton';
 // img
 import iconMore from './img/icon-more.png';
 
@@ -64,39 +65,12 @@ const Actions = styled.div`
   display: flex;
 `;
 
-const Follow = styled.button`
-  background-color: #fff;
-  border-radius: 100px;
-  border: 1px solid #1da1f2;
-  color: #1da1f2;
-  line-height: 14px;
-  font-size: 14px;
-  font-weight: bold;
-  text-align: center;
-  padding: 9px 27px;
-  cursor: pointer;
-  margin-right: 15px;
-  transition: box-shadow 0.15s ease-in-out;
-
-  &:hover {
-    background-color: #e8f5fd;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1da1f2;
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
 const ExtraActions = styled.button`
   border: none;
   background-color: transparent;
   cursor: pointer;
   padding: 8px;
+  margin-left: 15px;
   transition: box-shadow 0.15s ease-in-out;
 
   &:before {
@@ -142,7 +116,7 @@ export default ({ userInfo }) => (
               </li>
             </Navigation>
             <Actions>
-              <Follow>Follow</Follow>
+              <FollowButton>Follow</FollowButton>
               <ExtraActions />
             </Actions>
           </Wrapper>

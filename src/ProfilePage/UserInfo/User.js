@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import format from 'date-fns/format';
+import TweetButton from '../../UI/TweetButton';
 // img
 import iconOfficial from '../../img/icon-official.svg';
 import iconLocation from './img/icon-location.svg';
@@ -132,29 +133,6 @@ const Buttons = styled.div`
   justify-content: space-between;
 `;
 
-const Button = styled.button`
-  background-color: #4ab3f4;
-  border-radius: 100px;
-  padding: 11px 34px 11px 34px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: box-shadow 0.15s ease-in-out;
-
-  &:hover {
-    background-color: #1da1f2;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
 export default function ({
   id,
   src,
@@ -213,8 +191,8 @@ export default function ({
         )}
       </Info>
       <Buttons>
-        <Button>Tweet to</Button>
-        <Button>Message</Button>
+        <TweetButton>Tweet to</TweetButton>
+        <TweetButton>Message</TweetButton>
       </Buttons>
     </WrapperInfo>
   );

@@ -4,6 +4,7 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 // components
 import Tweet from './Tweet';
 import TemplatePage from '../TemplatePage';
+import { host, accesToken } from '../utils';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -50,8 +51,6 @@ export default class Tweets extends React.Component {
   };
 
   componentDidMount() {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const { id } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}/statuses?access_token=${accesToken}`)
@@ -76,6 +75,7 @@ export default class Tweets extends React.Component {
 
     const tweetsList = tweetsInfo.map(tweet => (
       <Tweet
+        id={userInfo.id}
         key={tweet.id}
         pinned={tweet.pinned}
         avatarSrc={tweet.account.avatar_static}
