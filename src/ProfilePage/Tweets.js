@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink, Switch, Route } from 'react-router-dom';
@@ -44,7 +46,15 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default class Tweets extends React.Component {
+export default class Tweets extends React.Component<
+  {
+    userInfo: Object,
+    id: number,
+  }, {
+    tweetsInfo: Array<Object>,
+    error: Object | null,
+  }
+> {
   state = {
     tweetsInfo: [],
     error: null,

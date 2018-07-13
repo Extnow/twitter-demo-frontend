@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -39,14 +41,20 @@ const WrapperList = styled.div`
 `;
 
 export default ({
-  to, title, icon, children,
+  to,
+  title,
+  icon,
+  children,
+}: {
+  to: string,
+  title: string,
+  icon: string,
+  children: React.Node,
 }) => (
   <WrapperList>
     <StLink to={to} icon={icon}>
       {title}
     </StLink>
-    <Wrapper>
-      {children}
-    </Wrapper>
+    <Wrapper>{children}</Wrapper>
   </WrapperList>
 );

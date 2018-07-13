@@ -1,8 +1,10 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FollowButton from '../UI/FollowButton';
-// img
+
 import iconOfficial from '../img/icon-official.svg';
 import iconClose from './img/icon-close.svg';
 
@@ -88,13 +90,21 @@ const CloseIcon = styled.img`
 `;
 
 export default ({
-  userName, src, srcSet, fullName, official,
+  userName,
+  fullName,
+  src,
+  official,
+}: {
+  userName: string,
+  fullName: string,
+  src: string,
+  official: boolean,
 }) => (
   <User>
     <Content>
       <StLink to={`/${userName}`}>
         <ImgWrapper>
-          <Img src={src} srcSet={srcSet} alt={fullName} />
+          <Img src={src} alt={fullName} />
         </ImgWrapper>
         <Name>
           <FullName>{fullName}</FullName>

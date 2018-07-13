@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // components
 import RecommendedUser from './RecommendedUser';
+// img
 import iconPeople from './img/icon-people.svg';
 
 const Wrapper = styled.div`
@@ -79,7 +80,6 @@ const recommendedUsers = [
     id: 1,
     userName: 'appleinsider',
     src: 'avatar-2.png',
-    srcSet: 'avatar-2-retina.png',
     fullName: 'AppleInsider',
     official: false,
   },
@@ -87,7 +87,6 @@ const recommendedUsers = [
     id: 2,
     userName: 'Creode',
     src: 'avatar-3.png',
-    srcSet: 'avatar-3-retina.png',
     fullName: 'Creode',
     official: true,
   },
@@ -95,7 +94,6 @@ const recommendedUsers = [
     id: 3,
     userName: 'Epiphanysearch',
     src: 'avatar-4.png',
-    srcSet: 'avatar-4-retina.png',
     fullName: 'Epiphany Search',
     official: false,
   },
@@ -112,8 +110,7 @@ export default () => (
       <RecommendedUser
         key={user.id}
         userName={user.userName}
-        src={`${process.env.PUBLIC_URL} /img/${user.src}`}
-        srcSet={`${process.env.PUBLIC_URL} /img/${user.src} 2x`}
+        src={`${process.env.PUBLIC_URL}/img/${user.src}`}
         official={user.official}
         fullName={user.fullName}
       />

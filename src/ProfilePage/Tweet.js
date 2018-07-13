@@ -1,10 +1,11 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 // img
 import iconPinned from './img/icon-pinned.svg';
-import iconComments from './img/icon-comments.svg';
 import iconRetweet from './img/icon-retweet.svg';
 import iconLoves from './img/icon-loves.svg';
 import iconEnvelope from './img/icon-envelope.svg';
@@ -122,51 +123,6 @@ const Picture = styled.img`
   max-width: 450px;
 `;
 
-const QuoteTweet = styled.a`
-  display: flex;
-  margin-top: 6px;
-  background-color: #ffffff;
-  border: 1px solid #e1e8ed;
-  box-sizing: border-box;
-  border-radius: 4px;
-
-  &:hover {
-    background-color: rgb(245, 248, 250);
-    border-color: rgba(136, 153, 166, 0.5);
-  }
-`;
-
-const QuoteImage = styled.img`
-  display: block;
-  width: 126px;
-  height: 126px;
-`;
-
-const QuoteContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 11px 9px;
-`;
-
-const QuoteTitle = styled.h2`
-  font-weight: bold;
-  font-size: 14px;
-  margin: 0 0 5px 0;
-`;
-
-const QuoteText = styled.p`
-  font-size: 14px;
-  line-height: 18px;
-  margin: 0 0 5px 0;
-  padding: 0;
-`;
-
-const QuoteLink = styled.span`
-  font-size: 14px;
-  line-height: 18px;
-  color: #8899a6;
-`;
-
 const Actions = styled.ul`
   list-style-type: none;
   display: flex;
@@ -212,15 +168,20 @@ export default function ({
   userName,
   time,
   pictureSrc,
-  quote,
-  quoteSrc,
-  quoteSrcSet,
-  quoteTitle,
-  quoteText,
-  quoteLink,
-  commentsValue,
   retweetValue,
   lovesValue,
+}: {
+  id: number,
+  text: string,
+  pinned: boolean,
+  avatarSrc: string,
+  avatarAlt: string,
+  fullName: string,
+  userName: string,
+  time: string,
+  pictureSrc: Array<Object>,
+  retweetValue: number,
+  lovesValue: number,
 }) {
   function createMarkup() {
     return { __html: text };
@@ -250,24 +211,7 @@ export default function ({
           </Header>
           {styledText()}
           {pictureSrc.map(picSrc => <Picture key={picSrc.id} src={picSrc.preview_url} />)}
-          {quote && (
-            <QuoteTweet>
-              <div>
-                <QuoteImage src={quoteSrc} srcSet={quoteSrcSet} alt={quoteTitle} />
-              </div>
-              <QuoteContent>
-                <QuoteTitle>{quoteTitle}</QuoteTitle>
-                <QuoteText>{quoteText}</QuoteText>
-                <QuoteLink>{quoteLink}</QuoteLink>
-              </QuoteContent>
-            </QuoteTweet>
-          )}
           <Actions>
-            <li>
-              <Button img={iconComments} color="#1da1f2">
-                {commentsValue}
-              </Button>
-            </li>
             <li>
               <Button img={iconRetweet} color="#17bf63">
                 {retweetValue}

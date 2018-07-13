@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 // components
 import List from './List';
@@ -9,7 +11,13 @@ import { host, accesToken } from '../../utils';
 import iconFollowers from './img/icon-followers.svg';
 import iconPhotos from './img/icon-photos.svg';
 
-export default class UserInfo extends React.Component {
+export default class UserInfo extends React.Component<{
+  userInfo: Object,
+  id: number,
+}, {
+  mediaFiles: Array<Object>,
+  followers: Array<Object>,
+}> {
   state = {
     mediaFiles: [],
     followers: [],

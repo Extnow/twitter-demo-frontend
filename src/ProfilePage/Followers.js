@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import Follower from './Follower';
@@ -10,17 +12,24 @@ const Wrapper = styled.div`
   margin-top: 10px;
 `;
 
-export default class Followers extends React.Component {
+export default class Followers extends React.Component<
+  {
+    id: number,
+    type: string,
+  },
+  {
+    followers: Array<Object>,
+  },
+> {
   state = {
     followers: [],
-    error: null,
   };
 
   componentDidMount() {
     this.getFollowers();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof Followers.prototype.props) {
     const { type } = this.props;
 
     if (prevProps.type !== type) {
@@ -34,26 +43,15 @@ export default class Followers extends React.Component {
 
     fetch(`${host}/api/v1/accounts/${id}/${type}?access_token=${accesToken}`)
       .then(response => response.json())
-      .then(
-        (followers) => {
-          this.setState({
-            followers,
-          });
-        },
-        (error) => {
-          this.setState({
-            error,
-          });
-        },
-      );
+      .then((followers) => {
+        this.setState({
+          followers,
+        });
+      });
   };
 
   render() {
-    const { followers, error } = this.state;
-
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    }
+    const { followers } = this.state;
 
     return (
       <Wrapper>

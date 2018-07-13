@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
@@ -47,7 +49,15 @@ const Username = styled(Link)`
 `;
 
 export default ({
-  id, banner, fullName, userName,
+  id,
+  banner,
+  fullName,
+  userName,
+}: {
+  id: number,
+  banner: string,
+  fullName: string,
+  userName: string,
 }) => (
   <User>
     <Header src={banner} />

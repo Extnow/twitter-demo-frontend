@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -89,7 +91,7 @@ const ExtraActions = styled.button`
   }
 `;
 
-export default ({ userInfo }) => (
+export default ({ userInfo }: {userInfo: Object}) => (
   <Statistics>
     <div className="container">
       <div className="row">

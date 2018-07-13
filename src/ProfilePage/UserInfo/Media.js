@@ -1,4 +1,6 @@
-import React from 'react';
+// @flow
+
+import * as React from 'react';
 import styled from 'styled-components';
 
 const MediaWrapper = styled.span`
@@ -13,7 +15,7 @@ const Img = styled.img`
   border-radius: 2px;
 `;
 
-export default ({ media }) => media.slice(0, 6).map(img => (
+export default ({ media }: { media: Array<Object> }) => media.slice(0, 6).map(img => (
   <MediaWrapper>
     <Img key={img.id} src={img.preview_url} />
   </MediaWrapper>

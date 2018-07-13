@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -8,7 +10,6 @@ import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
-import Banner from './Banner';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
 import { host, accesToken } from '../utils';
@@ -19,6 +20,13 @@ const Profile = styled.div`
   font-family: Helvetica Neue, Helvetica, sans-serif;
 `;
 
+const Banner = styled.img`
+  display: block;
+  height: 380px;
+  width: 100%;
+  object-fit: cover;
+`;
+
 const NotFound = styled.div`
   display: flex;
   align-items: center;
@@ -27,7 +35,13 @@ const NotFound = styled.div`
   font-size: 30px;
 `;
 
-export default class ProfilePage extends React.Component {
+export default class ProfilePage extends React.Component<{
+  match: Object
+}, {
+  userInfo: Object,
+  error: Object | null,
+  isLoaded: boolean,
+}> {
   state = {
     userInfo: {},
     error: null,
@@ -38,7 +52,7 @@ export default class ProfilePage extends React.Component {
     this.getUserInfo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: typeof ProfilePage.prototype.props) {
     const { match } = this.props;
 
     if (prevProps.match.params.id !== match.params.id) {
@@ -71,8 +85,11 @@ export default class ProfilePage extends React.Component {
   render() {
     const { userInfo, error, isLoaded } = this.state;
 
-    if (error || userInfo.error) {
-      return <NotFound>Sorry, user not found</NotFound>;
+    if (error) {
+      return <NotFound>{error.message}</NotFound>;
+    }
+    if (userInfo.error) {
+      return <NotFound>Sorry, user no found</NotFound>;
     }
     if (!isLoaded) {
       return <div>Loading...</div>;
@@ -86,7 +103,7 @@ export default class ProfilePage extends React.Component {
           </title>
         </Helmet>
         <main>
-          <Banner userInfo={userInfo} />
+          <Banner src={userInfo.header_static} alt="banner" />
           <Statistics userInfo={userInfo} />
           <Profile>
             <div className="container">

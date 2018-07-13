@@ -5,6 +5,8 @@
   "dependencies": {
     "date-fns": "^1.29.0",
     "flexboxgrid2": "^7.2.1",
+    "flow-bin": "^0.76.0",
+    "global": "^4.3.2",
     "normalize.css": "^8.0.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -19,7 +21,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "flow": "flow"
   },
   "lint-staged": {
     "*.js": [
