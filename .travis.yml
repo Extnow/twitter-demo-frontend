@@ -9,4 +9,4 @@ deploy:
     skip_cleanup: true
     on:
       master: true
-      candidate: true
+      branch: "feat/refactoring,add-flow,connect-zeit"
