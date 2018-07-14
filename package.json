@@ -1,6 +1,8 @@
 {
   "name": "twitter-demo-frontend",
-  "alias": "twitter-demo-frontend.now.sh",
+  "now": {
+    "alias": "twitter-demo-frontend.now.sh"
+  },
   "version": "0.1.0",
   "private": true,
   "dependencies": {
