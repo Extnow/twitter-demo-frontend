@@ -1,0 +1,7 @@
+language: node_js
+node_js:
+  - 9
+
+branches:
+  only:
+    - feat/refactoring,add-flow,connect-zeit
