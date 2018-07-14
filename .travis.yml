@@ -8,5 +8,4 @@ deploy:
     script: now --token $NOW_TOKEN && now alias --token $NOW_TOKEN
     skip_cleanup: true
     on:
-      master: true
-      "feat/refactoring,add-flow,connect-zeit": true
+      branch: "feat/refactoring,add-flow,connect-zeit"
