@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
@@ -9,6 +11,7 @@ import iconMoments from './img/icon-moments.svg';
 import iconNotifications from './img/icon-notifications.svg';
 import iconMessages from './img/icon-messages.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
+import { publicUrl } from '../utils';
 
 const Header = styled.header`
   position: sticky;
@@ -201,8 +204,8 @@ export default () => (
           <Action>
             <AvatarButton>
               <AvatarIcon
-                src={`${process.env.PUBLIC_URL}/img/avatar-small.png`}
-                srcSet={`${process.env.PUBLIC_URL}${'/img/avatar-small-retina.png'} 2x`}
+                src={`${publicUrl}/img/avatar-small.png`}
+                srcSet={`${publicUrl}${'/img/avatar-small-retina.png'} 2x`}
                 alt="avatar"
               />
             </AvatarButton>
