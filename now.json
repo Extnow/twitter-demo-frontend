@@ -1,0 +1,5 @@
+{
+  "env": {
+    "REACT_APP_ACCESS_TOKEN": "@my-acces-token"
+  }
+}

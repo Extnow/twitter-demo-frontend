@@ -8,6 +8,7 @@
     "flow-bin": "^0.76.0",
     "global": "^4.3.2",
     "normalize.css": "^8.0.0",
+    "now": "^11.2.9",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-helmet": "^5.2.0",

@@ -5,4 +5,4 @@
 .env
 .env*.local
 Thumbs.db
-
+now-secrets.json
