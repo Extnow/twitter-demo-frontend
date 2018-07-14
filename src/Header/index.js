@@ -171,12 +171,12 @@ export default () => (
         <Navigation>
           <li>
             <NavigationLink icon={iconHome} to="/">
-              Homessss
+              Home
             </NavigationLink>
           </li>
           <li>
             <NavigationLink icon={iconMoments} to="/moments">
-              Momentsss
+              Moments
             </NavigationLink>
           </li>
           <li>
