@@ -5,7 +5,7 @@ node_js:
 
 deploy:
   - provider: script
-    script: now -e $ACCESS_TOKEN --token $NOW_TOKEN && now alias -e $ACCESS_TOKEN --token $NOW_TOKEN
+    script: now -e $ACCESS_TOKEN=@my-acces-token --token $NOW_TOKEN && now alias -e $ACCESS_TOKEN=@my-acces-token --token $NOW_TOKEN
     skip_cleanup: true
     on:
       branch: "feat/refactoring,add-flow,connect-zeit"
