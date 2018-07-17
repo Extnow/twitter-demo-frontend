@@ -35,13 +35,17 @@ const NotFound = styled.div`
   font-size: 30px;
 `;
 
-export default class ProfilePage extends React.Component<{
-  match: Object
-}, {
+type Props = {
+  match: Object,
+};
+
+type State = {
   userInfo: Object,
   error: Object | null,
   isLoaded: boolean,
-}> {
+};
+
+export default class ProfilePage extends React.Component<Props, State> {
   state = {
     userInfo: {},
     error: null,
@@ -52,7 +56,7 @@ export default class ProfilePage extends React.Component<{
     this.getUserInfo();
   }
 
-  componentDidUpdate(prevProps: typeof ProfilePage.prototype.props) {
+  componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
 
     if (prevProps.match.params.id !== match.params.id) {

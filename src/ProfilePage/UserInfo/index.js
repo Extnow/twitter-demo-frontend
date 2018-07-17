@@ -11,13 +11,17 @@ import { host, accesToken } from '../../utils';
 import iconFollowers from './img/icon-followers.svg';
 import iconPhotos from './img/icon-photos.svg';
 
-export default class UserInfo extends React.Component<{
+type Props = {
   userInfo: Object,
   id: number,
-}, {
+}
+
+type State = {
   mediaFiles: Array<Object>,
   followers: Array<Object>,
-}> {
+}
+
+export default class UserInfo extends React.Component<Props, State> {
   state = {
     mediaFiles: [],
     followers: [],

@@ -46,15 +46,17 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default class Tweets extends React.Component<
-  {
-    userInfo: Object,
-    id: number,
-  }, {
-    tweetsInfo: Array<Object>,
-    error: Object | null,
-  }
-> {
+type Props = {
+  userInfo: Object,
+  id: number,
+}
+
+type State = {
+  tweetsInfo: Array<Object>,
+  error: Object | null,
+}
+
+export default class Tweets extends React.Component<Props, State> {
   state = {
     tweetsInfo: [],
     error: null,

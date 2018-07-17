@@ -12,15 +12,16 @@ const Wrapper = styled.div`
   margin-top: 10px;
 `;
 
-export default class Followers extends React.Component<
-  {
-    id: number,
-    type: string,
-  },
-  {
-    followers: Array<Object>,
-  },
-> {
+type Props = {
+  type: string,
+  id: number,
+};
+
+type State = {
+  followers: Array<Object>,
+};
+
+export default class Followers extends React.Component<Props, State> {
   state = {
     followers: [],
   };
@@ -29,7 +30,7 @@ export default class Followers extends React.Component<
     this.getFollowers();
   }
 
-  componentDidUpdate(prevProps: typeof Followers.prototype.props) {
+  componentDidUpdate(prevProps: Props) {
     const { type } = this.props;
 
     if (prevProps.type !== type) {
