@@ -1,6 +1,6 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import TweetButton from '../UI/TweetButton';
@@ -11,6 +11,7 @@ import iconMoments from './img/icon-moments.svg';
 import iconNotifications from './img/icon-notifications.svg';
 import iconMessages from './img/icon-messages.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
+
 import { publicUrl } from '../utils';
 
 const Header = styled.header`
@@ -205,7 +206,7 @@ export default () => (
             <AvatarButton>
               <AvatarIcon
                 src={`${publicUrl}/img/avatar-small.png`}
-                srcSet={`${publicUrl}${'/img/avatar-small-retina.png'} 2x`}
+                srcSet={`${publicUrl}/img/avatar-small-retina.png'} 2x`}
                 alt="avatar"
               />
             </AvatarButton>

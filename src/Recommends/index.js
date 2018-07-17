@@ -1,12 +1,13 @@
 // @flow
 
-import React from 'react';
+import * as React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 // components
 import RecommendedUser from './RecommendedUser';
 // img
 import iconPeople from './img/icon-people.svg';
+
 import { publicUrl } from '../utils';
 
 const Wrapper = styled.div`
@@ -114,6 +115,7 @@ export default () => (
         key={user.id}
         userName={user.userName}
         src={`${publicUrl}/img/${user.src}`}
+        srcSet={`${publicUrl}/img/${user.src} 2x`}
         official={user.official}
         fullName={user.fullName}
       />
