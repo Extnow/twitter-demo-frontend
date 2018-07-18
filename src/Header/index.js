@@ -206,7 +206,7 @@ export default () => (
             <AvatarButton>
               <AvatarIcon
                 src={`${publicUrl}/img/avatar-small.png`}
-                srcSet={`${publicUrl}/img/avatar-small-retina.png'} 2x`}
+                srcSet={`${publicUrl}/img/avatar-small-retina.png 2x`}
                 alt="avatar"
               />
             </AvatarButton>

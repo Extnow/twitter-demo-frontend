@@ -84,6 +84,7 @@ const recommendedUsers = [
     id: 1,
     userName: 'appleinsider',
     src: 'avatar-2.png',
+    srcSet: 'avatar-2-retina.png',
     fullName: 'AppleInsider',
     official: false,
   },
@@ -91,6 +92,7 @@ const recommendedUsers = [
     id: 2,
     userName: 'Creode',
     src: 'avatar-3.png',
+    srcSet: 'avatar-3-retina.png',
     fullName: 'Creode',
     official: true,
   },
@@ -98,6 +100,7 @@ const recommendedUsers = [
     id: 3,
     userName: 'Epiphanysearch',
     src: 'avatar-4.png',
+    srcSet: 'avatar-4-retina.png',
     fullName: 'Epiphany Search',
     official: false,
   },
@@ -115,7 +118,7 @@ export default () => (
         key={user.id}
         userName={user.userName}
         src={`${publicUrl}/img/${user.src}`}
-        srcSet={`${publicUrl}/img/${user.src} 2x`}
+        srcSet={`${publicUrl}/img/${user.srcSet} 2x`}
         official={user.official}
         fullName={user.fullName}
       />

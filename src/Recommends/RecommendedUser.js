@@ -93,18 +93,20 @@ export default ({
   userName,
   fullName,
   src,
+  srcSet,
   official,
 }: {
   userName: string,
   fullName: string,
   src: string,
+  srcSet: string,
   official: boolean,
 }) => (
   <User>
     <Content>
       <StLink to={`/${userName}`}>
         <ImgWrapper>
-          <Img src={src} alt={fullName} />
+          <Img src={src} srcSet={srcSet} alt={fullName} />
         </ImgWrapper>
         <Name>
           <FullName>{fullName}</FullName>
