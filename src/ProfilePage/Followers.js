@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 
 type Props = {
   type: string,
-  id: number,
+  id: string,
 };
 
 type State = {

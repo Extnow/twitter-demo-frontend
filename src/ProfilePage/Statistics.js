@@ -91,7 +91,7 @@ const ExtraActions = styled.button`
   }
 `;
 
-export default ({ userInfo }: {userInfo: Object}) => (
+export default ({ userInfo }: { userInfo: Object }) => (
   <Statistics>
     <div className="container">
       <div className="row">

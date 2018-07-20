@@ -171,7 +171,7 @@ export default function ({
   retweetValue,
   lovesValue,
 }: {
-  id: number,
+  id: string,
   text: string,
   pinned: boolean,
   avatarSrc: string,

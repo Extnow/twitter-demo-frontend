@@ -54,7 +54,7 @@ export default ({
   fullName,
   userName,
 }: {
-  id: number,
+  id: string,
   banner: string,
   fullName: string,
   userName: string,

@@ -48,13 +48,13 @@ const NavigationLink = styled(NavLink)`
 
 type Props = {
   userInfo: Object,
-  id: number,
-}
+  id: string,
+};
 
 type State = {
   tweetsInfo: Array<Object>,
   error: Object | null,
-}
+};
 
 export default class Tweets extends React.Component<Props, State> {
   state = {

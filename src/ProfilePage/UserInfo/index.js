@@ -13,13 +13,13 @@ import iconPhotos from './img/icon-photos.svg';
 
 type Props = {
   userInfo: Object,
-  id: number,
-}
+  id: string,
+};
 
 type State = {
   mediaFiles: Array<Object>,
   followers: Array<Object>,
-}
+};
 
 export default class UserInfo extends React.Component<Props, State> {
   state = {

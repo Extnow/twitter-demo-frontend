@@ -142,7 +142,7 @@ export default function ({
   websiteUrl,
   joined,
 }: {
-  id: number,
+  id: string,
   src: string,
   userName: string,
   fullName: string,
@@ -163,14 +163,9 @@ export default function ({
 
   return (
     <WrapperInfo>
-      <Avatar
-        src={src}
-        alt={fullName}
-      />
+      <Avatar src={src} alt={fullName} />
       <Title>
-        <FullName to={`/${id}`}>
-          {fullName}
-        </FullName>
+        <FullName to={`/${id}`}>{fullName}</FullName>
       </Title>
       <Header>
         @
