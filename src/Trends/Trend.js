@@ -37,8 +37,8 @@ export default ({
   count,
 }: {
   title: string,
-  description: string | null,
-  count: number | null,
+  description: ?string,
+  count: ?number,
 }) => (
   <Trend>
     <StLink to={`/search?q=${title}`}>

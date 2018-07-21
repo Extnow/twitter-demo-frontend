@@ -4,6 +4,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
+import type { Match } from 'react-router-dom';
 // components
 import Statistics from './Statistics';
 import Tweets from './Tweets';
@@ -36,18 +37,41 @@ const NotFound = styled.div`
 `;
 
 type Props = {
-  match: Object,
+  match: Match,
+};
+
+type UserData = {
+  id: string,
+  username: string,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string,
 };
 
 type State = {
-  userInfo: Object,
-  error: Object | null,
+  userInfo: ?UserData,
+  error: ?Object,
   isLoaded: boolean,
 };
 
 export default class ProfilePage extends React.Component<Props, State> {
   state = {
-    userInfo: {},
+    userInfo: null,
     error: null,
     isLoaded: false,
   };
@@ -92,11 +116,17 @@ export default class ProfilePage extends React.Component<Props, State> {
     if (error) {
       return <NotFound>{error.message}</NotFound>;
     }
-    if (userInfo.error) {
+
+    if (userInfo && userInfo.error) {
       return <NotFound>Sorry, user no found</NotFound>;
     }
+
     if (!isLoaded) {
       return <div>Loading...</div>;
+    }
+
+    if (!userInfo) {
+      return <NotFound>No user data</NotFound>;
     }
 
     return (
