@@ -7,7 +7,6 @@ import 'normalize.css';
 import 'flexboxgrid2/flexboxgrid2.css';
 
 const root = document.getElementById('root');
+if (!root) throw new Error('missing root');
 
-if (root !== null) {
-  ReactDOM.render(<App />, root);
-}
+ReactDOM.render(<App />, root);

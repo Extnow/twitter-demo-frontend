@@ -96,7 +96,7 @@ type State = {
     reblog: ?string,
     application: Object,
     account: Object,
-    media_attachments: (?Object)[],
+    media_attachments: Array<Object>,
     mentions: (?Object)[],
     tags: (?Object)[],
     emojis: (?Object)[],
