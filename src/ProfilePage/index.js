@@ -5,6 +5,9 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
+
+import { connect } from 'react-redux';
+import userInfoFetchData from '../complexes/actions';
 // components
 import Statistics from './Statistics';
 import Tweets from './Tweets';
@@ -69,59 +72,47 @@ type State = {
   isLoaded: boolean,
 };
 
-export default class ProfilePage extends React.Component<Props, State> {
-  state = {
-    userInfo: null,
-    error: null,
-    isLoaded: false,
-  };
-
+class ProfilePage extends React.Component<Props, State> {
   componentDidMount() {
-    this.getUserInfo();
+    const {
+      match: {
+        params: { id },
+      },
+      fetchUserInfo,
+    } = this.props;
+
+    fetchUserInfo(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`);
   }
 
   componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
 
     if (prevProps.match.params.id !== match.params.id) {
-      this.getUserInfo();
+      const {
+        match: {
+          params: { id },
+        },
+        fetchUserInfo,
+      } = this.props;
+
+      fetchUserInfo(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`);
     }
   }
 
-  getUserInfo = () => {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props;
-
-    fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
-      .then(response => response.json())
-      .then(
-        (userInfo) => {
-          this.setState({
-            isLoaded: true,
-            userInfo,
-          });
-        },
-        (error) => {
-          this.setState({ error });
-        },
-      );
-  };
-
   render() {
-    const { userInfo, error, isLoaded } = this.state;
+    const userInfo = this.props;
+    const hasError = this.props;
+    const isLoading = this.props;
 
-    if (error) {
-      return <NotFound>{error.message}</NotFound>;
+    if (hasError) {
+      return <NotFound>User Not Found</NotFound>;
     }
 
     if (userInfo && userInfo.error) {
       return <NotFound>Sorry, user no found</NotFound>;
     }
 
-    if (!isLoaded) {
+    if (isLoading) {
       return <div>Loading...</div>;
     }
 
@@ -174,3 +165,18 @@ export default class ProfilePage extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ProfilePage);
