@@ -1,8 +1,10 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import userInfoFetchData from '../complexes/actions';
 import TweetButton from '../UI/TweetButton';
 // import icons
 import iconMagnifier from './img/icon-magnifier.svg';
@@ -12,9 +14,7 @@ import iconNotifications from './img/icon-notifications.svg';
 import iconMessages from './img/icon-messages.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
-import { publicUrl } from '../utils';
-
-const Header = styled.header`
+const StHeader = styled.header`
   position: sticky;
   top: 0px;
   right: 0px;
@@ -168,8 +168,8 @@ const AvatarIcon = styled.img`
   border-radius: 50%;
 `;
 
-export default () => (
-  <Header>
+const Header = ({ userInfo }) => (
+  <StHeader>
     <div className="container">
       <Wrapper>
         <Navigation>
@@ -205,8 +205,7 @@ export default () => (
           <Action>
             <AvatarButton>
               <AvatarIcon
-                src={`${publicUrl}/img/avatar-small.png`}
-                srcSet={`${publicUrl}/img/avatar-small-retina.png 2x`}
+                src={userInfo.avatar_static}
                 alt="avatar"
               />
             </AvatarButton>
@@ -217,5 +216,20 @@ export default () => (
         </NavExtra>
       </Wrapper>
     </div>
-  </Header>
+  </StHeader>
 );
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Header);

@@ -1,5 +1,3 @@
-// @flow
-
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
@@ -100,9 +98,7 @@ class ProfilePage extends React.Component<Props, State> {
   }
 
   render() {
-    const userInfo = this.props;
-    const hasError = this.props;
-    const isLoading = this.props;
+    const { userInfo, hasError, isLoading } = this.props;
 
     if (hasError) {
       return <NotFound>User Not Found</NotFound>;
@@ -123,33 +119,28 @@ class ProfilePage extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <Helmet>
-          <title>
-            {userInfo.display_name} (@{userInfo.username}) | Twitter
-          </title>
+          <title>Twitter</title>
         </Helmet>
         <main>
           <Banner src={userInfo.header_static} alt="banner" />
-          <Statistics userInfo={userInfo} />
+          <Statistics />
           <Profile>
             <div className="container">
               <div className="row">
                 <div className="col-xs-3">
-                  <UserInfo id={userInfo.id} userInfo={userInfo} />
+                  <UserInfo />
                 </div>
                 <div className="col-xs-6">
                   <Switch>
                     <Route
                       path={`/${userInfo.id}/following`}
-                      render={() => <Followers id={userInfo.id} type="following" />}
+                      render={() => <Followers type="following" />}
                     />
                     <Route
                       path={`/${userInfo.id}/followers`}
-                      render={() => <Followers id={userInfo.id} type="followers" />}
+                      render={() => <Followers type="followers" />}
                     />
-                    <Route
-                      path={`/${userInfo.id}`}
-                      render={() => <Tweets id={userInfo.id} userInfo={userInfo} />}
-                    />
+                    <Route path={`/${userInfo.id}`} render={() => <Tweets />} />
                   </Switch>
                 </div>
                 <div className="col-xs-3">

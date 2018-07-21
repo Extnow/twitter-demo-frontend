@@ -1,6 +1,6 @@
-// @flow
-
 import React from 'react';
+import { connect } from 'react-redux';
+import userInfoFetchData from '../../complexes/actions';
 // components
 import List from './List';
 import Follower from './Follower';
@@ -36,7 +36,6 @@ type UserData = {
 
 type Props = {
   userInfo: UserData,
-  id: string,
 };
 
 type State = {
@@ -88,7 +87,7 @@ type State = {
   }>,
 };
 
-export default class UserInfo extends React.Component<Props, State> {
+class UserInfo extends React.Component<Props, State> {
   state = {
     mediaFiles: [],
     followers: [],
@@ -100,9 +99,7 @@ export default class UserInfo extends React.Component<Props, State> {
   }
 
   getMediaFiles = () => {
-    const { id } = this.props;
-
-    fetch(`${host}/api/v1/accounts/${id}/statuses?only_media=yes&access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/1/statuses?only_media=yes&access_token=${accesToken}`)
       .then(response => response.json())
       .then((mediaFiles) => {
         this.setState({ mediaFiles });
@@ -110,9 +107,7 @@ export default class UserInfo extends React.Component<Props, State> {
   };
 
   getFollowers = () => {
-    const { id } = this.props;
-
-    fetch(`${host}/api/v1/accounts/${id}/followers?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/1/followers?access_token=${accesToken}`)
       .then(response => response.json())
       .then((followers) => {
         this.setState({ followers });
@@ -120,7 +115,7 @@ export default class UserInfo extends React.Component<Props, State> {
   };
 
   render() {
-    const { mediaFiles, followers } = this.state;
+    const { followers, mediaFiles } = this.state;
     const { userInfo } = this.props;
 
     const mediaAttachments = mediaFiles.map(media => media.media_attachments);
@@ -166,3 +161,18 @@ export default class UserInfo extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(UserInfo);

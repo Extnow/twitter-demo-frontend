@@ -3,6 +3,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink, Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
+import userInfoFetchData from '../complexes/actions';
 // components
 import Tweet from './Tweet';
 import TemplatePage from '../TemplatePage';
@@ -71,7 +73,6 @@ type UserData = {
 
 type Props = {
   userInfo: UserData,
-  id: string,
 };
 
 type State = {
@@ -104,16 +105,16 @@ type State = {
   error: ?Object,
 };
 
-export default class Tweets extends React.Component<Props, State> {
+class Tweets extends React.Component<Props, State> {
   state = {
     tweetsInfo: [],
     error: null,
   };
 
   componentDidMount() {
-    const { id } = this.props;
+    const { userInfo } = this.props;
 
-    fetch(`${host}/api/v1/accounts/${id}/statuses?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${userInfo.id}/statuses?access_token=${accesToken}`)
       .then(response => response.json())
       .then(
         (tweetsInfo) => {
@@ -178,3 +179,18 @@ export default class Tweets extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Tweets);

@@ -3,11 +3,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import userInfoFetchData from '../complexes/actions';
+
 import FollowButton from '../UI/FollowButton';
 // img
 import iconMore from './img/icon-more.png';
 
-const Statistics = styled.div`
+const StStatistics = styled.div`
   position: relative;
   background: #fff;
   box-shadow: 0px 2px 2px #b0b8be;
@@ -91,31 +94,8 @@ const ExtraActions = styled.button`
   }
 `;
 
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
-};
-
-export default ({ userInfo }: { userInfo: UserData }) => (
-  <Statistics>
+const Statistics = ({ userInfo }) => (
+  <StStatistics>
     <div className="container">
       <div className="row">
         <div className="col-xs-offset-3 col-xs-9">
@@ -148,5 +128,20 @@ export default ({ userInfo }: { userInfo: UserData }) => (
         </div>
       </div>
     </div>
-  </Statistics>
+  </StStatistics>
 );
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Statistics);

@@ -1,7 +1,7 @@
-// @flow
-
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
+import userInfoFetchData from '../complexes/actions';
 import Follower from './Follower';
 import { host, accesToken } from '../utils';
 
@@ -14,7 +14,6 @@ const Wrapper = styled.div`
 
 type Props = {
   type: string,
-  id: string,
 };
 
 type State = {
@@ -40,7 +39,7 @@ type State = {
   }>,
 };
 
-export default class Followers extends React.Component<Props, State> {
+class Followers extends React.Component<Props, State> {
   state = {
     followers: [],
   };
@@ -58,10 +57,9 @@ export default class Followers extends React.Component<Props, State> {
   }
 
   getFollowers = () => {
-    const { id } = this.props;
-    const { type } = this.props;
+    const { userInfo, type } = this.props;
 
-    fetch(`${host}/api/v1/accounts/${id}/${type}?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${userInfo.id}/${type}?access_token=${accesToken}`)
       .then(response => response.json())
       .then((followers) => {
         this.setState({
@@ -88,3 +86,18 @@ export default class Followers extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(Followers);
