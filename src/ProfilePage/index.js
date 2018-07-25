@@ -1,9 +1,10 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import userInfoFetchData from '../complexes/actions';
 // components
@@ -14,7 +15,6 @@ import Trends from '../Trends';
 import Footer from '../Footer';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
-import { host, accesToken } from '../utils';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -36,10 +36,6 @@ const NotFound = styled.div`
   height: 100vh;
   font-size: 30px;
 `;
-
-type Props = {
-  match: Match,
-};
 
 type UserData = {
   id: string,
@@ -64,6 +60,14 @@ type UserData = {
   error?: string,
 };
 
+type Props = {
+  match: Match,
+  userInfo: UserData,
+  hasError: boolean,
+  isLoading: boolean,
+  fetchUserInfo: Function,
+};
+
 type State = {
   userInfo: ?UserData,
   error: ?Object,
@@ -79,7 +83,7 @@ class ProfilePage extends React.Component<Props, State> {
       fetchUserInfo,
     } = this.props;
 
-    fetchUserInfo(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`);
+    fetchUserInfo(id);
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -93,7 +97,7 @@ class ProfilePage extends React.Component<Props, State> {
         fetchUserInfo,
       } = this.props;
 
-      fetchUserInfo(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`);
+      fetchUserInfo(id);
     }
   }
 
@@ -109,7 +113,7 @@ class ProfilePage extends React.Component<Props, State> {
     }
 
     if (isLoading) {
-      return <div>Loading...</div>;
+      return <div />;
     }
 
     if (!userInfo) {
@@ -119,7 +123,7 @@ class ProfilePage extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <Helmet>
-          <title>Twitter</title>
+          {userInfo.display_name} (@{userInfo.username}) | Twitter
         </Helmet>
         <main>
           <Banner src={userInfo.header_static} alt="banner" />
@@ -164,7 +168,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
 });
 
 export default connect(

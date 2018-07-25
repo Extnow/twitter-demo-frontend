@@ -1,10 +1,8 @@
 // @flow
 
 import React from 'react';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
-import userInfoFetchData from '../complexes/actions';
 import TweetButton from '../UI/TweetButton';
 // import icons
 import iconMagnifier from './img/icon-magnifier.svg';
@@ -14,7 +12,9 @@ import iconNotifications from './img/icon-notifications.svg';
 import iconMessages from './img/icon-messages.svg';
 import iconTwitterLogo from './img/icon-twitter-logo.svg';
 
-const StHeader = styled.header`
+import { publicUrl } from '../utils';
+
+const Header = styled.header`
   position: sticky;
   top: 0px;
   right: 0px;
@@ -74,7 +74,6 @@ const TwitterLogo = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-
   &:before {
     content: '';
     display: block;
@@ -96,7 +95,6 @@ const NavExtra = styled.ul`
 
 const Action = styled.li`
   margin-right: 16px;
-
   &:last-child {
     margin-right: 0;
   }
@@ -115,7 +113,6 @@ const SearchInput = styled.input`
   padding: 8px 61px 8px 11px;
   font-size: 12px;
   transition: border 0.15s ease-in-out;
-
   &:focus {
     outline: none;
     border: 1px solid #1da1f2;
@@ -154,7 +151,7 @@ const AvatarButton = styled.button`
   cursor: pointer;
   padding: 0;
   transition: box-shadow 0.15s ease-in-out;
-
+  
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
@@ -168,8 +165,8 @@ const AvatarIcon = styled.img`
   border-radius: 50%;
 `;
 
-const Header = ({ userInfo }) => (
-  <StHeader>
+export default () => (
+  <Header>
     <div className="container">
       <Wrapper>
         <Navigation>
@@ -205,7 +202,8 @@ const Header = ({ userInfo }) => (
           <Action>
             <AvatarButton>
               <AvatarIcon
-                src={userInfo.avatar_static}
+                src={`${publicUrl}/img/avatar-small.png`}
+                srcSet={`${publicUrl}/img/avatar-small-retina.png 2x`}
                 alt="avatar"
               />
             </AvatarButton>
@@ -216,20 +214,5 @@ const Header = ({ userInfo }) => (
         </NavExtra>
       </Wrapper>
     </div>
-  </StHeader>
+  </Header>
 );
-
-const mapStateToProps = state => ({
-  userInfo: state.userInfo,
-  hasError: state.userInfoHasError,
-  isLoading: state.userInfoIsLoading,
-});
-
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Header);

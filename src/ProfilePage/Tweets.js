@@ -187,7 +187,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
 });
 
 export default connect(

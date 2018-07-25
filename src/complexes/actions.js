@@ -1,3 +1,5 @@
+import { host, accesToken } from '../utils';
+
 function userInfoHasError(bool) {
   return {
     type: 'USER_DATA_HAS_ERROR',
@@ -19,11 +21,11 @@ function userInfoFetchSuccess(userInfo) {
   };
 }
 
-export default function userInfoFetchData(url) {
+export default function userInfoFetchData(id) {
   return (dispatch) => {
     dispatch(userInfoIsLoading(true));
 
-    fetch(url)
+    fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

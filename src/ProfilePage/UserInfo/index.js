@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 import userInfoFetchData from '../../complexes/actions';
@@ -169,7 +171,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
 });
 
 export default connect(

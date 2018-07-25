@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
@@ -12,8 +14,32 @@ const Wrapper = styled.div`
   margin-top: 10px;
 `;
 
+type UserData = {
+  id: string,
+  username: string,
+  avatar: string,
+  acct: string,
+  display_name: string,
+  locked: boolean,
+  bot: boolean,
+  created_at: string,
+  note: string,
+  url: string,
+  avatar: string,
+  avatar_static: string,
+  header: string,
+  header_static: string,
+  followers_count: number,
+  following_count: number,
+  statuses_count: number,
+  emojis: (?Object)[],
+  fields: (?Object)[],
+  error?: string,
+};
+
 type Props = {
   type: string,
+  userInfo: UserData,
 };
 
 type State = {
@@ -94,7 +120,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: url => dispatch(userInfoFetchData(url)),
+  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
 });
 
 export default connect(
