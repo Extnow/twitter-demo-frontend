@@ -9,6 +9,7 @@ import iconPinned from './img/icon-pinned.svg';
 import iconRetweet from './img/icon-retweet.svg';
 import iconLoves from './img/icon-loves.svg';
 import iconEnvelope from './img/icon-envelope.svg';
+import type { MediaAttachments } from '../types';
 
 const Wrapper = styled.div`
   padding: 9px 12px;
@@ -167,19 +168,19 @@ export default function ({
   fullName,
   userName,
   time,
-  pictureSrc,
+  mediaAttachments,
   retweetValue,
   lovesValue,
 }: {
   id: string,
   text: string,
-  pinned: boolean,
+  pinned: ?boolean,
   avatarSrc: string,
   avatarAlt: string,
   fullName: string,
   userName: string,
   time: string,
-  pictureSrc: Array<Object>,
+  mediaAttachments: MediaAttachments,
   retweetValue: number,
   lovesValue: number,
 }) {
@@ -210,7 +211,7 @@ export default function ({
             </span>
           </Header>
           {styledText()}
-          {pictureSrc.map(picSrc => <Picture key={picSrc.id} src={picSrc.preview_url} />)}
+          {mediaAttachments.map(picSrc => <Picture key={picSrc.id} src={picSrc.preview_url} />)}
           <Actions>
             <li>
               <Button img={iconRetweet} color="#17bf63">

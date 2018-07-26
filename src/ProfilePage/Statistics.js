@@ -4,8 +4,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import FollowButton from '../UI/FollowButton';
-// img
 import iconMore from './img/icon-more.png';
+import type { UserData } from '../types';
 
 const Statistics = styled.div`
   position: relative;
@@ -90,29 +90,6 @@ const ExtraActions = styled.button`
     box-shadow: 0 0 0 2px #ffffff, 0 0 2px 4px rgba(0, 153, 153, 0.4);
   }
 `;
-
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
-};
 
 export default ({ userInfo }: { userInfo: UserData }) => (
   <Statistics>

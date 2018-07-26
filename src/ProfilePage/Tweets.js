@@ -7,6 +7,7 @@ import { NavLink, Switch, Route } from 'react-router-dom';
 import Tweet from './Tweet';
 import TemplatePage from '../TemplatePage';
 import { host, accesToken } from '../utils';
+import type { UserData, TweetsData } from '../types';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -46,61 +47,13 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
-};
-
 type Props = {
   userInfo: UserData,
   id: string,
 };
 
 type State = {
-  tweetsInfo: Array<{
-    id: string,
-    created_at: string,
-    in_reply_to_id: ?string,
-    in_reply_to_account_id: ?string,
-    sensitive: boolean,
-    spoiler_text: string,
-    visibility: string,
-    language: string,
-    uri: string,
-    content: string,
-    url: string,
-    reblogs_count: number,
-    favourites_count: number,
-    favourited: boolean,
-    reblogged: boolean,
-    muted: boolean,
-    pinned: boolean,
-    reblog: ?string,
-    application: Object,
-    account: Object,
-    media_attachments: Array<Object>,
-    mentions: (?Object)[],
-    tags: (?Object)[],
-    emojis: (?Object)[],
-  }>,
+  tweetsInfo: TweetsData,
   error: ?Object,
 };
 
@@ -143,7 +96,7 @@ export default class Tweets extends React.Component<Props, State> {
         fullName={tweet.account.display_name}
         userName={tweet.account.username}
         time={tweet.created_at}
-        pictureSrc={tweet.media_attachments}
+        mediaAttachments={tweet.media_attachments}
         text={tweet.content}
         lovesValue={tweet.favourites_count}
         retweetValue={tweet.reblogs_count}

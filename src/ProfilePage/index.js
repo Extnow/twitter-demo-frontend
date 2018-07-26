@@ -14,6 +14,7 @@ import Footer from '../Footer';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
 import { host, accesToken } from '../utils';
+import type { UserData } from '../types';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
@@ -38,29 +39,6 @@ const NotFound = styled.div`
 
 type Props = {
   match: Match,
-};
-
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
 };
 
 type State = {

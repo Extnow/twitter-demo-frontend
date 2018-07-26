@@ -10,29 +10,7 @@ import { host, accesToken } from '../../utils';
 // img
 import iconFollowers from './img/icon-followers.svg';
 import iconPhotos from './img/icon-photos.svg';
-
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
-};
+import type { UserData, TweetsData, FollowersData } from '../../types';
 
 type Props = {
   userInfo: UserData,
@@ -40,52 +18,8 @@ type Props = {
 };
 
 type State = {
-  mediaFiles: Array<{
-    id: string,
-    created_at: string,
-    in_reply_to_id: ?string,
-    in_reply_to_account_id: ?string,
-    sensitive: boolean,
-    spoiler_text: string,
-    visibility: string,
-    language: string,
-    uri: string,
-    content: string,
-    url: string,
-    reblogs_count: number,
-    favourites_count: number,
-    favourited: boolean,
-    reblogged: boolean,
-    muted: boolean,
-    pinned: boolean,
-    reblog: ?string,
-    application: Object,
-    account: Object,
-    media_attachments: Array<Object>,
-    mentions: (?Object)[],
-    tags: (?Object)[],
-    emojis: (?Object)[],
-  }>,
-  followers: Array<{
-    id: string,
-    username: string,
-    acct: string,
-    display_name: string,
-    locked: boolean,
-    bot: boolean,
-    created_at: string,
-    note: string,
-    url: string,
-    avatar: string,
-    avatar_static: string,
-    header: string,
-    header_static: string,
-    followers_count: number,
-    following_count: number,
-    statuses_count: number,
-    emojis: (?Object)[],
-    fields: (?Object)[],
-  }>,
+  mediaFiles: TweetsData,
+  followers: FollowersData,
 };
 
 export default class UserInfo extends React.Component<Props, State> {

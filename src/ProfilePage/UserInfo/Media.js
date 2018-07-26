@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import styled from 'styled-components';
+import type { MediaAttachments } from '../../types';
 
 const MediaWrapper = styled.span`
   display: block;
@@ -15,7 +16,7 @@ const Img = styled.img`
   border-radius: 2px;
 `;
 
-export default ({ media }: { media: Array<Object> }) => media.slice(0, 6).map(img => (
+export default ({ media }: { media: MediaAttachments }) => media.slice(0, 6).map(img => (
   <MediaWrapper>
     <Img key={img.id} src={img.preview_url} />
   </MediaWrapper>
