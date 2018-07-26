@@ -1,0 +1,11 @@
+language: node_js
+
+node_js:
+  - "node"
+
+deploy:
+  - provider: script
+    script: now --public --token $NOW_TOKEN -e REACT_APP_ACCESS_TOKEN=$REACT_APP_ACCESS_TOKEN && now alias --token $NOW_TOKEN
+    skip_cleanup: true
+    on:
+      master: true

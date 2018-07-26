@@ -1,66 +1,39 @@
+// @flow
+
 import React from 'react';
 // components
 import List from './List';
 import Follower from './Follower';
 import Media from './Media';
 import User from './User';
-// ims
+import { host, accesToken } from '../../utils';
+// img
 import iconFollowers from './img/icon-followers.svg';
 import iconPhotos from './img/icon-photos.svg';
+import type { UserData, TweetsData, FollowersData } from '../../types';
 
-const followers = [
-  {
-    id: 1,
-    src: 'follower-1.png',
-    srcSet: 'follower-1-retina.png',
-    fullName: 'Oleg',
-    to: 'salahov30',
-  },
-  {
-    id: 2,
-    src: 'follower-2.png',
-    srcSet: 'follower-2-retina.png',
-    fullName: 'Сергей Черкашин',
-    to: 'VonderVuflya',
-  },
-  {
-    id: 3,
-    src: 'follower-3.png',
-    srcSet: 'follower-3-retina.png',
-    fullName: 'Caroline Ward',
-    to: 'noveltyshoe',
-  },
-  {
-    id: 4,
-    src: 'follower-4.png',
-    srcSet: 'follower-4-retina.png',
-    fullName: 'Aya Ulan',
-    to: 'aya_ulan',
-  },
-  {
-    id: 5,
-    src: 'follower-5.png',
-    srcSet: 'follower-5-retina.png',
-    fullName: 'CM/UX',
-    to: 'lighthorsechris',
-  },
-  {
-    id: 6,
-    src: 'follower-6.png',
-    srcSet: 'follower-6-retina.png',
-    fullName: 'Pinky Bazaz',
-    to: 'PinkyBazaz',
-  },
-];
+type Props = {
+  userInfo: UserData,
+  id: string,
+};
 
-export default class UserInfo extends React.Component {
+type State = {
+  mediaFiles: TweetsData,
+  followers: FollowersData,
+};
+
+export default class UserInfo extends React.Component<Props, State> {
   state = {
     mediaFiles: [],
+    followers: [],
   };
 
   componentDidMount() {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
+    this.getMediaFiles();
+    this.getFollowers();
+  }
+
+  getMediaFiles = () => {
     const { id } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}/statuses?only_media=yes&access_token=${accesToken}`)
@@ -68,12 +41,24 @@ export default class UserInfo extends React.Component {
       .then((mediaFiles) => {
         this.setState({ mediaFiles });
       });
-  }
+  };
+
+  getFollowers = () => {
+    const { id } = this.props;
+
+    fetch(`${host}/api/v1/accounts/${id}/followers?access_token=${accesToken}`)
+      .then(response => response.json())
+      .then((followers) => {
+        this.setState({ followers });
+      });
+  };
 
   render() {
-    const { mediaFiles } = this.state;
+    const { mediaFiles, followers } = this.state;
     const { userInfo } = this.props;
-    const countMediaFiles = mediaFiles.length;
+
+    const mediaAttachments = mediaFiles.map(media => media.media_attachments);
+    const media = [].concat(...mediaAttachments);
 
     return (
       <div>
@@ -97,19 +82,19 @@ export default class UserInfo extends React.Component {
           {followers.map(follower => (
             <Follower
               key={follower.id}
-              src={`${process.env.PUBLIC_URL} /img/${follower.src}`}
-              srcSet={`${process.env.PUBLIC_URL} /img/${follower.srcSet} 2x`}
-              fullName={follower.fullName}
-              to={follower.to}
+              src={follower.avatar}
+              srcSet={follower.avatar}
+              fullName={follower.display_name}
+              to={follower.id}
             />
           ))}
         </List>
         <List
-          title={`${countMediaFiles} Photos and videos`}
+          title={`${media.length} Photos and videos`}
           to={`/${userInfo.id}/media`}
           icon={iconPhotos}
         >
-          {mediaFiles.map(media => <Media key={media.id} pictureProps={media.media_attachments} />)}
+          <Media media={media} />
         </List>
       </div>
     );

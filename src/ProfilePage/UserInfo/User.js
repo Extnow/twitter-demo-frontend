@@ -1,10 +1,11 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import format from 'date-fns/format';
+import TweetButton from '../../UI/TweetButton';
 // img
-import iconOfficial from '../../img/icon-official.svg';
-import iconLocation from './img/icon-location.svg';
 import iconLink from './img/icon-link.svg';
 import iconJoined from './img/icon-joined.svg';
 
@@ -42,7 +43,6 @@ const FullName = styled(Link)`
   &:after {
     content: '';
     display: inline-block;
-    background-image: url(${({ official }) => (official ? iconOfficial : '')});
     width: 18px;
     height: 18px;
     margin-left: 5px;
@@ -132,41 +132,24 @@ const Buttons = styled.div`
   justify-content: space-between;
 `;
 
-const Button = styled.button`
-  background-color: #4ab3f4;
-  border-radius: 100px;
-  padding: 11px 34px 11px 34px;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  transition: box-shadow 0.15s ease-in-out;
-
-  &:hover {
-    background-color: #1da1f2;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4ab3f4;
-  }
-
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
 export default function ({
   id,
   src,
   userName,
-  official,
   fullName,
-  isFollowsYou,
   bio,
-  location,
   website,
   websiteUrl,
   joined,
+}: {
+  id: string,
+  src: string,
+  userName: string,
+  fullName: string,
+  bio: string,
+  website: string,
+  websiteUrl: string,
+  joined: string,
 }) {
   function createMarkup() {
     return { __html: bio };
@@ -180,27 +163,16 @@ export default function ({
 
   return (
     <WrapperInfo>
-      <Avatar
-        src={`${process.env.PUBLIC_URL} ${src}`}
-        alt={fullName}
-      />
+      <Avatar src={src} alt={fullName} />
       <Title>
-        <FullName official={official} to={`/${id}`}>
-          {fullName}
-        </FullName>
+        <FullName to={`/${id}`}>{fullName}</FullName>
       </Title>
       <Header>
         @
         <Username to={`/${id}`}>{userName}</Username>
-        {isFollowsYou && <span>Follows you</span>}
       </Header>
       {styledText()}
       <Info>
-        {location && (
-          <Element img={iconLocation}>
-            <InfoText>{location}</InfoText>
-          </Element>
-        )}
         <Element img={iconLink}>
           <InfoLink href={websiteUrl} target="_blank">
             {website}
@@ -213,8 +185,8 @@ export default function ({
         )}
       </Info>
       <Buttons>
-        <Button>Tweet to</Button>
-        <Button>Message</Button>
+        <TweetButton>Tweet to</TweetButton>
+        <TweetButton>Message</TweetButton>
       </Buttons>
     </WrapperInfo>
   );

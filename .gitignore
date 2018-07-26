@@ -1,7 +1,8 @@
 /node_modules
 /build
 .eslintrc
+.flowconfig
 .env
 .env*.local
 Thumbs.db
-
+now-secrets.json

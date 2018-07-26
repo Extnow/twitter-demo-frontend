@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { FormattedNumber } from 'react-intl';
@@ -29,16 +31,20 @@ const Text = styled.p`
   margin: 0;
 `;
 
-export default ({ title, description, count }) => (
+export default ({
+  title,
+  description,
+  count,
+}: {
+  title: string,
+  description: ?string,
+  count: ?number,
+}) => (
   <Trend>
     <StLink to={`/search?q=${title}`}>
-      <Title>
-        {title}
-      </Title>
-      <Text>
-        {description}
-      </Text>
-      {count > 0 && (
+      <Title>{title}</Title>
+      <Text>{description}</Text>
+      {count != null && (
         <Text>
           <FormattedNumber value={count} />
           {count > 1 ? ' Tweets' : ' Tweet'}

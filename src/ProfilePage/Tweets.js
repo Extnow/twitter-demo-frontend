@@ -1,9 +1,13 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink, Switch, Route } from 'react-router-dom';
 // components
 import Tweet from './Tweet';
 import TemplatePage from '../TemplatePage';
+import { host, accesToken } from '../utils';
+import type { UserData, TweetsData } from '../types';
 
 const Wrapper = styled.div`
   margin-top: 10px;
@@ -43,15 +47,23 @@ const NavigationLink = styled(NavLink)`
   }
 `;
 
-export default class Tweets extends React.Component {
+type Props = {
+  userInfo: UserData,
+  id: string,
+};
+
+type State = {
+  tweetsInfo: TweetsData,
+  error: ?Object,
+};
+
+export default class Tweets extends React.Component<Props, State> {
   state = {
     tweetsInfo: [],
     error: null,
   };
 
   componentDidMount() {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const { id } = this.props;
 
     fetch(`${host}/api/v1/accounts/${id}/statuses?access_token=${accesToken}`)
@@ -76,6 +88,7 @@ export default class Tweets extends React.Component {
 
     const tweetsList = tweetsInfo.map(tweet => (
       <Tweet
+        id={userInfo.id}
         key={tweet.id}
         pinned={tweet.pinned}
         avatarSrc={tweet.account.avatar_static}
@@ -83,7 +96,7 @@ export default class Tweets extends React.Component {
         fullName={tweet.account.display_name}
         userName={tweet.account.username}
         time={tweet.created_at}
-        pictureSrc={tweet.media_attachments}
+        mediaAttachments={tweet.media_attachments}
         text={tweet.content}
         lovesValue={tweet.favourites_count}
         retweetValue={tweet.reblogs_count}

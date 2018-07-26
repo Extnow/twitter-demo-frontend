@@ -1,21 +1,32 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
+import type { Match } from 'react-router-dom';
 // components
 import Statistics from './Statistics';
 import Tweets from './Tweets';
 import Recommends from '../Recommends';
 import Trends from '../Trends';
 import Footer from '../Footer';
-import Banner from './Banner';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
+import { host, accesToken } from '../utils';
+import type { UserData } from '../types';
 
 const Profile = styled.div`
   background-color: #e6ecf0;
   position: relative;
   font-family: Helvetica Neue, Helvetica, sans-serif;
+`;
+
+const Banner = styled.img`
+  display: block;
+  height: 380px;
+  width: 100%;
+  object-fit: cover;
 `;
 
 const NotFound = styled.div`
@@ -26,9 +37,19 @@ const NotFound = styled.div`
   font-size: 30px;
 `;
 
-export default class ProfilePage extends React.Component {
+type Props = {
+  match: Match,
+};
+
+type State = {
+  userInfo: ?UserData,
+  error: ?Object,
+  isLoaded: boolean,
+};
+
+export default class ProfilePage extends React.Component<Props, State> {
   state = {
-    userInfo: {},
+    userInfo: null,
     error: null,
     isLoaded: false,
   };
@@ -37,7 +58,7 @@ export default class ProfilePage extends React.Component {
     this.getUserInfo();
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
 
     if (prevProps.match.params.id !== match.params.id) {
@@ -46,8 +67,6 @@ export default class ProfilePage extends React.Component {
   }
 
   getUserInfo = () => {
-    const host = 'https://twitter-demo.erodionov.ru';
-    const accesToken = process.env.REACT_APP_ACCESS_TOKEN;
     const {
       match: {
         params: { id },
@@ -72,11 +91,20 @@ export default class ProfilePage extends React.Component {
   render() {
     const { userInfo, error, isLoaded } = this.state;
 
-    if (error || userInfo.error) {
-      return <NotFound>Sorry, user not found</NotFound>;
+    if (error) {
+      return <NotFound>{error.message}</NotFound>;
     }
+
+    if (userInfo && userInfo.error) {
+      return <NotFound>Sorry, user no found</NotFound>;
+    }
+
     if (!isLoaded) {
       return <div>Loading...</div>;
+    }
+
+    if (!userInfo) {
+      return <NotFound>No user data</NotFound>;
     }
 
     return (
@@ -87,7 +115,7 @@ export default class ProfilePage extends React.Component {
           </title>
         </Helmet>
         <main>
-          <Banner userInfo={userInfo} />
+          <Banner src={userInfo.header_static} alt="banner" />
           <Statistics userInfo={userInfo} />
           <Profile>
             <div className="container">

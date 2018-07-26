@@ -1,7 +1,10 @@
-import React from 'react';
-import styled from 'styled-components';
+// @flow
 
-const Media = styled.span`
+import * as React from 'react';
+import styled from 'styled-components';
+import type { MediaAttachments } from '../../types';
+
+const MediaWrapper = styled.span`
   display: block;
   margin: 0 5px 5px 0;
 `;
@@ -13,6 +16,8 @@ const Img = styled.img`
   border-radius: 2px;
 `;
 
-export default ({ pictureProps }) => (
-  <Media>{pictureProps.map(img => <Img key={img.id} src={img.preview_url} />)}</Media>
-);
+export default ({ media }: { media: MediaAttachments }) => media.slice(0, 6).map(img => (
+  <MediaWrapper>
+    <Img key={img.id} src={img.preview_url} />
+  </MediaWrapper>
+));

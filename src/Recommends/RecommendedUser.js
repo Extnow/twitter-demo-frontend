@@ -1,7 +1,10 @@
+// @flow
+
 import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-// img
+import FollowButton from '../UI/FollowButton';
+
 import iconOfficial from '../img/icon-official.svg';
 import iconClose from './img/icon-close.svg';
 
@@ -71,32 +74,6 @@ const UserName = styled.span`
   width: 100%;
 `;
 
-const Follow = styled.button`
-  display: block;
-  border: 1px solid #1da1f2;
-  background-color: #fff;
-  border-radius: 100px;
-  padding: 5px 22px;
-  font-size: 14px;
-  text-align: center;
-  color: #1da1f2;
-  cursor: pointer;
-  transition: box-shadow 0.15s ease-in-out;
-
-  &:hover {
-    background-color: #e8f5fd;
-  }
-
-  &:active {
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #1da1f2;
-  }
-
-  &:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;
-  }
-`;
-
 const Close = styled.button`
   border: none;
   background-color: transparent;
@@ -113,7 +90,17 @@ const CloseIcon = styled.img`
 `;
 
 export default ({
-  userName, src, srcSet, fullName, official,
+  userName,
+  fullName,
+  src,
+  srcSet,
+  official,
+}: {
+  userName: string,
+  fullName: string,
+  src: string,
+  srcSet: string,
+  official: boolean,
 }) => (
   <User>
     <Content>
@@ -122,22 +109,16 @@ export default ({
           <Img src={src} srcSet={srcSet} alt={fullName} />
         </ImgWrapper>
         <Name>
-          <FullName>
-            {fullName}
-          </FullName>
+          <FullName>{fullName}</FullName>
           {official && <Tick src={iconOfficial} alt="tick" />}
           <UserName>
-            <span>
-@
-            </span>
+            <span>@</span>
             {userName}
           </UserName>
         </Name>
       </StLink>
       <div>
-        <Follow>
-Follow
-        </Follow>
+        <FollowButton small>Follow</FollowButton>
       </div>
     </Content>
     <Close>
