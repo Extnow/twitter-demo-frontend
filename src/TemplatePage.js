@@ -1,6 +1,7 @@
 // @flow
 
 import React from 'react';
+import type { Match } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
   height: 100vh;
 `;
 
-export default ({ match }: { match: Object }) => (
+export default ({ match }: { match: Match }) => (
   <React.Fragment>
     <Helmet>
       <title>Twitter</title>

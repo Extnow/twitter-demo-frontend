@@ -7,8 +7,8 @@ import { connect } from 'react-redux';
 import userInfoFetchData from '../complexes/actions';
 
 import FollowButton from '../UI/FollowButton';
-// img
 import iconMore from './img/icon-more.png';
+import type { UserData } from '../types';
 
 const StStatistics = styled.div`
   position: relative;
@@ -94,7 +94,8 @@ const ExtraActions = styled.button`
   }
 `;
 
-const Statistics = ({ userInfo }) => (
+
+const Statistics = ({ userInfo }: { userInfo: UserData }) => (
   <StStatistics>
     <div className="container">
       <div className="row">
