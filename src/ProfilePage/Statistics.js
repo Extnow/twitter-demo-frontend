@@ -3,11 +3,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+
 import FollowButton from '../UI/FollowButton';
 import iconMore from './img/icon-more.png';
 import type { UserData } from '../types';
 
-const Statistics = styled.div`
+const StStatistics = styled.div`
   position: relative;
   background: #fff;
   box-shadow: 0px 2px 2px #b0b8be;
@@ -91,8 +93,9 @@ const ExtraActions = styled.button`
   }
 `;
 
-export default ({ userInfo }: { userInfo: UserData }) => (
-  <Statistics>
+
+const Statistics = ({ userInfo }: { userInfo: UserData }) => (
+  <StStatistics>
     <div className="container">
       <div className="row">
         <div className="col-xs-offset-3 col-xs-9">
@@ -125,5 +128,13 @@ export default ({ userInfo }: { userInfo: UserData }) => (
         </div>
       </div>
     </div>
-  </Statistics>
+  </StStatistics>
 );
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+export default connect(mapStateToProps)(Statistics);

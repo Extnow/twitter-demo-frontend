@@ -74,7 +74,6 @@ const TwitterLogo = styled.button`
   border: none;
   background: none;
   cursor: pointer;
-
   &:before {
     content: '';
     display: block;
@@ -96,7 +95,6 @@ const NavExtra = styled.ul`
 
 const Action = styled.li`
   margin-right: 16px;
-
   &:last-child {
     margin-right: 0;
   }
@@ -115,7 +113,6 @@ const SearchInput = styled.input`
   padding: 8px 61px 8px 11px;
   font-size: 12px;
   transition: border 0.15s ease-in-out;
-
   &:focus {
     outline: none;
     border: 1px solid #1da1f2;
@@ -154,7 +151,7 @@ const AvatarButton = styled.button`
   cursor: pointer;
   padding: 0;
   transition: box-shadow 0.15s ease-in-out;
-
+  
   &:focus {
     outline: 0;
     box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #a4d9f9;

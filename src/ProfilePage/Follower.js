@@ -30,7 +30,6 @@ const FullName = styled(Link)`
   line-height: 22px;
   font-size: 22px;
   margin-right: 5px;
-
   &:hover {
     text-decoration: underline;
   }
@@ -42,7 +41,6 @@ const Username = styled(Link)`
   margin-right: 8px;
   color: #697787;
   text-overflow: ellipsis;
-
   &:hover {
     text-decoration: underline;
   }

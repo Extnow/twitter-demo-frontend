@@ -1,10 +1,11 @@
 // @flow
 
 import React from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Follower from './Follower';
 import { host, accesToken } from '../utils';
-import type { FollowersData } from '../types';
+import type { UserData, FollowersData } from '../types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -15,14 +16,14 @@ const Wrapper = styled.div`
 
 type Props = {
   type: string,
-  id: string,
+  userInfo: UserData,
 };
 
 type State = {
   followers: FollowersData,
 };
 
-export default class Followers extends React.Component<Props, State> {
+class Followers extends React.Component<Props, State> {
   state = {
     followers: [],
   };
@@ -40,10 +41,9 @@ export default class Followers extends React.Component<Props, State> {
   }
 
   getFollowers = () => {
-    const { id } = this.props;
-    const { type } = this.props;
+    const { userInfo, type } = this.props;
 
-    fetch(`${host}/api/v1/accounts/${id}/${type}?access_token=${accesToken}`)
+    fetch(`${host}/api/v1/accounts/${userInfo.id}/${type}?access_token=${accesToken}`)
       .then(response => response.json())
       .then((followers) => {
         this.setState({
@@ -70,3 +70,11 @@ export default class Followers extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+export default connect(mapStateToProps)(Followers);

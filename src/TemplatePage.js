@@ -15,7 +15,7 @@ const Wrapper = styled.div`
 export default ({ match }: { match: Match }) => (
   <React.Fragment>
     <Helmet>
-      <title>{match.url} | Twitter</title>
+      <title>Twitter</title>
     </Helmet>
     <Wrapper>
       <h1>page{match.url}</h1>

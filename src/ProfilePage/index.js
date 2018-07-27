@@ -5,6 +5,8 @@ import styled from 'styled-components';
 import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
+import { connect } from 'react-redux';
+import userInfoFetchData from './actions';
 // components
 import Statistics from './Statistics';
 import Tweets from './Tweets';
@@ -13,7 +15,6 @@ import Trends from '../Trends';
 import Footer from '../Footer';
 import UserInfo from './UserInfo';
 import Followers from './Followers';
-import { host, accesToken } from '../utils';
 import type { UserData } from '../types';
 
 const Profile = styled.div`
@@ -39,6 +40,10 @@ const NotFound = styled.div`
 
 type Props = {
   match: Match,
+  userInfo: UserData,
+  hasError: boolean,
+  isLoading: boolean,
+  dispatch: Function,
 };
 
 type State = {
@@ -47,60 +52,46 @@ type State = {
   isLoaded: boolean,
 };
 
-export default class ProfilePage extends React.Component<Props, State> {
-  state = {
-    userInfo: null,
-    error: null,
-    isLoaded: false,
-  };
-
+class ProfilePage extends React.Component<Props, State> {
   componentDidMount() {
-    this.getUserInfo();
+    const {
+      match: {
+        params: { id },
+      },
+      dispatch,
+    } = this.props;
+
+    dispatch(userInfoFetchData(id));
   }
 
   componentDidUpdate(prevProps: Props) {
     const { match } = this.props;
 
     if (prevProps.match.params.id !== match.params.id) {
-      this.getUserInfo();
+      const {
+        match: {
+          params: { id },
+        },
+        dispatch,
+      } = this.props;
+
+      dispatch(userInfoFetchData(id));
     }
   }
 
-  getUserInfo = () => {
-    const {
-      match: {
-        params: { id },
-      },
-    } = this.props;
-
-    fetch(`${host}/api/v1/accounts/${id}?access_token=${accesToken}`)
-      .then(response => response.json())
-      .then(
-        (userInfo) => {
-          this.setState({
-            isLoaded: true,
-            userInfo,
-          });
-        },
-        (error) => {
-          this.setState({ error });
-        },
-      );
-  };
-
   render() {
-    const { userInfo, error, isLoaded } = this.state;
+    const { userInfo, hasError, isLoading } = this.props;
 
-    if (error) {
-      return <NotFound>{error.message}</NotFound>;
+    if (hasError) {
+      return <NotFound>User Not Found</NotFound>;
     }
 
     if (userInfo && userInfo.error) {
       return <NotFound>Sorry, user no found</NotFound>;
     }
 
-    if (!isLoaded) {
-      return <div>Loading...</div>;
+    if (isLoading) {
+      return <div />;
     }
 
     if (!userInfo) {
@@ -110,33 +101,28 @@ export default class ProfilePage extends React.Component<Props, State> {
     return (
       <React.Fragment>
         <Helmet>
-          <title>
-            {userInfo.display_name} (@{userInfo.username}) | Twitter
-          </title>
+          {userInfo.display_name} (@{userInfo.username}) | Twitter
         </Helmet>
         <main>
           <Banner src={userInfo.header_static} alt="banner" />
-          <Statistics userInfo={userInfo} />
+          <Statistics />
           <Profile>
             <div className="container">
               <div className="row">
                 <div className="col-xs-3">
-                  <UserInfo id={userInfo.id} userInfo={userInfo} />
+                  <UserInfo />
                 </div>
                 <div className="col-xs-6">
                   <Switch>
                     <Route
                       path={`/${userInfo.id}/following`}
-                      render={() => <Followers id={userInfo.id} type="following" />}
+                      render={() => <Followers type="following" />}
                     />
                     <Route
                       path={`/${userInfo.id}/followers`}
-                      render={() => <Followers id={userInfo.id} type="followers" />}
+                      render={() => <Followers type="followers" />}
                     />
-                    <Route
-                      path={`/${userInfo.id}`}
-                      render={() => <Tweets id={userInfo.id} userInfo={userInfo} />}
-                    />
+                    <Route path={`/${userInfo.id}`} render={() => <Tweets />} />
                   </Switch>
                 </div>
                 <div className="col-xs-3">
@@ -152,3 +138,11 @@ export default class ProfilePage extends React.Component<Props, State> {
     );
   }
 }
+
+const mapStateToProps = state => ({
+  userInfo: state.userInfo,
+  hasError: state.userInfoHasError,
+  isLoading: state.userInfoIsLoading,
+});
+
+export default connect(mapStateToProps)(ProfilePage);
