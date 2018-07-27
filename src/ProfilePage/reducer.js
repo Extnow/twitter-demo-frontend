@@ -20,7 +20,7 @@ function userInfoIsLoading(state = false, action) {
   }
 }
 
-function userInfo(state = [], action) {
+function userInfo(state = {}, action) {
   switch (action.type) {
     case 'USER_INFO_FETCH_SUCCESS':
       return action.userInfo;

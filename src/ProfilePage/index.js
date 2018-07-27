@@ -6,7 +6,7 @@ import { Helmet } from 'react-helmet';
 import { Route, Switch } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
+import userInfoFetchData from './actions';
 // components
 import Statistics from './Statistics';
 import Tweets from './Tweets';
@@ -43,7 +43,7 @@ type Props = {
   userInfo: UserData,
   hasError: boolean,
   isLoading: boolean,
-  fetchUserInfo: Function,
+  dispatch: Function,
 };
 
 type State = {
@@ -58,10 +58,10 @@ class ProfilePage extends React.Component<Props, State> {
       match: {
         params: { id },
       },
-      fetchUserInfo,
+      dispatch,
     } = this.props;
 
-    fetchUserInfo(id);
+    dispatch(userInfoFetchData(id));
   }
 
   componentDidUpdate(prevProps: Props) {
@@ -72,10 +72,10 @@ class ProfilePage extends React.Component<Props, State> {
         match: {
           params: { id },
         },
-        fetchUserInfo,
+        dispatch,
       } = this.props;
 
-      fetchUserInfo(id);
+      dispatch(userInfoFetchData(id));
     }
   }
 
@@ -145,11 +145,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(ProfilePage);
+export default connect(mapStateToProps)(ProfilePage);

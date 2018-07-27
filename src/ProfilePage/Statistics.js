@@ -4,7 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
 
 import FollowButton from '../UI/FollowButton';
 import iconMore from './img/icon-more.png';
@@ -138,11 +137,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Statistics);
+export default connect(mapStateToProps)(Statistics);

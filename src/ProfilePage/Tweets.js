@@ -4,7 +4,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { NavLink, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../complexes/actions';
 // components
 import Tweet from './Tweet';
 import TemplatePage from '../TemplatePage';
@@ -139,11 +138,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Tweets);
+export default connect(mapStateToProps)(Tweets);

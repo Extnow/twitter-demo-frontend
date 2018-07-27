@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { connect } from 'react-redux';
-import userInfoFetchData from '../../complexes/actions';
 // components
 import List from './List';
 import Follower from './Follower';
@@ -104,11 +103,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(UserInfo);
+export default connect(mapStateToProps)(UserInfo);

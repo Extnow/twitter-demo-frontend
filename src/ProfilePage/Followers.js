@@ -3,10 +3,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-import userInfoFetchData from '../complexes/actions';
 import Follower from './Follower';
 import { host, accesToken } from '../utils';
-import type { FollowersData } from '../types';
+import type { UserData, FollowersData } from '../types';
 
 const Wrapper = styled.div`
   display: flex;
@@ -14,29 +13,6 @@ const Wrapper = styled.div`
   justify-content: space-between;
   margin-top: 10px;
 `;
-
-type UserData = {
-  id: string,
-  username: string,
-  avatar: string,
-  acct: string,
-  display_name: string,
-  locked: boolean,
-  bot: boolean,
-  created_at: string,
-  note: string,
-  url: string,
-  avatar: string,
-  avatar_static: string,
-  header: string,
-  header_static: string,
-  followers_count: number,
-  following_count: number,
-  statuses_count: number,
-  emojis: (?Object)[],
-  fields: (?Object)[],
-  error?: string,
-};
 
 type Props = {
   type: string,
@@ -101,11 +77,4 @@ const mapStateToProps = state => ({
   isLoading: state.userInfoIsLoading,
 });
 
-const mapDispatchToProps = dispatch => ({
-  fetchUserInfo: id => dispatch(userInfoFetchData(id)),
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps,
-)(Followers);
+export default connect(mapStateToProps)(Followers);
